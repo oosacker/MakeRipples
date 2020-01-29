@@ -5,6 +5,8 @@ import pyrebase
 
 app = Flask(__name__)
 
+count = 0
+
 config = {
     "apiKey": "AIzaSyBFWvJWUtv_AM8NhBXG231jxint9IbXKio",
     "authDomain": "makeripple.firebaseapp.com",
@@ -14,41 +16,6 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
-
-
-# def test_nltk():
-
-
-
-def test_firebase():
-    print('begin pyrebase')
-
-    # Get a reference to the auth service
-    # auth = firebase.auth()
-
-    # Log the user in
-    #  auth.create_user_with_email_and_password(email, password)
-    # user = auth.sign_in_with_email_and_password("oosacker@gmail.com", "123456")
-
-    # Get a reference to the database service
-    # db = firebase.database()
-
-    # data to save
-    data = {
-        "name": "natsuki h",
-        "email": "oosacker@gmail.com",
-    }
-
-    # Pass the user's idToken to the push method
-    db = firebase.database()
-    # db.child("users").child("nat")
-    # results = db.child("users").push(data)
-    results = db.child("users").child("natsuki").set(data)
-
-    print(results)
-
-
-# test_firebase()
 
 
 def database_set(root, child, data):
@@ -61,22 +28,17 @@ def database_get(root):
     print(users.val())
 
 
-def database_update():
-    db.child("mydata").child("me").update({"4": "hi"})
-
-
-# database_set("mydata", "me", {"name": "me"})
-# database_get("mydata")
-
-database_update()
+def database_update(root, child, data):
+    db.child(root).child(child).update(data)
 
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    count=0
+    global count
     if request.method == 'POST':
         submit = request.form['text-input']
-        #database_set("mydata", "me", {"name": "me"})
+        database_update("mydata", "texts", {count: submit})
+        count += 1
         return render_template('index.html', message=submit)
     else:
         return render_template('index.html')
