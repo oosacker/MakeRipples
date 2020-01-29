@@ -1,6 +1,6 @@
 from flask import *
-# import nltk
-# from nltk.corpus import treebank
+import nltk
+from nltk.corpus import treebank
 import pyrebase
 
 app = Flask(__name__)
@@ -16,11 +16,15 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 
+# def test_nltk():
+
+
+
 def test_firebase():
     print('begin pyrebase')
 
     # Get a reference to the auth service
-    auth = firebase.auth()
+    # auth = firebase.auth()
 
     # Log the user in
     #  auth.create_user_with_email_and_password(email, password)
@@ -31,8 +35,8 @@ def test_firebase():
 
     # data to save
     data = {
-        "name": "natsuki rulz",
-        "email": "oosacker@gmakil.com",
+        "name": "natsuki h",
+        "email": "oosacker@gmail.com",
     }
 
     # Pass the user's idToken to the push method
@@ -57,14 +61,22 @@ def database_get(root):
     print(users.val())
 
 
-database_set("mydata", "me", {"name": "me"})
-database_get("mydata")
+def database_update():
+    db.child("mydata").child("me").update({"4": "hi"})
+
+
+# database_set("mydata", "me", {"name": "me"})
+# database_get("mydata")
+
+database_update()
 
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    count=0
     if request.method == 'POST':
         submit = request.form['text-input']
+        #database_set("mydata", "me", {"name": "me"})
         return render_template('index.html', message=submit)
     else:
         return render_template('index.html')
