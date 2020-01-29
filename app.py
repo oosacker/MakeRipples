@@ -13,6 +13,7 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
+db = firebase.database()
 
 
 def test_firebase():
@@ -22,11 +23,11 @@ def test_firebase():
     auth = firebase.auth()
 
     # Log the user in
-   #  auth.create_user_with_email_and_password(email, password)
-    user = auth.sign_in_with_email_and_password("oosacker@gmail.com", "123456")
+    #  auth.create_user_with_email_and_password(email, password)
+    # user = auth.sign_in_with_email_and_password("oosacker@gmail.com", "123456")
 
     # Get a reference to the database service
-    db = firebase.database()
+    # db = firebase.database()
 
     # data to save
     data = {
@@ -35,10 +36,29 @@ def test_firebase():
     }
 
     # Pass the user's idToken to the push method
-    results = db.child("users").push(data)
+    db = firebase.database()
+    # db.child("users").child("nat")
+    # results = db.child("users").push(data)
+    results = db.child("users").child("natsuki").set(data)
+
+    print(results)
 
 
-test_firebase()
+# test_firebase()
+
+
+def database_set(root, child, data):
+    results = db.child(root).child(child).set(data)
+    print(results)
+
+
+def database_get(root):
+    users = db.child(root).get()
+    print(users.val())
+
+
+database_set("mydata", "me", {"name": "me"})
+database_get("mydata")
 
 
 @app.route('/', methods=['POST', 'GET'])
