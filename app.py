@@ -48,9 +48,11 @@ def check_in():
     else:
         return render_template('form.html')
 
+
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
     return render_template('user_dashboard.html')
+
 
 if __name__ == '__main__':
     app.run()
