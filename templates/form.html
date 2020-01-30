@@ -5,17 +5,50 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <p>You sent: {{ message }}</p>
-    </div>
-    <div class="container">
-        <form action="/" method="post">
-            <div class="form-group">
-                <label for="input">Input your content</label>
-                <textarea class="form-control" id="text-input" name="text-input" rows="10" required></textarea>
+
+    <script src={{ url_for('static', filename='formscript.js') }}></script>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="activity_input_box">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                </div>
+
+                <div class="modal-body">
+                    <div class="col-sm-10">
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+
+        </div>
     </div>
-    <script src={{ url_for('static', filename='myscript.js') }}></script>
+
+
+
+
+
+
+
+
+{#    <div class="container">#}
+{#        <form action="/" method="post">#}
+{#            <div class="form-group">#}
+{#                <label for="input">Input your content</label>#}
+{#                <textarea class="form-control" id="text-input" name="text-input" rows="10" required></textarea>#}
+{#            </div>#}
+{#            <button type="submit" class="btn btn-primary">Submit</button>#}
+{#        </form>#}
+{#    </div>#}
+
 {% endblock %}
