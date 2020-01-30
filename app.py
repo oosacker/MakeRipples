@@ -32,21 +32,9 @@ def database_update(root, child, data):
     db.child(root).child(child).update(data)
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def index():
     return render_template('index.html')
-
-
-@app.route('/check_in', methods=['POST', 'GET'])
-def check_in():
-    global count
-    if request.method == 'POST':
-        submit = request.form['text-input']
-        database_update("mydata", "texts", {count: submit})
-        count += 1
-        return render_template('form.html', message=submit)
-    else:
-        return render_template('form.html')
 
 
 if __name__ == '__main__':
