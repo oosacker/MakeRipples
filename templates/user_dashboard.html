@@ -1,0 +1,12 @@
+{% extends 'template.html' %}
+
+{% block head %}
+    <title>Stream Summary</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="text-center">Stream Title</h1>
+    </div>
+<script src={{ url_for('static', filename='myscript.js') }}></script>
+{% endblock %}
