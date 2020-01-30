@@ -34,14 +34,7 @@ def database_update(root, child, data):
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    global count
-    if request.method == 'POST':
-        submit = request.form['text-input']
-        database_update("mydata", "texts", {count: submit})
-        count += 1
-        return render_template('form.html', message=submit)
-    else:
-        return render_template('form.html')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
