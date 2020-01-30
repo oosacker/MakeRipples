@@ -6,16 +6,17 @@
 
 {% block body %}
     <div class="container">
-        <p>You sent: {{ message }}</p>
-    </div>
-    <div class="container">
-        <form action="/" method="post">
-            <div class="form-group">
-                <label for="input">Input your content</label>
-                <textarea class="form-control" id="text-input" name="text-input" rows="10" required></textarea>
+       <row>
+           <div class="jumbotron">
+                <h1 class="display-4">Make Ripples</h1>
+                <p class="lead">This can be removed. Lorem Ipsum. Hero Unit </p>
+                <hr class="my-4">
+                <p>Click below for the user dashboard yo. </p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="/user_dashboard.html" role="button">Go to Dashboard</a>
+                </p>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+       </row>
     </div>
     <script src={{ url_for('static', filename='myscript.js') }}></script>
 {% endblock %}
