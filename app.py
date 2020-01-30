@@ -39,9 +39,9 @@ def index():
         submit = request.form['text-input']
         database_update("mydata", "texts", {count: submit})
         count += 1
-        return render_template('index.html', message=submit)
+        return render_template('form.html', message=submit)
     else:
-        return render_template('index.html')
+        return render_template('form.html')
 
 
 if __name__ == '__main__':
