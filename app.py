@@ -32,8 +32,8 @@ def database_update(root, child, data):
     db.child(root).child(child).update(data)
 
 
-@app.route('/', methods=['POST', 'GET'])
-def index():
+@app.route('/check_in', methods=['POST', 'GET'])
+def check_in():
     global count
     if request.method == 'POST':
         submit = request.form['text-input']
