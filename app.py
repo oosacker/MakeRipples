@@ -54,5 +54,9 @@ def user_dash():
     return render_template('user_dashboard.html')
 
 
+@app.route('/form', methods=['POST', 'GET'])
+def form():
+    return render_template('form.html')
+
 if __name__ == '__main__':
     app.run()
