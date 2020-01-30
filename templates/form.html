@@ -5,10 +5,8 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <p>You sent: {{ message }}</p>
-    </div>
 
+    <script src={{ url_for('static', filename='formscript.js') }}></script>
 
         <div class="modal fade" tabindex="-1" role="dialog" id="activity_input_box">
         <div class="modal-dialog" role="document">
@@ -52,5 +50,5 @@
 {#            <button type="submit" class="btn btn-primary">Submit</button>#}
 {#        </form>#}
 {#    </div>#}
-    <script src={{ url_for('static', filename='formscript.js') }}></script>
+
 {% endblock %}

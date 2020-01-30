@@ -32,6 +32,11 @@ def database_update(root, child, data):
     db.child(root).child(child).update(data)
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/check_in', methods=['POST', 'GET'])
 def check_in():
     global count
