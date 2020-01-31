@@ -6,21 +6,21 @@
 
 {% block body %}
 
-{#<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">#}
-{#<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>#}
-{#    #}
-{#<div id="editor">#}
-{#  <p>Hello World!</p>#}
-{#  <p>Some initial <strong>bold</strong> text</p>#}
-{#  <p><br></p>#}
-{#</div>#}
-{##}
-{#<script>#}
-{#  var quill = new Quill('#editor', {#}
-{#    theme: 'snow'#}
-{#  });#}
-{#  let text = quill.getText()#}
-{#</script>#}
+    {#<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">#}
+    {#<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>#}
+    {#    #}
+    {#<div id="editor">#}
+    {#  <p>Hello World!</p>#}
+    {#  <p>Some initial <strong>bold</strong> text</p>#}
+    {#  <p><br></p>#}
+    {#</div>#}
+    {##}
+    {#<script>#}
+    {#  var quill = new Quill('#editor', {#}
+    {#    theme: 'snow'#}
+    {#  });#}
+    {#  let text = quill.getText()#}
+    {#</script>#}
 
     <div class="modal fade" tabindex="-1" role="dialog" id="activity_type_box">
         <div class="modal-dialog modal-lg" role="document">
@@ -31,7 +31,8 @@
                 </div>
 
                 <div class="modal-body">
-                    <p><strong>Please select the type of activity you would like to share with the organiser.</strong></p>
+                    <p><strong>Please select the type of activity you would like to share with the organiser.</strong>
+                    </p>
                     <div class="row">
                         <div class="col-lg-6">
                             <p>Something really resonated with me.</p>
@@ -69,57 +70,67 @@
     <div class="modal fade" tabindex="-1" role="dialog" id="exp_box">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <p class="modal-title">Personal Activity Check-in</p>
-                </div>
-                <div class="modal-body">
 
-                    <form>
+                <form action="/check_in" method="post">
+
+                    <div class="modal-header">
+                        <p class="modal-title">Personal Activity Check-in</p>
+                    </div>
+
+                    <div class="modal-body">
+
                         <div class="form-group">
                             <label for="text_input1"><strong>Tell us about your activity.</strong></label>
                             <textarea class="form-control" id="text_input1" rows="3"></textarea>
                         </div>
-                    </form>
 
-                    <p><strong>Please answer the following questions to help us categorise your activity.</strong></p>
+                        <p><strong>Please answer the following questions to help us categorise your activity.</strong>
+                        </p>
 
-                    <div class="row">
-                        <div class="col-9">
-                            <p>Did this experience resonate with you emotionally in any way?</p>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set1" id="radio_1" value="yes">
-                                <label class="form-check-label" for="radio_1">Yes</label>
+                        <div class="row">
+                            <div class="col-9">
+                                <p>Did this experience resonate with you emotionally in any way?</p>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set1" id="radio_2" value="no">
-                                <label class="form-check-label" for="radio_2">No</label>
+                            <div class="col-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set1" id="radio_1"
+                                           value="yes">
+                                    <label class="form-check-label" for="radio_1">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set1" id="radio_2"
+                                           value="no">
+                                    <label class="form-check-label" for="radio_2">No</label>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-9">
+                                <p>Did you feel a personal connection to this experience?</p>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set2" id="radio_3"
+                                           value="yes">
+                                    <label class="form-check-label" for="radio_3">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set2" id="radio_4"
+                                           value="no">
+                                    <label class="form-check-label" for="radio_4">No</label>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-
-                    <div class="row">
-                        <div class="col-9">
-                            <p>Did you feel a personal connection to this experience?</p>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set2" id="radio_3" value="yes">
-                                <label class="form-check-label" for="radio_3">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set2" id="radio_4" value="no">
-                                <label class="form-check-label" for="radio_4">No</label>
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                </form>
+
             </div>
         </div>
     </div>
@@ -129,57 +140,68 @@
     <div class="modal fade" tabindex="-1" role="dialog" id="learn_box">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <p class="modal-title">Personal Activity Check-in</p>
-                </div>
-                <div class="modal-body">
 
-                    <form>
-                        <div class="form-group">
-                            <label for="text_input2"><strong>Tell us about your activity.</strong></label>
-                            <textarea class="form-control" id="text_input2" rows="3"></textarea>
-                        </div>
-                    </form>
+                <form action="/check_in" method="post">
 
-                    <p><strong>Please answer the following questions to help us categorise your activity.</strong></p>
+                    <div class="modal-header">
+                        <p class="modal-title">Personal Activity Check-in</p>
+                    </div>
+                    <div class="modal-body">
 
-                    <div class="row">
-                        <div class="col-9">
-                            <p>Did you apply this learning or share it with someone else?</p>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set3" id="radio_5" value="yes">
-                                <label class="form-check-label" for="radio_5">Yes</label>
+                        <form>
+                            <div class="form-group">
+                                <label for="text_input2"><strong>Tell us about your activity.</strong></label>
+                                <textarea class="form-control" id="text_input2" rows="3"></textarea>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set3" id="radio_6" value="no">
-                                <label class="form-check-label" for="radio_6">No</label>
+                        </form>
+
+                        <p><strong>Please answer the following questions to help us categorise your activity.</strong>
+                        </p>
+
+                        <div class="row">
+                            <div class="col-9">
+                                <p>Did you apply this learning or share it with someone else?</p>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set3" id="radio_5"
+                                           value="yes">
+                                    <label class="form-check-label" for="radio_5">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set3" id="radio_6"
+                                           value="no">
+                                    <label class="form-check-label" for="radio_6">No</label>
+                                </div>
                             </div>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-9">
+                                <p>Did this knowledge change your perspective or beliefs?</p>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set4" id="radio_7"
+                                           value="yes">
+                                    <label class="form-check-label" for="radio_7">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set4" id="radio_8"
+                                           value="no">
+                                    <label class="form-check-label" for="radio_8">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
 
+                </form>
 
-                    <div class="row">
-                        <div class="col-9">
-                            <p>Did this knowledge change your perspective or beliefs?</p>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set4" id="radio_7" value="yes">
-                                <label class="form-check-label" for="radio_7">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set4" id="radio_8" value="no">
-                                <label class="form-check-label" for="radio_8">No</label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
             </div>
         </div>
     </div>
@@ -189,58 +211,69 @@
     <div class="modal fade" tabindex="-1" role="dialog" id="action_box">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <p class="modal-title">Personal Activity Check-in</p>
-                </div>
-                <div class="modal-body">
 
-                    <form>
-                        <div class="form-group">
-                            <label for="text_input3"><strong>Tell us about your activity.</strong></label>
-                            <textarea class="form-control" id="text_input3" rows="3"></textarea>
-                        </div>
-                    </form>
+                <form action="/check_in" method="post">
 
-                    <p><strong>Please answer the following questions to help us categorise your activity.</strong></p>
+                    <div class="modal-header">
+                        <p class="modal-title">Personal Activity Check-in</p>
+                    </div>
+                    <div class="modal-body">
 
-                    <div class="row">
-                        <div class="col-9">
-                            <p>Did this action involve a group or impact your community?</p>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set5" id="radio_9" value="yes">
-                                <label class="form-check-label" for="radio_9">Yes</label>
+                        <form>
+                            <div class="form-group">
+                                <label for="text_input3"><strong>Tell us about your activity.</strong></label>
+                                <textarea class="form-control" id="text_input3" rows="3"></textarea>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set5" id="radio_10" value="no">
-                                <label class="form-check-label" for="radio_10">No</label>
+                        </form>
+
+                        <p><strong>Please answer the following questions to help us categorise your activity.</strong>
+                        </p>
+
+                        <div class="row">
+                            <div class="col-9">
+                                <p>Did this action involve a group or impact your community?</p>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set5" id="radio_9"
+                                           value="yes">
+                                    <label class="form-check-label" for="radio_9">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set5" id="radio_10"
+                                           value="no">
+                                    <label class="form-check-label" for="radio_10">No</label>
+                                </div>
                             </div>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-9">
+                                <p>Did this action have an impact beyond your local community?</p>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set6" id="radio_11"
+                                           value="yes">
+                                    <label class="form-check-label" for="radio_11">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radio_set6" id="radio_12"
+                                           value="no">
+                                    <label class="form-check-label" for="radio_12">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
 
+                </form>
 
-                    <div class="row">
-                        <div class="col-9">
-                            <p>Did this action have an impact beyond your local community?</p>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set6" id="radio_11" value="yes">
-                                <label class="form-check-label" for="radio_11">Yes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_set6" id="radio_12" value="no">
-                                <label class="form-check-label" for="radio_12">No</label>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
             </div>
         </div>
     </div>
