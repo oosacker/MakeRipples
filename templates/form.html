@@ -22,11 +22,6 @@
 {#  let text = quill.getText()#}
 {#</script>#}
 
-
-
-{# NOTE - be careful when loading scripts at the top of the HTML! You only want it to run when the page has loaded! #}
-<script src={{ url_for('static', filename='formscript.js') }}></script>
-
     <div class="modal fade" tabindex="-1" role="dialog" id="activity_type_box">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -94,12 +89,12 @@
                         </div>
                         <div class="col-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="radio_set1" id="radio_1" value="yes">
+                                <label class="form-check-label" for="radio_1">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="radio_set1" id="radio_2" value="no">
+                                <label class="form-check-label" for="radio_2">No</label>
                             </div>
                         </div>
                     </div>
@@ -111,18 +106,19 @@
                         </div>
                         <div class="col-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                       value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="radio_set2" id="radio_3" value="yes">
+                                <label class="form-check-label" for="radio_3">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                       value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="radio_set2" id="radio_4" value="no">
+                                <label class="form-check-label" for="radio_4">No</label>
                             </div>
                         </div>
                     </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
@@ -153,12 +149,12 @@
                         </div>
                         <div class="col-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="radio_set3" id="radio_5" value="yes">
+                                <label class="form-check-label" for="radio_5">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="radio_set3" id="radio_6" value="no">
+                                <label class="form-check-label" for="radio_6">No</label>
                             </div>
                         </div>
                     </div>
@@ -170,18 +166,19 @@
                         </div>
                         <div class="col-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                       value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="radio_set4" id="radio_7" value="yes">
+                                <label class="form-check-label" for="radio_7">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                       value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="radio_set4" id="radio_8" value="no">
+                                <label class="form-check-label" for="radio_8">No</label>
                             </div>
                         </div>
                     </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
@@ -212,12 +209,12 @@
                         </div>
                         <div class="col-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="radio_set5" id="radio_9" value="yes">
+                                <label class="form-check-label" for="radio_9">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="radio_set5" id="radio_10" value="no">
+                                <label class="form-check-label" for="radio_10">No</label>
                             </div>
                         </div>
                     </div>
@@ -229,34 +226,24 @@
                         </div>
                         <div class="col-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                       value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input class="form-check-input" type="radio" name="radio_set6" id="radio_11" value="yes">
+                                <label class="form-check-label" for="radio_11">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                       value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input class="form-check-input" type="radio" name="radio_set6" id="radio_12" value="no">
+                                <label class="form-check-label" for="radio_12">No</label>
                             </div>
                         </div>
                     </div>
 
 
                 </div>
-
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
-
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 
 
     {#    <div class="container">#}
@@ -268,5 +255,8 @@
     {#            <button type="submit" class="btn btn-primary">Submit</button>#}
     {#        </form>#}
     {#    </div>#}
+
+    {# NOTE - be careful when loading scripts at the top of the HTML! You only want it to run when the page has loaded! #}
+    <script src={{ url_for('static', filename='formscript.js') }}></script>
 
 {% endblock %}
