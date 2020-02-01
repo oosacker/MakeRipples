@@ -6,6 +6,7 @@ import pyrebase
 app = Flask(__name__)
 
 count = 0
+message = 'Begin!!!!'
 
 config = {
     "apiKey": "AIzaSyBFWvJWUtv_AM8NhBXG231jxint9IbXKio",
@@ -37,16 +38,22 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/check_in', methods=['POST', 'GET'])
-def check_in():
-    global count
-    if request.method == 'POST':
-        submit = request.form['text-input']
-        database_update("mydata", "texts", {count: submit})
-        count += 1
-        return render_template('form.html', message=submit)
-    else:
-        return render_template('form.html')
+# @app.route('/check_in', methods=['POST', 'GET'])
+# def check_in():
+#     # global count
+#     global message
+#
+#     print(message)
+#
+#     if request.method == 'POST':
+#         # submit = request.form['text-input']
+#         # database_update("mydata", "texts", {count: submit})
+#         # count += 1
+#         message = 'Got message!!!'
+#         return render_template('form.html', message=message)
+#     else:
+#         message = 'None!!!'
+#         return render_template('form.html', message=message)
 
 
 @app.route('/user_dashboard', methods=['POST', 'GET'])
@@ -56,7 +63,18 @@ def user_dash():
 
 @app.route('/form', methods=['POST', 'GET'])
 def form():
-    return render_template('form.html')
+    global message
+
+    if request.method == 'POST':
+        message = 'Got message!!!'
+        print(message)
+        return render_template('form.html', message=message)
+
+    else:
+        message = 'None!!!'
+        print(message)
+        return render_template('form.html', message=message)
+
 
 if __name__ == '__main__':
     app.run()
