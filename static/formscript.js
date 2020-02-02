@@ -27,6 +27,11 @@ class user_response{
 //         console.log(status)
 //     })
 
+// Variables to send to db
+let action = false;
+let learning = false;
+let resonate = false;
+let other = false;
 
 function send_data(myData) {
     $.ajax('/my_test', {
@@ -51,7 +56,8 @@ function get_data(){
 
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
-    $("#activity_type_box").modal();
+    // $("#activity_type_box").modal();
+    $("#test_type_form").modal();
 
     $("#exp_btn").on("click", function(){
         $("#activity_type_box").modal("hide");
@@ -67,4 +73,38 @@ jQuery(function () {
         $("#activity_type_box").modal("hide");
         $("#action_box").modal();
     })
+
+    $("#next_btn").on("click",function(){
+        if($("#resonate").prop("checked") == true){
+        resonate = true;
+        }
+        if($("#learning").prop("checked") == true){
+        learning = true;
+        }
+        if($("#action").prop("checked") == true){
+        action = true;
+        }
+        if($("#other").prop("checked") == true){
+        other = true;
+        }
+        $("#test_type_form").modal("hide");
+        if(action){
+            $("#action_box").modal();
+        }
+        else if(learning){
+            $("#learn_box").modal();
+        }
+        else if (resonate){
+            $("#exp_box").modal();
+        }
+        else if (other){
+            alert("Other modal to be created")
+        }
+        else {
+            alert("Please select at least one option")
+        }
+    })
+
 })
+
+// Logic for the updated form stages
