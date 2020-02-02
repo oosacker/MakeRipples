@@ -1,7 +1,7 @@
 
 
 class user_response{
-    constructor(type='unknown', message='unknown', option_1='unknown', option_2='unknown'){
+    constructor(type='unknown', message='unknown', option_1= false, option_2= false){
         this._type = type;
         this._message = message;
         this._option_1 = option_1;
@@ -28,11 +28,11 @@ class user_response{
 //     })
 
 
-function send_data() {
+function send_data(myData) {
     $.ajax('/my_test', {
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({myData: 'data1', myData2: 'data2'}),
+        data: JSON.stringify(myData),
         success: function (data, status, xhr) {
             console.log(status)
         },
