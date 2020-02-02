@@ -63,17 +63,15 @@ def user_dash():
 
 @app.route('/form', methods=['POST', 'GET'])
 def form():
-    global message
-
     if request.method == 'POST':
-        message = 'Got message!!!'
-        print(message)
-        return render_template('form.html', message=message)
+
+        return render_template('form.html',
+                               text=request.form['text_input'],
+                               option_1=request.form['radio_set1'],
+                               option_2=request.form['radio_set2'])
 
     else:
-        message = 'None!!!'
-        print(message)
-        return render_template('form.html', message=message)
+        return render_template('form.html')
 
 
 if __name__ == '__main__':
