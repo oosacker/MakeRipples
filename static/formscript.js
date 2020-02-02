@@ -1,5 +1,7 @@
+
+
 class user_response{
-    constructor(type, message, option_1, option_2){
+    constructor(type='unknown', message='unknown', option_1='unknown', option_2='unknown'){
         this._type = type;
         this._message = message;
         this._option_1 = option_1;
@@ -26,10 +28,9 @@ class user_response{
 //     })
 
 
-jQuery(function () {
-    let ajax_promise = $.ajax('/my_test', {
-        type: 'POST',  // http method
-        //dataType: 'json', // only needed when receiving
+function send_data() {
+    $.ajax('/my_test', {
+        type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({myData: 'data1', myData2: 'data2'}),
         success: function (data, status, xhr) {
@@ -38,8 +39,15 @@ jQuery(function () {
         error: function (jqXhr, textStatus, errorMessage) {
             console.log(textStatus);
         }
+    }).then(function(){
+        console.log('sent')
     })
-})
+}
+
+function get_data(){
+
+}
+
 
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
