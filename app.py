@@ -1,12 +1,11 @@
-from flask import *
-import nltk
-from nltk.corpus import treebank
 import pyrebase
+
+from datetime import date
+today = date.today()
 
 app = Flask(__name__)
 
 count = 0
-message = 'Begin!!!!'
 
 config = {
     "apiKey": "AIzaSyBFWvJWUtv_AM8NhBXG231jxint9IbXKio",
@@ -18,6 +17,8 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
+
+count = len(db.child("users").child("stream").get().val())
 
 def database_set(root, child, data):
     results = db.child(root).child(child).set(data)
@@ -32,47 +33,47 @@ def database_get(root):
 def database_update(root, child, data):
     db.child(root).child(child).update(data)
 
+currentDay = today.strftime("%B %d, %Y")
+
+def database_add(rippleID):
+
+    data ={
+        "date": currentDay,
+        "type": "action",
+        "answer": {"reach": "self",
+                   "shared": "yes",
+                   "perspective": "changed",
+                   "personalConnection": "yes",
+                   },
+        "rating": {"user":"userRate",
+                   "organizer": "organizerRate",
+                   "nltk":"nltkRate",},
+    }
+
+    db.child("users").child("stream").child(rippleID).update(data)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
     return render_template('index.html')
 
 
-# @app.route('/check_in', methods=['POST', 'GET'])
-# def check_in():
-#     # global count
-#     global message
-#
-#     print(message)
-#
-#     if request.method == 'POST':
-#         # submit = request.form['text-input']
-#         # database_update("mydata", "texts", {count: submit})
-#         # count += 1
-#         message = 'Got message!!!'
-#         return render_template('form.html', message=message)
-#     else:
-#         message = 'None!!!'
-#         return render_template('form.html', message=message)
-
+@app.route('/check_in', methods=['POST', 'GET'])
+def check_in():
+    global count
+    if request.method == 'POST':
+        submit = request.form['text-input']
+        rippleNum = "ripple" + str(count)
+        database_add(rippleNum)
+        count += 1
+        print(rippleNum)
+        print(len(db.child("users").child("stream").get().val()))
+        return render_template('form.html', message=submit)
+    else:
+        return render_template('form.html')
 
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
     return render_template('user_dashboard.html')
-
-
-@app.route('/form', methods=['POST', 'GET'])
-def form():
-    if request.method == 'POST':
-
-        return render_template('form.html',
-                               text=request.form['text_input'],
-                               option_1=request.form['radio_set1'],
-                               option_2=request.form['radio_set2'])
-
-    else:
-        return render_template('form.html')
-
 
 if __name__ == '__main__':
     app.run()
