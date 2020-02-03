@@ -15,6 +15,8 @@
     <orderEntry type="library" name="popper" level="application" />
     <orderEntry type="library" name="quill.snow" level="application" />
     <orderEntry type="library" name="quill" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-3.4.1" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
