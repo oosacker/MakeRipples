@@ -404,7 +404,7 @@
             let action_back_btn = $("#action_back_btn");
             let action_add_btn = $("#action_add_btn");
 
-            $('#other_form').modal();
+            $('#first_form').modal();
 
         {#    form_1.modal();#}
         {##}
@@ -450,8 +450,15 @@
     <style>
         .modal-header{
             background-color: #91278e;
-            border-radius: 0.3rem 0.3rem 0 0;
+
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-top-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+             border-top-left-radius: 5px;
+             border-top-right-radius: 5px;
         }
+
 
         .modal-title{
             color: white;
