@@ -112,45 +112,96 @@
 
 
 
+
+
+
+        {# NEW DIALOG BOX!!!!! #}
+    <div class="modal fade" tabindex="-1" role="dialog" id="resonate_form">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title">Add a Ripple</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                        <label>Did this resonate with you because you felt a personal connection to your own life?</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radio_set1" id="radio_1" value="yes" required>
+                            <label class="form-check-label" for="radio_1">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radio_set1" id="radio_2" value="no" required>
+                            <label class="form-check-label" for="radio_2">No</label>
+                        </div>
+                    </div>
+
+
+                <div class="modal-footer">
+                    <p class="mr-auto">Page 2 of 2</p>
+                    <button type="button" class="btn btn-secondary" id="back_btn">Back</button>
+                    <button type="button" class="btn btn-primary" id="next_btn">Add Ripple</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     <script>
-        jQuery(function(){
-            $("#test_type_form2").modal()
-        });
-
         jQuery(function () {
-          $("#datepicker").datepicker({
-                autoclose: true,
-                todayHighlight: true
-          }).datepicker('update', new Date());
-        });
-
-        jQuery(function () {
-
             let warning_msg =  $('#warning');
             let resonate_check = $("#resonate");
             let learning_check = $("#learning");
             let action_check = $("#action")
             let other_check = $("#other");
             let next_btn = $("#next_btn");
+            let datepicker = $("#datepicker");
+            let my_form = $("#test_type_form2");
+            let my_form2 = $("#resonate_form");
+
+            my_form.modal();
+
+            datepicker.datepicker({
+                autoclose: true,
+                todayHighlight: true
+            }).datepicker('update', new Date());
 
             warning_msg.css('visibility', 'hidden');
 
             next_btn.on("click", function() {
-
-                if (!(resonate_check.prop('checked') && learning_check.prop('checked') && action_check.prop('checked') && other_check.prop('checked')))
+                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))
                 {
                     // flash warning if no checkboxes are selected
                     warning_msg.css('color', 'red');
                     warning_msg.css('visibility', 'visible');
+                }
+                else{
+                    my_form.modal("hide");
+                    my_form2.modal();
                 }
             })
         });
     </script>
 
     <style>
-        label{margin-left: 20px;}
-        #datepicker{width:180px; margin: 0 20px 20px 20px;}
-        #datepicker > span:hover{cursor: pointer;}
+        label{
+            margin-left: 20px;
+        }
+        #datepicker{
+            width:180px; margin: 0 20px 20px 20px;
+        }
+        #datepicker > span:hover{
+            cursor: pointer;
+        }
     </style>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
