@@ -27,6 +27,7 @@
                 </div>
 
                 <div class="modal-body">
+
                     <div class="row">
                         <div class="col-lg-6">
                             <p>How did you help make a ripple for change?</p>
@@ -56,21 +57,32 @@
                                 <input type="checkbox" id="resonate" value="resonate">
                                 <p>Something really resonated with me.</p>
                             </div>
+
                             <br>
+
                             <div class="row">
-                                <input type="checkbox" id="resonate" value="resonate">
+                                <input type="checkbox" id="learning" value="learning">
                                 <p>I learnt something new.</p>
                             </div>
+
                             <br>
+
                             <div class="row">
-                                <input type="checkbox" id="resonate" value="resonate">
+                                <input type="checkbox" id="action" value="action">
                                 <p>I took action that made a difference.</p>
                             </div>
                             <br>
                             <div class="row">
-                                <input type="checkbox" id="resonate" value="resonate">
+                                <input type="checkbox" id="other" value="other">
                                 <p>Other</p>
                             </div>
+
+                            <br>
+
+                            <div class="row">
+                                <p hidden>You must select at least one category</p>
+                            </div>
+
 
                         </div>
                     </div>
@@ -111,6 +123,10 @@
                 todayHighlight: true
           }).datepicker('update', new Date());
         });
+
+        jQuery(function () {
+
+        })
     </script>
 
     <style>
