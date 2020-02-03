@@ -20,7 +20,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Add a Ripple</h4>
+                    <h3 class="modal-title">Add a Ripple</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -29,18 +29,25 @@
                 <div class="modal-body">
 
                     <div class="row">
-                        <div class="col-lg-6">
-                            <p>How did you help make a ripple for change?</p>
-                        </div>
-                        <div class="col-lg-3">
 
-                            <label for="datepicker">Select Date: </label>
-                            <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                                <input class="form-control" type="text" readonly />
+                        <div class="col-lg-6">
+                            <h4>How did you help make a ripple for change?</h4>
+                        </div>
+
+
+{#                        <div class="col-lg-6 ml-auto">#}
+                        <div class="ml-auto">
+
+                            <label for="datepicker"><small>Select a ripple date:</small></label>
+                            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+                                <input class="form-control" type="text"/>
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
 
                         </div>
+
+
+
                     </div>
 
                     <br>
@@ -55,32 +62,40 @@
 
                             <div class="row">
                                 <input type="checkbox" id="resonate" value="resonate">
-                                <p>Something really resonated with me.</p>
+                                <label for="resonate">Something really resonated with me.</label>
                             </div>
 
-                            <br>
+                            <br><br>
 
                             <div class="row">
                                 <input type="checkbox" id="learning" value="learning">
-                                <p>I learnt something new.</p>
+                                <label for="learning">I learnt something new.</label>
                             </div>
 
-                            <br>
+                            <br><br>
 
                             <div class="row">
                                 <input type="checkbox" id="action" value="action">
-                                <p>I took action that made a difference.</p>
+                                <label for="action">I took action that made a difference.</label>
                             </div>
-                            <br>
+
+                            <br><br>
+
                             <div class="row">
-                                <input type="checkbox" id="other" value="other">
-                                <p>Other</p>
+{#                                <div class="col-lg-6">#}
+                                    <input type="checkbox" id="other" value="other">
+                                    <label for="other">Other</label>
+{#                                </div>#}
+                                <div class="ml-auto">
+                                    <label for="other_text"><small>What other type of ripple did you make?</small></label>
+                                    <input type="text" id="other_text" placeholder="Enter a short description here">
+                                </div>
                             </div>
 
                             <br>
 
                             <div class="row">
-                                <p hidden>You must select at least one category</p>
+                                <p id="warning">You must select at least one category</p>
                             </div>
 
 
@@ -90,20 +105,9 @@
                 </div>
 
                 <div class="modal-footer">
-
-                    <div class="row">
-
-                        <div class="col-6 page-track">
-                            <p>Page 1 of 2</p>
-                        </div>
-
-                        <div class="col-6 d-flex justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="next_btn">Next</button>
-                        </div>
-
-                    </div>
-
+                    <p class="mr-auto">Page 1 of 2</p>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="next_btn">Next</button>
                 </div>
 
             </div>
@@ -126,14 +130,31 @@
 
         jQuery(function () {
 
-        })
+            let warning_msg =  $('#warning');
+            let resonate_check = $("#resonate");
+            let learning_check = $("#learning");
+            let action_check = $("#action")
+            let other_check = $("#other");
+            let next_btn = $("#next_btn");
+
+            warning_msg.css('visibility', 'hidden');
+
+            next_btn.on("click", function() {
+
+                if (!(resonate_check.prop('checked') && learning_check.prop('checked') && action_check.prop('checked') && other_check.prop('checked')))
+                {
+                    // flash warning if no checkboxes are selected
+                    warning_msg.css('color', 'red');
+                    warning_msg.css('visibility', 'visible');
+                }
+            })
+        });
     </script>
 
     <style>
         label{margin-left: 20px;}
         #datepicker{width:180px; margin: 0 20px 20px 20px;}
         #datepicker > span:hover{cursor: pointer;}
-        .modal-footer .page-track{text-align: left;}
     </style>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
