@@ -244,7 +244,7 @@ jQuery(function () {
                 }
         else {
             ur.date = datepicker.datepicker("getDate");
-            alert(ur.date)
+            // alert(ur.date)
             if (resonate_check.prop("checked") === true) {
                 ur.resonate = true
                 // resonate = true;
@@ -286,7 +286,7 @@ jQuery(function () {
             ur.message = $("#resonate_text").val()
         }
         // ur.message = $("textarea[name='text_input']").val()
-        alert(ur.message)
+        // alert(ur.message)
 
         if($("input[name='national_radio']:checked")){
             ur.national = $("input[name='national_radio']:checked").val();
@@ -305,7 +305,7 @@ jQuery(function () {
         }
         ur.userRating = calculate();
 
-        alert(JSON.stringify(ur));
+        // alert(JSON.stringify(ur));
 
         send_user();
     })

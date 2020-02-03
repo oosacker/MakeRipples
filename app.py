@@ -141,10 +141,11 @@ def add_ripple():
             }
             print(ripple_id, data)
             db.child("users").child("stream").child(ripple_id).set(data)
-            print('sent to database(hopefully)')
-            print(db.child("users").child("stream").child(ripple_id).get())
+            # print('sent to database(hopefully)')
 
-            # TODO send back to user dashboard
+            print(db.child("users").child("stream").child(ripple_id).get().val())
+
+            return 'success'
         else:
             print(request.form['myData'])
             print('Did not receive JSON')
