@@ -81,9 +81,11 @@ includedwords = list()
 
 
 
-def makeLibrary1():
+def makeLibraryOnetoThree():
     # make a list of keywords to identify something at level 9
     keywords = ['clicked', 'saw', 'read', 'viewed', 'watched', 'looked', 'heard', 'view', 'watch', 'hear', 'click']
+    keywords = ['liked', 'felt', 'understood']
+    keywords = ['my', 'family', 'whanau', 'whānau', 'knew']
     # make library of synonyms for these words
     global library1
     for keyword in keywords:
@@ -96,39 +98,12 @@ def makeLibrary1():
     print("Made library of ", len(library1), "words for level one")
 
 
-def makeLibrary2():
-    # make a list of keywords to identify something at level 2
-    keywords = ['liked', 'felt', 'understood']
-    # make library of synonyms for these words
-    global library2
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library2.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
 
-    print("Made library of ", len(library2), "words for level two")
-
-
-def makeLibrary3():
-    # make a list of keywords to identify something at level three
-    keywords = ['my', 'family', 'whanau', 'whānau', 'knew']
-    # make library of synonyms for these words
-    global library3
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library3.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library3), "words for level one")
-
-
-def makeLibrary4():
+def makeLibraryFourtoSeven():
     # make a list of keywords to identify something at level four
-    keywords = ['learnt', 'learn', 'learned', 'find']
+    keywords = ['learnt', 'learn', 'learned', 'find', 'questioned', 'understood', 'changed', 'found', 'change', 'question', 'differently', 'changed',
+                'talked', 'told', 'understood', 'discussed', 'lectured', 'lectured', 'discuss', 'discussion',
+                'debate', 'hui', 'felt', 'discussion', 'confident', 'consider', 'represent']
     # make library of synonyms for these words
     global library4
     for keyword in keywords:
@@ -141,56 +116,12 @@ def makeLibrary4():
     print("Made library of ", len(library4), "words for level four")
 
 
-def makeLibrary5():
-    # make a list of keywords to identify something at level five
-    keywords = ['questioned', 'understood', 'changed', 'found', 'change', 'question', 'differently']
-    # make library of synonyms for these words
-    global library5
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library5.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library5), "words for level one")
 
 
-def makeLibrary6():
-    # make a list of keywords to identify something at level six
-    keywords = ['changed', 'talked', 'told', 'understood', 'discussed', 'lectured', 'lectured', 'discuss', 'discussion',
-                'debate', 'hui']
-    # make library of synonyms for these words
-    global library6
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library6.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library6), "words for level one")
-
-
-def makeLibrary7():
-    # make a list of keywords to identify something at level seven
-    keywords = ['felt', 'discussion', 'confident', 'consider', 'represent']
-    # make library of synonyms for these words
-    global library7
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library7.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library7), "words for level one")
-
-
-def makeLibrary8():
+def makeLibraryEighttoNine():
     # make a list of keywords to identify something at level eight
     keywords = ['contacted', 'shared', 'visited', 'installed', 'prepared', 'wrote', 'write', 'posted', 'post',
-                'prepare', 'talked']
+                'prepare', 'talked', 'created', 'community', 'friends', 'friend', 'club', 'group', 'town', 'city']
     # make library of synonyms for these words
     global library8
     for keyword in keywords:
@@ -201,22 +132,6 @@ def makeLibrary8():
     # May end up with duplicates, so would need to get rid of those.
 
     print("Made library of ", len(library8), "words for level one")
-
-
-def makeLibrary9():
-    # make a list of keywords to identify something at level three
-    keywords = ['created', 'community', 'friends', 'friend', 'club', 'group']
-    # make library of synonyms for these words
-    global library9
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library9.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library9), "words for level one")
-
 
 def makeLibrary10():
     # make a list of keywords to identify something at level three
@@ -233,15 +148,9 @@ def makeLibrary10():
 
     print("Made library of ", len(library10), "words for level one")
 
-makeLibrary1()
-makeLibrary2()
-makeLibrary3()
-makeLibrary4()
-makeLibrary5()
-makeLibrary6()
-makeLibrary7()
-makeLibrary8()
-makeLibrary9()
+makeLibraryOnetoThree()
+makeLibraryFourtoSeven()
+makeLibraryEighttoNine()
 makeLibrary10()
 
 count9 = 0
