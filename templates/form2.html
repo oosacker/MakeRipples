@@ -1,0 +1,129 @@
+{% extends 'template.html' %}
+
+{% block head %}
+    <title>Second Form Modal</title>
+
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+
+
+    {# NEW DIALOG BOX!!!!! #}
+    <div class="modal fade" tabindex="-1" role="dialog" id="test_type_form2">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Ripple</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>How did you help make a ripple for change?</p>
+                        </div>
+                        <div class="col-lg-3">
+
+                            <label for="datepicker">Select Date: </label>
+                            <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                <input class="form-control" type="text" readonly />
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+
+                        <div class="col-lg-3">
+                            {# images go here #}
+                        </div>
+
+                        <div class="col-lg-6">
+
+                            <div class="row">
+                                <input type="checkbox" id="resonate" value="resonate">
+                                <p>Something really resonated with me.</p>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <input type="checkbox" id="resonate" value="resonate">
+                                <p>I learnt something new.</p>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <input type="checkbox" id="resonate" value="resonate">
+                                <p>I took action that made a difference.</p>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <input type="checkbox" id="resonate" value="resonate">
+                                <p>Other</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <div class="row">
+
+                        <div class="col-6 page-track">
+                            <p>Page 1 of 2</p>
+                        </div>
+
+                        <div class="col-6 d-flex justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="next_btn">Next</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        jQuery(function(){
+            $("#test_type_form2").modal()
+        });
+
+        jQuery(function () {
+          $("#datepicker").datepicker({
+                autoclose: true,
+                todayHighlight: true
+          }).datepicker('update', new Date());
+        });
+    </script>
+
+    <style>
+        label{margin-left: 20px;}
+        #datepicker{width:180px; margin: 0 20px 20px 20px;}
+        #datepicker > span:hover{cursor: pointer;}
+        .modal-footer .page-track{text-align: left;}
+    </style>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+
+{% endblock %}
