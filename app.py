@@ -109,7 +109,7 @@ def add_ripple():
             print('Received JSON data_receive from user object')
             print(data_receive)
             now = datetime.now().strftime("%d%m%Y%H%M%S")
-            rippleID = "Ripple" + now
+            ripple_id = "Ripple" + now
             answer = {}
             if '_national' in data_receive:
                 answer.update({"national": data_receive["_national"]})
@@ -136,10 +136,10 @@ def add_ripple():
                     "nlpRating": data_receive["_nlpRating"],
                 }
             }
-            print(rippleID, data)
-            db.child("users").child("stream").child(rippleID).set(data)
+            print(ripple_id, data)
+            db.child("users").child("stream").child(ripple_id).set(data)
             print('sent to database(hopefully)')
-            print(db.child("users").child("stream").child(rippleID).get())
+            print(db.child("users").child("stream").child(ripple_id).get())
             return render_template('form2.html')
         else:
             print(request.form['myData'])

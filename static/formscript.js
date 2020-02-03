@@ -225,7 +225,7 @@ jQuery(function () {
     let learning_check = $("#learning");
     let action_check = $("#action");
     let other_check = $("#other");
-    // {# click handler for ther 'other' checkbox #}
+    // {# click handler for the 'other' checkbox #}
     other_check.on('change', function () {
         if (other_check.prop('checked')) {
             what_ripple.css('visibility', 'visible');
@@ -243,6 +243,8 @@ jQuery(function () {
                     warning_msg.css('visibility', 'visible');
                 }
         else {
+            ur.date = datepicker.datepicker("getDate");
+            alert(ur.date)
             if (resonate_check.prop("checked") === true) {
                 ur.resonate = true
                 // resonate = true;
@@ -276,11 +278,11 @@ jQuery(function () {
     })
 
     $("button[name='submit_btn']").on("click",function(){
-        ur.message = $("#text_input").val()
-        if(ur.message == undefined){
+        ur.message = $("#text_input1").val()
+        if(ur.message === undefined || ur.message === ""){
             ur.message = $("#learn_text").val()
         }
-        if(ur.message === undefined){
+        if(ur.message === undefined || ur.message === ""){
             ur.message = $("#resonate_text").val()
         }
         // ur.message = $("textarea[name='text_input']").val()
