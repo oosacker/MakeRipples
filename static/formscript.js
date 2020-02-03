@@ -1,5 +1,12 @@
 
 class user_response{
+    get other_desc() {
+        return this._other_desc;
+    }
+
+    set other_desc(value) {
+        this._other_desc = value;
+    }
     get date() {
         return this._date;
     }
@@ -118,7 +125,7 @@ class user_response{
         this._personal = value;
     }
 
-    constructor(action=false, learning=false,resonate=false,other=false,
+    constructor(action=false, learning=false,resonate=false,other=false, other_desc = 'unknown',
                 message='unknown', date = Date.now(),
                 national='unknown', community='unknown', applied = 'unknown', perspective = 'unknown', personal = 'unknown',
                 userRating = 0, nlpRating =  0, orgRating = 0){
@@ -136,6 +143,7 @@ class user_response{
         this._nlpRating = nlpRating;
         this._orgRating = orgRating;
         this._date = date;
+        this._other_desc = other_desc;
     }
 
 }
@@ -181,55 +189,74 @@ jQuery(function () {
     $(document).ready(function() {
         ur = new user_response();
     })
-    $("#test_type_form").modal();
 
-    $("#exp_btn").on("click", function(){
-        $("#activity_type_box").modal("hide");
-        $("#exp_box").modal();
-    })
+    $("#first_form").modal();
 
-    $("#learn_btn").on("click",function(){
-        $("#activity_type_box").modal("hide");
-        $("#learn_box").modal();
-    })
+    let datepicker = $("#datepicker");
+    datepicker.datepicker({
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
 
-    $("#action_btn").on("click",function(){
-        $("#activity_type_box").modal("hide");
-        $("#action_box").modal();
-    })
+    let warning_msg =  $('#warning');
+    // hide the warning
+    warning_msg.css('visibility', 'hidden');
+
+    let what_ripple = $("#what_ripple");
+     // hide the 'what ripple' text input
+    what_ripple.css('visibility', 'hidden');
+
+    let resonate_check = $("#resonate");
+    let learning_check = $("#learning");
+    let action_check = $("#action")
+    let other_check = $("#other");
+    // {# click handler for ther 'other' checkbox #}
+    other_check.on('change', function () {
+        if (other_check.prop('checked')) {
+            what_ripple.css('visibility', 'visible');
+        }
+        else{
+            what_ripple.css('visibility', 'hidden');
+        }
+    });
 
     $("#next_btn").on("click",function(){
-        if($("#resonate").prop("checked") == true){
-            ur.resonate = true
-            // resonate = true;
-        }
-        if($("#learning").prop("checked") == true){
-            ur.learning = true
-        // learning = true;
-        }
-        if($("#action").prop("checked") == true){
-            ur.action = true
-        // action = true;
-        }
-        if($("#other").prop("checked") == true){
-            ur.other = true
-        // other = true;
-        }
-        $("#test_type_form").modal("hide");
-        if(ur.action){
-            $("#action_box").modal();
-        }
-        else if(ur.learning){
-            $("#learn_box").modal();
-        }
-        else if (ur.resonate){
-            $("#exp_box").modal();
-        }
-        else if (ur.other){
-            alert("Other modal to be created")
-        }
+        if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))
+                {
+                    // flash warning if no checkboxes are selected
+                    warning_msg.css('color', 'red');
+                    warning_msg.css('visibility', 'visible');
+                }
         else {
-            alert("Please select at least one option")
+            if ($("#resonate").prop("checked") == true) {
+                ur.resonate = true
+                // resonate = true;
+            }
+            if ($("#learning").prop("checked") == true) {
+                ur.learning = true
+                // learning = true;
+            }
+            if ($("#action").prop("checked") == true) {
+                ur.action = true
+                // action = true;
+            }
+            if ($("#other").prop("checked") == true) {
+                ur.other = true
+                ur.other_desc = $("#other_text").val()
+                // other = true;
+            }
+            $("#first_form").modal("hide");
+            if (ur.action) {
+                $("#action_form").modal();
+            } else if (ur.learning) {
+                $("#learn_form").modal();
+            } else if (ur.resonate) {
+                $("#resonate_form").modal();
+            } else if (ur.other) {
+                alert("hasn't been made yet")
+            } else {
+                alert("somehow got no checked values after confirming something was checked.")
+            }
         }
     })
 
@@ -244,20 +271,20 @@ jQuery(function () {
         // ur.message = $("textarea[name='text_input']").val()
         alert(ur.message)
 
-        if($("input[name='national']:checked")){
-            ur.national = $("input[name='national']:checked").val();
+        if($("input[name='national_radio']:checked")){
+            ur.national = $("input[name='national_radio']:checked").val();
         }
-        if($("input[name='community']:checked")) {
-            ur.community = $("input[name='community']:checked").val();
+        if($("input[name='community_radio']:checked")) {
+            ur.community = $("input[name='community_radio']:checked").val();
         }
-        if($("input[name='perspective']:checked")){
-            ur.perspective = $("input[name='perspective']:checked").val();
+        if($("input[name='perspective_radio']:checked")){
+            ur.perspective = $("input[name='perspective_radio']:checked").val();
         }
-        if($("input[name='applied']:checked")) {
-            ur.applied = $("input[name='applied']:checked").val();
+        if($("input[name='applied_radio']:checked")) {
+            ur.applied = $("input[name='applied_radio']:checked").val();
         }
-        if($("input[name='personal']:checked")) {
-            ur.personal = $("input[name='personal']:checked").val();
+        if($("input[name='personal_radio']:checked")) {
+            ur.personal = $("input[name='personal_radio']:checked").val();
         }
         ur.userRating = calculate();
 

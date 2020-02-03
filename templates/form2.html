@@ -142,11 +142,11 @@
                         <div class="col-3">
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_1">Yes</label>
-                                <input class="form-check-input" type="radio" name="resonate_radio" id="radio_1" value="yes" required>
+                                <input class="form-check-input" type="radio" name="personal_radio" id="radio_1" value="yes" required>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_2">No</label>
-                                <input class="form-check-input" type="radio" name="resonate_radio" id="radio_2" value="no" required>
+                                <input class="form-check-input" type="radio" name="personal_radio" id="radio_2" value="no" required>
                             </div>
                         </div>
 
@@ -165,7 +165,7 @@
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
                     <button type="button" class="btn btn-secondary" id="resonate_back_btn">Back</button>
-                    <button type="button" class="btn btn-primary" id="resonate_add_btn">Add Ripple</button>
+                    <button type="button" class="btn btn-primary" id="resonate_add_btn" name="submit_btn">Add Ripple</button>
                 </div>
 
             </div>
@@ -202,11 +202,11 @@
                         <div class="col-3">
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_1">Yes</label>
-                                <input class="form-check-input" type="radio" name="learn_radio1" id="radio_1" value="yes" required>
+                                <input class="form-check-input" type="radio" name="applied_radio" id="radio_1" value="yes" required>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_2">No</label>
-                                <input class="form-check-input" type="radio" name="learn_radio1" id="radio_2" value="no" required>
+                                <input class="form-check-input" type="radio" name="applied_radio" id="radio_2" value="no" required>
                             </div>
                         </div>
 
@@ -224,11 +224,11 @@
                         <div class="col-3">
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_1">Yes</label>
-                                <input class="form-check-input" type="radio" name="learn_radio2" id="radio_1" value="yes" required>
+                                <input class="form-check-input" type="radio" name="perspective_radio" id="radio_1" value="yes" required>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_2">No</label>
-                                <input class="form-check-input" type="radio" name="learn_radio2" id="radio_2" value="no" required>
+                                <input class="form-check-input" type="radio" name="perspective_radio" id="radio_2" value="no" required>
                             </div>
                         </div>
 
@@ -248,7 +248,7 @@
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
                     <button type="button" class="btn btn-secondary" id="resonate_back_btn">Back</button>
-                    <button type="button" class="btn btn-primary" id="resonate_add_ripple_btn">Add Ripple</button>
+                    <button type="button" class="btn btn-primary" id="resonate_add_ripple_btn" name="submit_btn">Add Ripple</button>
                 </div>
 
             </div>
@@ -282,11 +282,11 @@
                         <div class="col-3">
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_1">Yes</label>
-                                <input class="form-check-input" type="radio" name="action_radio1" id="radio_1" value="yes" required>
+                                <input class="form-check-input" type="radio" name="community_radio" id="radio_1" value="yes" required>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_2">No</label>
-                                <input class="form-check-input" type="radio" name="action_radio1" id="radio_2" value="no" required>
+                                <input class="form-check-input" type="radio" name="community_radio" id="radio_2" value="no" required>
                             </div>
                         </div>
 
@@ -304,11 +304,11 @@
                         <div class="col-3">
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_1">Yes</label>
-                                <input class="form-check-input" type="radio" name="action_radio_2" id="radio_1" value="yes" required>
+                                <input class="form-check-input" type="radio" name="national_radio" id="radio_1" value="yes" required>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_2">No</label>
-                                <input class="form-check-input" type="radio" name="action_radio_2" id="radio_2" value="no" required>
+                                <input class="form-check-input" type="radio" name="national_radio" id="radio_2" value="no" required>
                             </div>
                         </div>
 
@@ -328,7 +328,7 @@
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
                     <button type="button" class="btn btn-secondary" id="resonate_back_btn">Back</button>
-                    <button type="button" class="btn btn-primary" id="resonate_add_ripple_btn">Add Ripple</button>
+                    <button type="button" class="btn btn-primary" id="resonate_add_ripple_btn" name="submit_btn">Add Ripple</button>
                 </div>
 
             </div>
@@ -339,83 +339,84 @@
 
 
 
-
-    <script>
-        jQuery(function () {
+<script src={{ url_for('static', filename='formscript.js') }}></script>
+{#    <script>#}
+{#    #}
+{#        jQuery(function () {#}
             {# items on form_1 #}
-            let form_1 = $("#first_form");
-            let warning_msg =  $('#warning');
-            let resonate_check = $("#resonate");
-            let learning_check = $("#learning");
-            let action_check = $("#action")
-            let other_check = $("#other");
-            let next_btn = $("#next_btn");
-            let datepicker = $("#datepicker");
-            let what_ripple = $("#what_ripple");
-
+{#            let form_1 = $("#first_form");#}
+{#            let warning_msg =  $('#warning');#}
+{#            let resonate_check = $("#resonate");#}
+{#            let learning_check = $("#learning");#}
+{#            let action_check = $("#action")#}
+{#            let other_check = $("#other");#}
+{#            let next_btn = $("#next_btn");#}
+{#            let datepicker = $("#datepicker");#}
+{#            let what_ripple = $("#what_ripple");#}
+{##}
             {# items on resonate form #}
-            let resonate_form = $("#resonate_form");
-            let resonate_radio = $("#resonate_radio");
-            let resonate_text = $("#resonate_text");
-            let resonate_back_btn = $("#resonate_back_btn");
-            let resonate_add_btn = $("#resonate_add_btn");
-
+{#            let resonate_form = $("#resonate_form");#}
+{#            let resonate_radio = $("#resonate_radio");#}
+{#            let resonate_text = $("#resonate_text");#}
+{#            let resonate_back_btn = $("#resonate_back_btn");#}
+{#            let resonate_add_btn = $("#resonate_add_btn");#}
+{##}
             {# items on learn form #}
-            let learn_form = $("#learn_form");
-            let learn_radio1 = $("#learn_radio1");
-            let learn_radio2 = $("#learn_radio2");
-            let learn_text = $("#learn_text");
-            let learn_back_btn = $("#learn_back_btn");
-            let learn_add_btn = $("#learn_add_btn");
-
+{#            let learn_form = $("#learn_form");#}
+{#            let learn_radio1 = $("#learn_radio1");#}
+{#            let learn_radio2 = $("#learn_radio2");#}
+{#            let learn_text = $("#learn_text");#}
+{#            let learn_back_btn = $("#learn_back_btn");#}
+{#            let learn_add_btn = $("#learn_add_btn");#}
+{##}
             {# items on action form #}
-            let action_form = $("#action_form");
-            let action_radio1 = $("#action_radio1");
-            let action_radio2 = $("#action_radio2");
-            let action_text = $("#action_text");
-            let action_back_btn = $("#action_back_btn");
-            let action_add_btn = $("#action_add_btn");
-
-            form_1.modal();
-
+{#            let action_form = $("#action_form");#}
+{#            let action_radio1 = $("#action_radio1");#}
+{#            let action_radio2 = $("#action_radio2");#}
+{#            let action_text = $("#action_text");#}
+{#            let action_back_btn = $("#action_back_btn");#}
+{#            let action_add_btn = $("#action_add_btn");#}
+{##}
+{#            form_1.modal();#}
+{##}
             {# setup the date picker #}
-            datepicker.datepicker({
-                autoclose: true,
-                todayHighlight: true
-            }).datepicker('update', new Date());
-
+{#            datepicker.datepicker({#}
+{#                autoclose: true,#}
+{#                todayHighlight: true#}
+{#            }).datepicker('update', new Date());#}
+{##}
             {# hide the warning #}
-            warning_msg.css('visibility', 'hidden');
-
+{#            warning_msg.css('visibility', 'hidden');#}
+{##}
             {# hide the 'what ripple' text input #}
-            what_ripple.css('visibility', 'hidden');
-
+{#            what_ripple.css('visibility', 'hidden');#}
+{##}
             {# click handler for ther 'other' checkbox #}
-            other_check.on('change', function () {
-                if (other_check.prop('checked')) {
-                    what_ripple.css('visibility', 'visible');
-                }
-                else{
-                    what_ripple.css('visibility', 'hidden');
-                }
-            });
-
+{#            other_check.on('change', function () {#}
+{#                if (other_check.prop('checked')) {#}
+{#                    what_ripple.css('visibility', 'visible');#}
+{#                }#}
+{#                else{#}
+{#                    what_ripple.css('visibility', 'hidden');#}
+{#                }#}
+{#            });#}
+{##}
             {# button click handler for form_1 #}
-            next_btn.on("click", function() {
-                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))
-                {
-                    // flash warning if no checkboxes are selected
-                    warning_msg.css('color', 'red');
-                    warning_msg.css('visibility', 'visible');
-                }
-                else{
-                    form_1.modal("hide");
-                    resonate_form.modal();
-                }
-            })
-
-        });
-    </script>
+{#            next_btn.on("click", function() {#}
+{#                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))#}
+{#                {#}
+{#                    // flash warning if no checkboxes are selected#}
+{#                    warning_msg.css('color', 'red');#}
+{#                    warning_msg.css('visibility', 'visible');#}
+{#                }#}
+{#                else{#}
+{#                    form_1.modal("hide");#}
+{#                    resonate_form.modal();#}
+{#                }#}
+{#            })#}
+{##}
+{#        });#}
+{#    </script>#}
 
     <style>
         label{

@@ -121,13 +121,14 @@ def add_ripple():
                 answer.update({"perspective": data_receive["_perspective"]})
             if '_personal' in data_receive:
                 answer.update({"personal": data_receive["_personal"]})
+            #     TODO add the other description to the data if it's been entered
             data = {
                 "date": data_receive["_date"],
                 "action": data_receive["_action"],
                 "learning": data_receive["_learning"],
                 "resonate": data_receive["_resonate"],
                 "message": data_receive["_message"],
-                "type_other": data_receive["_other"],
+                "other": data_receive["_other"],
                 "answer": answer,
                 "rating": {
                     "userRating": data_receive["_userRating"],
@@ -139,7 +140,7 @@ def add_ripple():
             db.child("users").child("stream").child(rippleID).set(data)
             print('sent to database(hopefully)')
             print(db.child("users").child("stream").child(rippleID).get())
-            return render_template('form.html')
+            return render_template('form2.html')
         else:
             print(request.form['myData'])
             print('Did not receive JSON')
