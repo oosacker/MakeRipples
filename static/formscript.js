@@ -115,11 +115,11 @@ let resonate = false;
 let other = false;
 let userRating;
 
-function send_data() {
+function send_data(myData) {
     $.ajax('/my_test', {
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({myData: 'data1', myData2: 'data2'}),
+        data: JSON.stringify(myData),
         success: function (data, status, xhr) {
             console.log(status)
         },
@@ -208,6 +208,3 @@ function calculate(){
         return 7;
     }
     else if(learning){
-
-    }
-}

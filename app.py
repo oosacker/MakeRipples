@@ -1,6 +1,4 @@
 from flask import *
-import nltk
-from nltk.corpus import treebank
 import pyrebase
 
 app = Flask(__name__)
