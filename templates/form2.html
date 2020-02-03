@@ -15,7 +15,7 @@
 
 
     {# NEW DIALOG BOX!!!!! #}
-    <div class="modal fade" tabindex="-1" role="dialog" id="test_type_form2">
+    <div class="modal fade" tabindex="-1" role="dialog" id="first_form">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
@@ -138,11 +138,11 @@
                         <div class="col-3">
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_1">Yes</label>
-                                <input class="form-check-input" type="radio" name="personal_connection_radio" id="radio_1" value="yes" required>
+                                <input class="form-check-input" type="radio" name="resonate_radio" id="radio_1" value="yes" required>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label" for="radio_2">No</label>
-                                <input class="form-check-input" type="radio" name="personal_connection_radio" id="radio_2" value="no" required>
+                                <input class="form-check-input" type="radio" name="resonate_radio" id="radio_2" value="no" required>
                             </div>
                         </div>
 
@@ -152,7 +152,7 @@
                     <br>
 
                     <p><strong>Share how you helped make a ripple for change by telling your story below.</strong></p>
-                    <textarea class="form-control" id="text_input1" name="text_input" rows="3" required></textarea>
+                    <textarea class="form-control" id="resonate_text" name="resonate_text" rows="3" required></textarea>
 
                 </div>
 
@@ -161,7 +161,7 @@
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
                     <button type="button" class="btn btn-secondary" id="resonate_back_btn">Back</button>
-                    <button type="button" class="btn btn-primary" id="resonate_add_ripple_btn">Add Ripple</button>
+                    <button type="button" class="btn btn-primary" id="resonate_add_btn">Add Ripple</button>
                 </div>
 
             </div>
@@ -235,7 +235,7 @@
                     <br>
 
                     <p><strong>Share how you helped make a ripple for change by telling your story below.</strong></p>
-                    <textarea class="form-control" id="text_input1" name="text_input" rows="3" required></textarea>
+                    <textarea class="form-control" id="learn_text" name="learn_text" rows="3" required></textarea>
 
                 </div>
 
@@ -338,6 +338,8 @@
 
     <script>
         jQuery(function () {
+            {# items on form_1 #}
+            let form_1 = $("#first_form");
             let warning_msg =  $('#warning');
             let resonate_check = $("#resonate");
             let learning_check = $("#learning");
@@ -345,14 +347,34 @@
             let other_check = $("#other");
             let next_btn = $("#next_btn");
             let datepicker = $("#datepicker");
-            let my_form = $("#test_type_form2");
-            let my_form2 = $("#resonate_form");
 
+            {# items on resonate form #}
+            let resonate_form = $("#resonate_form");
+            let resonate_radio = $("#resonate_radio");
+            let resonate_text = $("#resonate_text");
             let resonate_back_btn = $("#resonate_back_btn");
-            let resonate_add_ripple_btn = $("#resonate_add_ripple_btn");
+            let resonate_add_btn = $("#resonate_add_btn");
+
+            {# items on learn form #}
+            let learn_form = $("#learn_form");
+            let learn_radio1 = $("#learn_radio1");
+            let learn_radio2 = $("#learn_radio2");
+            let learn_text = $("#learn_text");
+            let learn_back_btn = $("#learn_back_btn");
+            let learn_add_btn = $("#learn_add_btn");
+
+            {# items on action form #}
+            let action_form = $("#action_form");
+            let action_radio1 = $("#action_radio1");
+            let action_radio2 = $("#action_radio2");
+            let action_text = $("#action_text");
+            let action_back_btn = $("#action_back_btn");
+            let action_add_btn = $("#action_add_btn");
+
+
 
             //my_form.modal();
-            $("#action_form").modal();
+            action_form.modal();
 
 
             datepicker.datepicker({
@@ -374,6 +396,7 @@
         {#            my_form2.modal();#}
         {#        }#}
         {#    })#}
+
         });
     </script>
 
