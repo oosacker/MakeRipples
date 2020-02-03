@@ -1,6 +1,4 @@
 from flask import *
-import nltk
-from nltk.corpus import treebank
 import pyrebase
 
 app = Flask(__name__)
@@ -59,6 +57,20 @@ def index():
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
     return render_template('user_dashboard.html')
+
+
+@app.route('/my_test', methods=['POST', 'GET'])
+def my_test():
+    if request.method == 'POST':
+        if request.is_json:
+            data_receive = json.loads(request.get_data())
+            print('Received JSON data_receive from web app')
+            print(data_receive)
+            return 'ok'
+        else:
+            print(request.form['myData'])
+            print('Did not receive JSON')
+            return 'fail'
 
 
 @app.route('/form', methods=['POST', 'GET'])
