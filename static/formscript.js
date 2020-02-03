@@ -217,7 +217,9 @@ jQuery(function () {
         }
     })
 
-    $("#submit_btn").on("click",function(){
+    $("button[name='submit_btn']").on("click",function(){
+        ur.message = $("textarea[name='text_input']").val()
+
         if($("input[name='national']:checked")){
             ur.national = $("input[name='national']:checked").val();
         }
@@ -236,12 +238,15 @@ jQuery(function () {
         ur.userRating = calculate();
 
         alert(JSON.stringify(ur));
+
+        send_user();
     })
 
 })
 
 // Logic for getting impact value from user input
 function calculate(){
+    // alert("started calculate()")
     if(ur.action){
         if(ur.national == 'yes'){
             return 9;
@@ -272,10 +277,11 @@ function calculate(){
 }
 
 function send_user(){
-    $.ajax('/my_test', {
+    alert("started send user")
+    $.ajax('/add_ripple', {
         type: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({myData: 'data1', myData2: 'data2'}),
+        data: JSON.stringify(ur),
         success: function (data, status, xhr) {
             console.log(status)
         },

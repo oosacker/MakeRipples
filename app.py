@@ -1,5 +1,7 @@
 from flask import *
 import pyrebase
+import time
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -87,16 +89,21 @@ def form():
 
 
 @app.route('/add_ripple', methods=['POST', 'GET'])
-def form():
+def add_ripple():
     if request.method == 'POST':
-
-        return render_template('form.html',
-                               text=request.form['text_input'],
-                               option_1=request.form['radio_set1'],
-                               option_2=request.form['radio_set2'])
-
-    else:
-        return render_template('form.html')
+        if request.is_json:
+            data_receive = json.loads(request.get_data())
+            print('Received JSON data_receive from user object')
+            print(data_receive)
+            now = datetime.now().strftime("%d%m%Y%H%M%S")
+            rippleID = "Ripple" + now
+            db.child("users").child("stream").child(rippleID).set(data_receive)
+            print('sent to database(hopefully)')
+            return render_template('form.html')
+        else:
+            print(request.form['myData'])
+            print('Did not receive JSON')
+            return 'fail'
 
 
 if __name__ == '__main__':
