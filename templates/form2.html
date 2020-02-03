@@ -84,8 +84,12 @@
                             <div class="row">
                                 <input type="checkbox" id="other" value="other">
                                 <label for="other">Other</label>
-                                <label for="other_text" class="ml-auto"><small>What other type of ripple did you make?</small></label>
-                                <input type="text" class="ml-auto" id="other_text" size="35" placeholder="Enter a short description here">
+
+                                <div class="form-group" id="what_ripple">
+                                    <label for="other_text" class="ml-auto"><small>What other type of ripple did you make?</small></label>
+                                    <input type="text" class="ml-auto" id="other_text" size="35" placeholder="Enter a short description here">
+                                </div>
+
                             </div>
 
                             <br>
@@ -347,6 +351,7 @@
             let other_check = $("#other");
             let next_btn = $("#next_btn");
             let datepicker = $("#datepicker");
+            let what_ripple = $("#what_ripple");
 
             {# items on resonate form #}
             let resonate_form = $("#resonate_form");
@@ -371,31 +376,43 @@
             let action_back_btn = $("#action_back_btn");
             let action_add_btn = $("#action_add_btn");
 
+            form_1.modal();
 
-
-            //my_form.modal();
-            action_form.modal();
-
-
+            {# setup the date picker #}
             datepicker.datepicker({
                 autoclose: true,
                 todayHighlight: true
             }).datepicker('update', new Date());
 
+            {# hide the warning #}
             warning_msg.css('visibility', 'hidden');
 
-        {#    next_btn.on("click", function() {#}
-        {#        if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))#}
-        {#        {#}
-        {#            // flash warning if no checkboxes are selected#}
-        {#            warning_msg.css('color', 'red');#}
-        {#            warning_msg.css('visibility', 'visible');#}
-        {#        }#}
-        {#        else{#}
-        {#            my_form.modal("hide");#}
-        {#            my_form2.modal();#}
-        {#        }#}
-        {#    })#}
+            {# hide the 'what ripple' text input #}
+            what_ripple.css('visibility', 'hidden');
+
+            {# click handler for ther 'other' checkbox #}
+            other_check.on('change', function () {
+                if (other_check.prop('checked')) {
+                    what_ripple.css('visibility', 'visible');
+                }
+                else{
+                    what_ripple.css('visibility', 'hidden');
+                }
+            });
+
+            {# button click handler for form_1 #}
+            next_btn.on("click", function() {
+                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))
+                {
+                    // flash warning if no checkboxes are selected
+                    warning_msg.css('color', 'red');
+                    warning_msg.css('visibility', 'visible');
+                }
+                else{
+                    form_1.modal("hide");
+                    resonate_form.modal();
+                }
+            })
 
         });
     </script>
