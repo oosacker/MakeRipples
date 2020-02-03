@@ -1,6 +1,6 @@
 .timeline{
     background-color: cadetblue;
-    z-index: -2;
+    /*z-index: -2;*/
 }
 /*.timeline-bar .container{*/
 /*    width: 100%*/

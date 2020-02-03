@@ -1,5 +1,5 @@
 //Sample dates
-var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
+var dates = ["6/12/2015", "8/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
 //For the purpose of stringifying MM/DD/YYYY date format
 var monthSpan = [
   "January",
@@ -129,8 +129,12 @@ $(".circle").mouseleave(function() {
 $(".circle").click(function() {
   var spanNum = $(this).attr("id");
   selectDate(spanNum);
-
 });
+
+// var selectedCircle = document.getElementsByClassName("circle");
+// selectedCircle.onclick = function() {
+//  console.log("Click")
+// }
 
 function selectDate(selector) {
   var modal = document.getElementById("myModal");
