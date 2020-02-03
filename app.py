@@ -110,8 +110,35 @@ def add_ripple():
             print(data_receive)
             now = datetime.now().strftime("%d%m%Y%H%M%S")
             rippleID = "Ripple" + now
-            db.child("users").child("stream").child(rippleID).set(data_receive)
+            answer = {}
+            if '_national' in data_receive:
+                answer.update({"national": data_receive["_national"]})
+            if '_community' in data_receive:
+                answer.update({"community": data_receive["_community"]})
+            if '_applied' in data_receive:
+                answer.update({"applied": data_receive["_applied"]})
+            if '_perspective' in data_receive:
+                answer.update({"perspective": data_receive["_perspective"]})
+            if '_personal' in data_receive:
+                answer.update({"personal": data_receive["_personal"]})
+            data = {
+                "date": data_receive["_date"],
+                "action": data_receive["_action"],
+                "learning": data_receive["_learning"],
+                "resonate": data_receive["_resonate"],
+                "message": data_receive["_message"],
+                "type_other": data_receive["_other"],
+                "answer": answer,
+                "rating": {
+                    "userRating": data_receive["_userRating"],
+                    "orgRating": data_receive["_orgRating"],
+                    "nlpRating": data_receive["_nlpRating"],
+                }
+            }
+            print(rippleID, data)
+            db.child("users").child("stream").child(rippleID).set(data)
             print('sent to database(hopefully)')
+            print(db.child("users").child("stream").child(rippleID).get())
             return render_template('form.html')
         else:
             print(request.form['myData'])

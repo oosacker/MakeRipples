@@ -1,5 +1,20 @@
 
 class user_response{
+    get date() {
+        return this._date;
+    }
+
+    set date(value) {
+        this._date = value;
+    }
+
+    get nlpRating() {
+        return this._nlpRating;
+    }
+
+    set nlpRating(value) {
+        this._nlpRating = value;
+    }
     get userRating() {
         return this._userRating;
     }
@@ -9,11 +24,11 @@ class user_response{
     }
 
     get nplRating() {
-        return this._nplRating;
+        return this._nlpRating;
     }
 
     set nplRating(value) {
-        this._nplRating = value;
+        this._nlpRating = value;
     }
 
     get orgRating() {
@@ -104,9 +119,9 @@ class user_response{
     }
 
     constructor(action=false, learning=false,resonate=false,other=false,
-                message='unknown',
+                message='unknown', date = Date.now(),
                 national='unknown', community='unknown', applied = 'unknown', perspective = 'unknown', personal = 'unknown',
-                userRating = 0, nplRating =  0, orgRating = 0){
+                userRating = 0, nlpRating =  0, orgRating = 0){
         this._action = action;
         this._learning = learning;
         this._resonate = resonate;
@@ -118,8 +133,9 @@ class user_response{
         this._perspective = perspective;
         this._personal = personal;
         this._userRating = userRating;
-        this._nplRating = nplRating;
+        this._nlpRating = nlpRating;
         this._orgRating = orgRating;
+        this._date = date;
     }
 
 }
@@ -218,7 +234,15 @@ jQuery(function () {
     })
 
     $("button[name='submit_btn']").on("click",function(){
-        ur.message = $("textarea[name='text_input']").val()
+        ur.message = $("#text_input1").val()
+        if(ur.message==""){
+            ur.message = $("#text_input2").val()
+        }
+        if(ur.message == ""){
+            ur.message = $("#text_input3").val()
+        }
+        // ur.message = $("textarea[name='text_input']").val()
+        alert(ur.message)
 
         if($("input[name='national']:checked")){
             ur.national = $("input[name='national']:checked").val();
@@ -277,7 +301,7 @@ function calculate(){
 }
 
 function send_user(){
-    alert("started send user")
+    // alert("started send user")
     $.ajax('/add_ripple', {
         type: 'POST',
         contentType: 'application/json',
