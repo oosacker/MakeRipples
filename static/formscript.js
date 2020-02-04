@@ -33,8 +33,13 @@ function clear_hide_modals(){
     $("#learn_text").val("")
     $("#resonate_text").val("")
     $("#other_text_input").val("")
+    $("#other_text").val("")
+
+    warning_msg.css('visibility', 'hidden');
+    what_ripple.css('visibility', 'hidden');
 
     $("input[type='radio']").prop('checked',false);
+    $("input[type='checkbox']").prop('checked',false);
 
     $("#action_form").modal("hide");
     $("#learn_form").modal("hide");
@@ -47,8 +52,13 @@ let ur;
 
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
-
+    let what_ripple = $("#what_ripple");
+    let warning_msg =  $('#warning');
     $("#ripple_btn").on('click', function () {
+        // hide the warning
+        warning_msg.css('visibility', 'hidden');
+        // hide the 'what ripple' text input
+        what_ripple.css('visibility', 'hidden');
         $("#first_form").modal();
         ur = new user_response();
     });
@@ -60,14 +70,6 @@ jQuery(function () {
             autoclose: true,
             todayHighlight: true
         }).datepicker('update', new Date());
-
-    let warning_msg =  $('#warning');
-    // hide the warning
-    warning_msg.css('visibility', 'hidden');
-
-    let what_ripple = $("#what_ripple");
-     // hide the 'what ripple' text input
-    what_ripple.css('visibility', 'hidden');
 
     let resonate_check = $("#resonate");
     let learning_check = $("#learning");
@@ -126,19 +128,7 @@ jQuery(function () {
     })
 
     $("button[name='back_btn']").on("click",function(){
-        //clear text areas
-        // $("#text_input1").val("")
-        // $("#learn_text").val("")
-        // $("#resonate_text").val("")
-        // $("#other_text_input").val("")
         ur.message = undefined
-        //clear radio buttons?
-        $("input[type='radio']").prop('checked',false);
-        //hide modals
-        // $("#action_form").modal("hide");
-        // $("#learn_form").modal("hide");
-        // $("#resonate_form").modal("hide");
-        // $("#other_form").modal("hide");
         clear_hide_modals();
         //show first modal
         $("#first_form").modal();
@@ -158,8 +148,7 @@ jQuery(function () {
         if(ur.message === undefined || ur.message === ""){
             alert("Please enter a description")
         }
-        // ur.message = $("textarea[name='text_input']").val()
-        // alert(ur.message)
+
         else {
             if ($("input[name='national_radio']:checked")) {
                 ur.national = $("input[name='national_radio']:checked").val();
