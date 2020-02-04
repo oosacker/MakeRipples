@@ -125,6 +125,15 @@
   background-color: #ffffff;
 }
 
-/*.nav-logo{*/
-/*  width: 20%;*/
-/*}*/
+.nav-company-name{
+  margin: 0;
+  padding:8px;
+}
+
+.nav-company-name .nav-w1{
+  color: white;
+}
+
+.nav-company-name .nav-w2{
+  color: black;
+}
