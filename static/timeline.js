@@ -1,3 +1,19 @@
+let keys = {};
+
+if (ripples == undefined){
+  alert("ripples didn't work")
+}
+else {
+  let message = "received:\n";
+  let i=0;
+  Object.keys(ripples).forEach(function (key) {
+    keys[i] = key;
+    message = message + ripples[key].date +", " +ripples[key].message + "\n";
+    i++;
+  })
+
+  alert(message);
+}
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
 //For the purpose of stringifying MM/DD/YYYY date format

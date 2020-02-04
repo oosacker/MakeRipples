@@ -16,3 +16,16 @@
     font-size: 12px;
     line-height: 1.42857;
 }
+
+
+#dash_btn{
+    background-color: #92278F;
+    color: white;
+    width: 200px;
+}
+
+#form_btn{
+    background-color: #92278F;
+    color: white;
+    width: 200px;
+}
