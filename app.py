@@ -152,5 +152,17 @@ def add_ripple():
             return 'fail'
 
 
+def get_all_ripples():
+    stream_keys = db.child("users").child("stream").shallow().get()
+    for key in stream_keys.val():
+        if key.__contains__("Ripple"):
+            ripple = db.child("users").child("stream").child(key).get()
+            if 'date' in ripple.val():
+                print(ripple.val())
+            else:
+                print("bad ripple to be deleted")
+
+get_all_ripples()
+
 if __name__ == '__main__':
     app.run()
