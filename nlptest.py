@@ -10,17 +10,11 @@ from nltk.corpus import wordnet
 #
 # sentence = 'I decided to volunteer with my local community centre and we have made a new community garden!'
 # sentence = 'I built a worm farm in my back yard'
-sentence = 'My friends and I talked about going to clean the local stream.'
-# sentence = 'The Black Eyed Peas are the greatest band of 2007'
+# sentence = 'My friends and I talked about going to clean the local stream.'
+sentence = 'The Black Eyed Peas are the greatest band of 2003'
 library1 = []
-library2 = []
-library3 = []
 library4 = []
-library5 = []
-library6 = []
-library7 = []
 library8 = []
-library9 = []
 library10 = []
 print("Enter sentence for analysis:")
 # sentence = input()
@@ -72,7 +66,8 @@ print(tagged)
 # verbs = list(filter(lambda x: x[1].__contains__('VB'), tagged))
 # verbs_past = list(filter(lambda x: x[1] == 'VBD', tagged))
 # this will only get base forms, not past tense etc.
-includedwords = list()
+includedwords = list(sentence)
+
 
 # print("Nouns Singular: ", set(nouns))
 # print("Nouns Plural: "), set(nounsplural)
@@ -80,12 +75,10 @@ includedwords = list()
 # print("Verbs (past): ", set(verbs_past))
 
 
-
 def makeLibraryOnetoThree():
-    # make a list of keywords to identify something at level 9
-    keywords = ['clicked', 'saw', 'read', 'viewed', 'watched', 'looked', 'heard', 'view', 'watch', 'hear', 'click']
-    keywords = ['liked', 'felt', 'understood']
-    keywords = ['my', 'family', 'whanau', 'whānau', 'knew']
+    # make a list of keywords to identify something at level one to three
+    keywords = ['clicked', 'saw', 'read', 'viewed', 'watched', 'looked', 'heard', 'view', 'watch', 'hear', 'click',
+                'liked', 'felt', 'understood', 'my', 'family', 'whanau', 'whānau', 'knew']
     # make library of synonyms for these words
     global library1
     for keyword in keywords:
@@ -98,10 +91,10 @@ def makeLibraryOnetoThree():
     print("Made library of ", len(library1), "words for level one")
 
 
-
 def makeLibraryFourtoSeven():
-    # make a list of keywords to identify something at level four
-    keywords = ['learnt', 'learn', 'learned', 'find', 'questioned', 'understood', 'changed', 'found', 'change', 'question', 'differently', 'changed',
+    # make a list of keywords to identify something at level four to seven
+    keywords = ['learnt', 'learn', 'learned', 'find', 'questioned', 'understood', 'changed', 'found', 'change',
+                'question', 'differently', 'changed',
                 'talked', 'told', 'understood', 'discussed', 'lectured', 'lectured', 'discuss', 'discussion',
                 'debate', 'hui', 'felt', 'discussion', 'confident', 'consider', 'represent']
     # make library of synonyms for these words
@@ -116,12 +109,10 @@ def makeLibraryFourtoSeven():
     print("Made library of ", len(library4), "words for level four")
 
 
-
-
 def makeLibraryEighttoNine():
-    # make a list of keywords to identify something at level eight
+    # make a list of keywords to identify something at eight and nine
     keywords = ['contacted', 'shared', 'visited', 'installed', 'prepared', 'wrote', 'write', 'posted', 'post',
-                'prepare', 'talked', 'created', 'community', 'friends', 'friend', 'club', 'group', 'town', 'city']
+                'prepare', 'talked', 'created', 'community', 'friends', 'friend', 'club', 'group', 'town', 'city', 'local']
     # make library of synonyms for these words
     global library8
     for keyword in keywords:
@@ -133,8 +124,9 @@ def makeLibraryEighttoNine():
 
     print("Made library of ", len(library8), "words for level one")
 
+
 def makeLibrary10():
-    # make a list of keywords to identify something at level three
+    # make a list of keywords to identify something at level ten
     keywords = ['zealand', 'parliament', 'interviews', 'interview', 'nationally', 'national', 'aotearoa', 'nz', 'nzl',
                 'pm']
     # make library of synonyms for these words
@@ -148,24 +140,39 @@ def makeLibrary10():
 
     print("Made library of ", len(library10), "words for level one")
 
+
 makeLibraryOnetoThree()
 makeLibraryFourtoSeven()
 makeLibraryEighttoNine()
 makeLibrary10()
 
-count9 = 0
+count1 = 0
+count4 = 0
+count8 = 0
+count10 = 0
+
 # length = len(nouns) + len(nounsplural)
-#print("found", length, " nouns")
+# print("found", length, " nouns")
 for noun in word_tokenize(sentence):
     print(noun)
-    if library8.__contains__(noun[0]):
-        count9 += 1
-for noun in includedwords:
-    print(noun)
-    if library8.__contains__(noun[0]):
-        count9 += 1
+    if library1.__contains__(noun):
+        count1 += 1
+    if library4.__contains__(noun):
+        count4 += 1
+    if library8.__contains__(noun):
+        count8 += 1
+    if library10.__contains__(noun):
+        count10 += 1
 
-percentage = (count9 / len(word_tokenize(sentence))) * 100
-percentnouns = (count9 / len(word_tokenize(sentence))) * 100
-print("Sentence matches", count9, "words in community library making it ", percentage, "% related by all words or ",
-      percentnouns, "% related by nouns")
+
+
+percentage = (count8 / len(includedwords)) * 100
+
+print("1-3: Sentence matches", count1, "words in community library making it levels one to three, an emotional"
+                                       " response occured")
+print("4-7: Sentence matches", count4, "words in community library making it levels four to seven, something has"
+                                       " been learnt")
+print("8-9: Sentence matches", count8, "words in community library making it levels eight to nine, action has"
+                                       " taken place")
+print("10: Sentence matches", count10, "words in community library making it level ten, national impact")
+
