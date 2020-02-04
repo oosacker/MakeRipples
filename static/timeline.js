@@ -1,3 +1,9 @@
+if (ripples == undefined){
+  alert("ripples didn't work")
+}
+else {
+  alert("got something..." + ripples)
+}
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
 //For the purpose of stringifying MM/DD/YYYY date format
