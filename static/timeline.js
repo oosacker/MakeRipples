@@ -4,12 +4,11 @@ if (ripples == undefined){
   alert("ripples didn't work")
 }
 else {
-  let obj = JSON.parse(ripples)
-  let message = "loops:\n";
+  let message = "received:\n";
   let i=0;
-  Object.keys(obj).forEach(function (key) {
+  Object.keys(ripples).forEach(function (key) {
     keys[i] = key;
-    message = message + obj[key].date +", " +obj[key].message + "\n";
+    message = message + ripples[key].date +", " +ripples[key].message + "\n";
     i++;
   })
 
