@@ -20,8 +20,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -125,8 +125,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -185,8 +185,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -265,8 +265,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -338,14 +338,14 @@
 
 
 
-
+R
        <div class="modal fade" tabindex="-1" role="dialog" id="other_form">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -448,23 +448,51 @@
     </script>
 
     <style>
+        {# set the background color of title and roudned corners #}
         .modal-header{
             background-color: #91278e;
-
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-top-right-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-topright: 5px;
-             border-top-left-radius: 5px;
-             border-top-right-radius: 5px;
+            -webkit-border-top-left-radius: 10px;
+            -webkit-border-top-right-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -moz-border-radius-topright: 10px;
+             border-top-left-radius: 10px;
+             border-top-right-radius: 10px;
         }
 
+        {# needs to be larger than header or get white space!!!!! #}
+        .modal-content{
+            border-radius: 12px 12px !important;
+        }
 
+        {# font color of modal title text #}
         .modal-title{
             color: white;
         }
 
+        {# close button of modal -- make it white and bigger #}
+        .modal-header .close {
+            color: #fff;
+            opacity: 1;
+            font-size: 30px;
+            margin-top: 0;
+        }
 
+        .modal-footer .btn-secondary{
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .modal-footer .btn-primary{
+            background-color: #91278e;
+            color: white;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        {# datepicker stuff #}
         label{
             margin-left: 20px;
         }
