@@ -338,6 +338,38 @@
 
 
 
+
+       <div class="modal fade" tabindex="-1" role="dialog" id="other_form">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title">Add a Ripple</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p><strong>Share how you helped make a ripple for change by telling your story below.</strong></p>
+                    <textarea class="form-control" id="other_text_input" name="other_text_input" rows="10" required></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <p class="mr-auto">Page 2 of 2</p>
+                    <button type="button" class="btn btn-secondary" id="other_back_btn">Back</button>
+                    <button type="button" class="btn btn-primary" id="other_add_ripple_btn">Add Ripple</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{#    <script>#}
+{#        jQuery(function () {#}
 <script src={{ url_for('static', filename='rippleobject.js') }}></script>
 <script src={{ url_for('static', filename='formscript.js') }}></script>
 {#    <script>#}
@@ -419,6 +451,16 @@
 {#    </script>#}
 
     <style>
+        .modal-header{
+            background-color: #91278e;
+            border-radius: 0.3rem 0.3rem 0 0;
+        }
+
+        .modal-title{
+            color: white;
+        }
+
+
         label{
             margin-left: 20px;
         }
