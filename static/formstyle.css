@@ -55,3 +55,9 @@
         #datepicker > span:hover {
             cursor: pointer;
         }
+
+        .fa-calendar-alt {
+            position: absolute;
+            margin-top: 11px;
+            margin-left: -28px;
+        }
