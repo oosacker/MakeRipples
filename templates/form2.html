@@ -164,7 +164,7 @@
 
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
-                    <button type="button" class="btn btn-secondary" id="resonate_back_btn">Back</button>
+                    <button type="button" class="btn btn-secondary" id="resonate_back_btn" name="back_btn">Back</button>
                     <button type="button" class="btn btn-primary" id="resonate_add_btn" name="submit_btn">Add Ripple</button>
                 </div>
 
@@ -247,7 +247,7 @@
 
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
-                    <button type="button" class="btn btn-secondary" id="resonate_back_btn">Back</button>
+                    <button type="button" class="btn btn-secondary" id="resonate_back_btn" name="back_btn">Back</button>
                     <button type="button" class="btn btn-primary" id="resonate_add_ripple_btn" name="submit_btn">Add Ripple</button>
                 </div>
 
@@ -327,7 +327,7 @@
 
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
-                    <button type="button" class="btn btn-secondary" id="resonate_back_btn">Back</button>
+                    <button type="button" class="btn btn-secondary" id="resonate_back_btn" name="back_btn">Back</button>
                     <button type="button" class="btn btn-primary" id="resonate_add_ripple_btn" name="submit_btn">Add Ripple</button>
                 </div>
 
@@ -357,7 +357,7 @@
 
                 <div class="modal-footer">
                     <p class="mr-auto">Page 2 of 2</p>
-                    <button type="button" class="btn btn-secondary" id="other_back_btn">Back</button>
+                    <button type="button" class="btn btn-secondary" id="other_back_btn" name="back_btn">Back</button>
                     <button type="button" class="btn btn-primary" id="other_add_ripple_btn" name="submit_btn">Add Ripple</button>
                 </div>
 
@@ -374,7 +374,7 @@
         jQuery(function () {
             {# items on form_1 #}
             let form_1 = $("#first_form");
-            let warning_msg =  $('#warning');
+            let warning_msg = $('#warning');
             let resonate_check = $("#resonate");
             let learning_check = $("#learning");
             let action_check = $("#action")
@@ -412,44 +412,44 @@
 
             {# other_form.modal(); #}
 
-            form_1.modal();
+            {#form_1.modal();#}
+            {##}
+            {#setup the date picker #}
+            {#datepicker.datepicker({#}
+            {#    autoclose: true,#}
+            {#    todayHighlight: true#}
+            {#).datepicker('update', new Date());#}
+            {##}
+            {#hide the warning #}
+            {#warning_msg.css('visibility', 'hidden');#}
+            {##}
+            {#hide the 'what ripple' text input #}
+            {#what_ripple.css('visibility', 'hidden');#}
 
-             {#setup the date picker #}
-            datepicker.datepicker({
-                autoclose: true,
-                todayHighlight: true
-            }).datepicker('update', new Date());
+            {#click handler for ther 'other' checkbox #}
+            {#other_check.on('change', function () {#}
+            {#    if (other_check.prop('checked')) {#}
+            {#        what_ripple.css('visibility', 'visible');#}
+            {#    }#}
+            {#    else{#}
+            {#        what_ripple.css('visibility', 'hidden');#}
+            {#    }#}
+            {# });#}
 
-             {#hide the warning #}
-            warning_msg.css('visibility', 'hidden');
-
-             {#hide the 'what ripple' text input #}
-            what_ripple.css('visibility', 'hidden');
-
-             {#click handler for ther 'other' checkbox #}
-            other_check.on('change', function () {
-                if (other_check.prop('checked')) {
-                    what_ripple.css('visibility', 'visible');
-                }
-                else{
-                    what_ripple.css('visibility', 'hidden');
-                }
-            });
-
-             {#button click handler for form_1 #}
-            next_btn.on("click", function() {
-                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))
-                {
-                    // flash warning if no checkboxes are selected
-                    warning_msg.css('color', 'red');
-                    warning_msg.css('visibility', 'visible');
-                }
-                else{
-                    form_1.modal("hide");
-                    resonate_form.modal();
-                }
-            })
-
+            {#button click handler for form_1 #}
+            {#    next_btn.on("click", function() {#}
+            {#        if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))#}
+            {#        {#}
+            {#            // flash warning if no checkboxes are selected#}
+            {#            warning_msg.css('color', 'red');#}
+            {#            warning_msg.css('visibility', 'visible');#}
+            {#        }#}
+            {#        else{#}
+            {#            form_1.modal("hide");#}
+            {#            resonate_form.modal();#}
+            {#        }#}
+            {#    })#}
+            {##}
         });
     </script>
 
