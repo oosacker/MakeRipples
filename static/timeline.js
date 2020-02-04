@@ -1,8 +1,19 @@
+let keys = {};
+
 if (ripples == undefined){
   alert("ripples didn't work")
 }
 else {
-  alert("got something..." + ripples)
+  let obj = JSON.parse(ripples)
+  let message = "loops:\n";
+  let i=0;
+  Object.keys(obj).forEach(function (key) {
+    keys[i] = key;
+    message = message + obj[key].date +", " +obj[key].message + "\n";
+    i++;
+  })
+
+  alert(message);
 }
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];

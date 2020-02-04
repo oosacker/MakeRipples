@@ -160,7 +160,7 @@ def get_all_ripples():
     counter = 0
     for key in stream_keys.each():
         if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val():
-            label = "ripple" + str(counter)
+            label = "r" + str(counter)
             tldata = {
                 "ripple_id": key.key(),
                 "date": key.val()["date"],
