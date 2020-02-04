@@ -35,8 +35,7 @@ function clear_hide_modals(){
     $("#other_text_input").val("")
     $("#other_text").val("")
 
-    warning_msg.css('visibility', 'hidden');
-    what_ripple.css('visibility', 'hidden');
+
 
     $("input[type='radio']").prop('checked',false);
     $("input[type='checkbox']").prop('checked',false);
@@ -128,6 +127,8 @@ jQuery(function () {
     })
 
     $("button[name='back_btn']").on("click",function(){
+        warning_msg.css('visibility', 'hidden');
+        what_ripple.css('visibility', 'hidden');
         ur.message = undefined
         clear_hide_modals();
         //show first modal
@@ -171,7 +172,7 @@ jQuery(function () {
 
             send_user();
 
-            clear_hide_modals()
+            clear_hide_modals();
 
             fetch_data();
 
