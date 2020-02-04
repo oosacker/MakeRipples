@@ -5,8 +5,6 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-       <row>
            <div class="jumbotron">
                 <h1 class="display-4">Make Ripples</h1>
                 <p class="lead">This can be removed. Lorem Ipsum. Hero Unit </p>
@@ -14,12 +12,10 @@
                 <p>Click below for the user dashboard yo. </p>
                 <p class="lead">
 
-                    <a class="btn btn-primary btn-lg" href="/user_dashboard" role="button">Go to Dashboard</a>
-                    <a class="btn btn-primary btn-lg" href="/form2" role="button">Go to Forms</a>
+                    <a class="btn btn-primary btn-lg" id="dash_btn" href="/user_dashboard" role="button">Go to Dashboard</a>
+                    <a class="btn btn-primary btn-lg" id="form_btn" href="/form2" role="button">Go to Forms</a>
 
                 </p>
             </div>
-       </row>
-    </div>
     <script src={{ url_for('static', filename='myscript.js') }}></script>
 {% endblock %}

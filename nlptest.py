@@ -10,17 +10,11 @@ from nltk.corpus import wordnet
 #
 # sentence = 'I decided to volunteer with my local community centre and we have made a new community garden!'
 # sentence = 'I built a worm farm in my back yard'
-sentence = 'My friends and I talked about going to clean the local stream.'
-# sentence = 'The Black Eyed Peas are the greatest band of 2007'
+sentence = 'My friends and I talked about going to clean the local stream whanau.'
+# sentence = 'The Black Eyed Peas are the greatest of 2003'
 library1 = []
-library2 = []
-library3 = []
 library4 = []
-library5 = []
-library6 = []
-library7 = []
 library8 = []
-library9 = []
 library10 = []
 print("Enter sentence for analysis:")
 # sentence = input()
@@ -72,7 +66,8 @@ print(tagged)
 # verbs = list(filter(lambda x: x[1].__contains__('VB'), tagged))
 # verbs_past = list(filter(lambda x: x[1] == 'VBD', tagged))
 # this will only get base forms, not past tense etc.
-includedwords = list()
+includedwords = list(sentence)
+
 
 # print("Nouns Singular: ", set(nouns))
 # print("Nouns Plural: "), set(nounsplural)
@@ -80,57 +75,37 @@ includedwords = list()
 # print("Verbs (past): ", set(verbs_past))
 
 
-
-def makeLibrary1():
-    # make a list of keywords to identify something at level 9
-    keywords = ['clicked', 'saw', 'read', 'viewed', 'watched', 'looked', 'heard', 'view', 'watch', 'hear', 'click']
+def makeLibraryOnetoThree():
+    # make a list of keywords to identify something at level one to three
+    keywords = ['clicked', 'saw', 'read', 'viewed', 'watched', 'looked', 'heard', 'view', 'watch', 'hear', 'click',
+                'liked', 'felt', 'understood', 'my', 'family', 'whanau', 'whānau', 'knew']
     # make library of synonyms for these words
     global library1
     for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library1.append(lem.name())
+        library1.append(keyword)
+
+    syns = wordnet.synsets(keyword)
+    for syn in syns:
+        for lem in syn.lemmas():
+            library1.append(lem.name())
     # May end up with duplicates, so would need to get rid of those.
 
     print("Made library of ", len(library1), "words for level one")
 
 
-def makeLibrary2():
-    # make a list of keywords to identify something at level 2
-    keywords = ['liked', 'felt', 'understood']
-    # make library of synonyms for these words
-    global library2
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library2.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
+def makeLibraryFourtoSeven():
+    # make a list of keywords to identify something at level four to seven
+    keywords = ['learnt', 'learn', 'learned', 'find', 'questioned', 'understood', 'changed', 'found', 'change',
+                'question', 'differently', 'changed',
+                'talked', 'told', 'understood', 'discussed', 'lectured', 'lectured', 'discuss', 'discussion',
+                'debate', 'hui', 'felt', 'discussion', 'confident', 'consider', 'represent']
 
-    print("Made library of ", len(library2), "words for level two")
-
-
-def makeLibrary3():
-    # make a list of keywords to identify something at level three
-    keywords = ['my', 'family', 'whanau', 'whānau', 'knew']
-    # make library of synonyms for these words
-    global library3
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library3.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library3), "words for level one")
-
-
-def makeLibrary4():
-    # make a list of keywords to identify something at level four
-    keywords = ['learnt', 'learn', 'learned', 'find']
-    # make library of synonyms for these words
     global library4
+    for keyword in keywords:
+        library4.append(keyword)
+
+    # make library of synonyms for these words
+
     for keyword in keywords:
         syns = wordnet.synsets(keyword)
         for syn in syns:
@@ -141,58 +116,17 @@ def makeLibrary4():
     print("Made library of ", len(library4), "words for level four")
 
 
-def makeLibrary5():
-    # make a list of keywords to identify something at level five
-    keywords = ['questioned', 'understood', 'changed', 'found', 'change', 'question', 'differently']
-    # make library of synonyms for these words
-    global library5
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library5.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library5), "words for level one")
-
-
-def makeLibrary6():
-    # make a list of keywords to identify something at level six
-    keywords = ['changed', 'talked', 'told', 'understood', 'discussed', 'lectured', 'lectured', 'discuss', 'discussion',
-                'debate', 'hui']
-    # make library of synonyms for these words
-    global library6
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library6.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library6), "words for level one")
-
-
-def makeLibrary7():
-    # make a list of keywords to identify something at level seven
-    keywords = ['felt', 'discussion', 'confident', 'consider', 'represent']
-    # make library of synonyms for these words
-    global library7
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library7.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library7), "words for level one")
-
-
-def makeLibrary8():
-    # make a list of keywords to identify something at level eight
+def makeLibraryEighttoNine():
+    # make a list of keywords to identify something at eight and nine
     keywords = ['contacted', 'shared', 'visited', 'installed', 'prepared', 'wrote', 'write', 'posted', 'post',
-                'prepare', 'talked']
+                'prepare', 'talked', 'created', 'community', 'friends', 'friend', 'club', 'group', 'town', 'city',
+                'local']
+
+    for keyword in keywords:
+        library8.append(keyword)
+
     # make library of synonyms for these words
-    global library8
+
     for keyword in keywords:
         syns = wordnet.synsets(keyword)
         for syn in syns:
@@ -203,27 +137,16 @@ def makeLibrary8():
     print("Made library of ", len(library8), "words for level one")
 
 
-def makeLibrary9():
-    # make a list of keywords to identify something at level three
-    keywords = ['created', 'community', 'friends', 'friend', 'club', 'group']
-    # make library of synonyms for these words
-    global library9
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library9.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
-
-    print("Made library of ", len(library9), "words for level one")
-
-
 def makeLibrary10():
-    # make a list of keywords to identify something at level three
+    # make a list of keywords to identify something at level ten
     keywords = ['zealand', 'parliament', 'interviews', 'interview', 'nationally', 'national', 'aotearoa', 'nz', 'nzl',
                 'pm']
+
+    for keyword in keywords:
+        library10.append(keyword)
+
     # make library of synonyms for these words
-    global library10
+
     for keyword in keywords:
         syns = wordnet.synsets(keyword)
         for syn in syns:
@@ -233,30 +156,48 @@ def makeLibrary10():
 
     print("Made library of ", len(library10), "words for level one")
 
-makeLibrary1()
-makeLibrary2()
-makeLibrary3()
-makeLibrary4()
-makeLibrary5()
-makeLibrary6()
-makeLibrary7()
-makeLibrary8()
-makeLibrary9()
+
+makeLibraryOnetoThree()
+makeLibraryFourtoSeven()
+makeLibraryEighttoNine()
 makeLibrary10()
 
-count9 = 0
+count1 = 0
+count4 = 0
+count8 = 0
+count10 = 0
+
 # length = len(nouns) + len(nounsplural)
-#print("found", length, " nouns")
+# print("found", length, " nouns")
 for noun in word_tokenize(sentence):
     print(noun)
-    if library8.__contains__(noun[0]):
-        count9 += 1
-for noun in includedwords:
-    print(noun)
-    if library8.__contains__(noun[0]):
-        count9 += 1
+    if library1.__contains__(noun):
+        count1 += 1
+        print("Enter Word - 1:", noun)
+    if library4.__contains__(noun):
+        count4 += 1
+        print("Enter Word - 4:", noun)
+    if library8.__contains__(noun):
+        count8 += 1
+        print("Enter Word - 8:", noun)
+    if library10.__contains__(noun):
+        count10 += 1
+        print("Enter Word - 10:", noun)
 
-percentage = (count9 / len(word_tokenize(sentence))) * 100
-percentnouns = (count9 / len(word_tokenize(sentence))) * 100
-print("Sentence matches", count9, "words in community library making it ", percentage, "% related by all words or ",
-      percentnouns, "% related by nouns")
+print("1-3: Sentence matches", count1, "words in community library making it levels one to three, an emotional"
+                                       " response occurred")
+print("4-7: Sentence matches", count4, "words in community library making it levels four to seven, something has"
+                                       " been learnt")
+print("8-9: Sentence matches", count8, "words in community library making it levels eight to nine, action has"
+                                       " taken place")
+print("10: Sentence matches", count10, "words in community library making it level ten, national impact")
+print("======================================")
+
+if count10 > 0:
+    print("This ripple is level 10. It had a national impact")
+elif count8 > 0:
+    print("This ripple is levels 8-9. Personal action or group impact took  place.")
+elif count4 > 0:
+    print("This ripple is level 4-7. Personal learning and understanding occured.")
+elif count1 > 0:
+    print("This ripple is level 1-3. There was an emotional reaction to the post.")

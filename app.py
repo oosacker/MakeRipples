@@ -56,9 +56,21 @@ def index():
 #         return render_template('form.html', message=message)
 
 
+# This is for the javascript app to fetch the high score.
+@app.route("/fetch_data", methods=['GET'])
+def fetch_data():
+    if request.method == 'GET':
+        data = {'data': '1234567890'}
+        return jsonify(data)  # serialize and use JSON headers
+    else:
+        print('Invalid request')
+
+
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
-    return render_template('user_dashboard.html')
+    ripples = get_all_ripples()
+    print(ripples)
+    return render_template('user_dashboard.html', ripples=ripples)
 
 
 @app.route('/my_test', methods=['POST', 'GET'])
@@ -153,14 +165,21 @@ def add_ripple():
 
 
 def get_all_ripples():
-    stream_keys = db.child("users").child("stream").shallow().get()
-    for key in stream_keys.val():
-        if key.__contains__("Ripple"):
-            ripple = db.child("users").child("stream").child(key).get()
-            if 'date' in ripple.val():
-                print(ripple.val())
-            else:
-                print("bad ripple to be deleted")
+    stream_keys = db.child("users").child("stream").get()
+    ripples = {}
+    counter = 0
+    for key in stream_keys.each():
+        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val():
+            label = "r" + str(counter)
+            tldata = {
+                "ripple_id": key.key(),
+                "date": key.val()["date"],
+                "message": key.val()["message"],
+            }
+            ripples.update({label: tldata})
+            counter += 1
+    return ripples
+
 
 # get_all_ripples()
 
