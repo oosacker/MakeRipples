@@ -20,8 +20,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -125,8 +125,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -185,8 +185,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -265,8 +265,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -344,8 +344,8 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h3 class="modal-title">Add a Ripple</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h3 class="modal-title my-auto">Add a Ripple</h3>
+                    <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -369,95 +369,136 @@
 
 <script src={{ url_for('static', filename='rippleobject.js') }}></script>
 <script src={{ url_for('static', filename='formscript.js') }}></script>
-{#    <script>#}
+    <script>
 {#    #}
-{#        jQuery(function () {#}
+        jQuery(function () {
             {# items on form_1 #}
-{#            let form_1 = $("#first_form");#}
-{#            let warning_msg =  $('#warning');#}
-{#            let resonate_check = $("#resonate");#}
-{#            let learning_check = $("#learning");#}
-{#            let action_check = $("#action")#}
-{#            let other_check = $("#other");#}
-{#            let next_btn = $("#next_btn");#}
-{#            let datepicker = $("#datepicker");#}
-{#            let what_ripple = $("#what_ripple");#}
-{##}
-            {# items on resonate form #}
-{#            let resonate_form = $("#resonate_form");#}
-{#            let resonate_radio = $("#resonate_radio");#}
-{#            let resonate_text = $("#resonate_text");#}
-{#            let resonate_back_btn = $("#resonate_back_btn");#}
-{#            let resonate_add_btn = $("#resonate_add_btn");#}
-{##}
-            {# items on learn form #}
-{#            let learn_form = $("#learn_form");#}
-{#            let learn_radio1 = $("#learn_radio1");#}
-{#            let learn_radio2 = $("#learn_radio2");#}
-{#            let learn_text = $("#learn_text");#}
-{#            let learn_back_btn = $("#learn_back_btn");#}
-{#            let learn_add_btn = $("#learn_add_btn");#}
-{##}
-            {# items on action form #}
-{#            let action_form = $("#action_form");#}
-{#            let action_radio1 = $("#action_radio1");#}
-{#            let action_radio2 = $("#action_radio2");#}
-{#            let action_text = $("#action_text");#}
-{#            let action_back_btn = $("#action_back_btn");#}
-{#            let action_add_btn = $("#action_add_btn");#}
-{##}
-{#            form_1.modal();#}
-{##}
-            {# setup the date picker #}
-{#            datepicker.datepicker({#}
-{#                autoclose: true,#}
-{#                todayHighlight: true#}
-{#            }).datepicker('update', new Date());#}
-{##}
-            {# hide the warning #}
-{#            warning_msg.css('visibility', 'hidden');#}
-{##}
-            {# hide the 'what ripple' text input #}
-{#            what_ripple.css('visibility', 'hidden');#}
-{##}
-            {# click handler for ther 'other' checkbox #}
-{#            other_check.on('change', function () {#}
-{#                if (other_check.prop('checked')) {#}
-{#                    what_ripple.css('visibility', 'visible');#}
-{#                }#}
-{#                else{#}
-{#                    what_ripple.css('visibility', 'hidden');#}
-{#                }#}
-{#            });#}
-{##}
-            {# button click handler for form_1 #}
-{#            next_btn.on("click", function() {#}
-{#                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))#}
-{#                {#}
-{#                    // flash warning if no checkboxes are selected#}
-{#                    warning_msg.css('color', 'red');#}
-{#                    warning_msg.css('visibility', 'visible');#}
-{#                }#}
-{#                else{#}
-{#                    form_1.modal("hide");#}
-{#                    resonate_form.modal();#}
-{#                }#}
-{#            })#}
-{##}
-{#        });#}
-{#    </script>#}
+            let form_1 = $("#first_form");
+            let warning_msg =  $('#warning');
+            let resonate_check = $("#resonate");
+            let learning_check = $("#learning");
+            let action_check = $("#action")
+            let other_check = $("#other");
+            let next_btn = $("#next_btn");
+            let datepicker = $("#datepicker");
+            let what_ripple = $("#what_ripple");
+
+            {# items on resonate_form #}
+            let resonate_form = $("#resonate_form");
+            let resonate_radio = $("#resonate_radio");
+            let resonate_text = $("#resonate_text");
+            let resonate_back_btn = $("#resonate_back_btn");
+            let resonate_add_btn = $("#resonate_add_btn");
+
+            {# items on learn_form #}
+            let learn_form = $("#learn_form");
+            let learn_radio1 = $("#learn_radio1");
+            let learn_radio2 = $("#learn_radio2");
+            let learn_text = $("#learn_text");
+            let learn_back_btn = $("#learn_back_btn");
+            let learn_add_btn = $("#learn_add_btn");
+
+            {# items on action_form #}
+            let action_form = $("#action_form");
+            let action_radio1 = $("#action_radio1");
+            let action_radio2 = $("#action_radio2");
+            let action_text = $("#action_text");
+            let action_back_btn = $("#action_back_btn");
+            let action_add_btn = $("#action_add_btn");
+
+            {# items on other_form #}
+            let other_form = $('#other_form');
+            let other_text_input = $('#other_text_input');
+
+            {# other_form.modal(); #}
+
+            form_1.modal();
+
+             {#setup the date picker #}
+            datepicker.datepicker({
+                autoclose: true,
+                todayHighlight: true
+            }).datepicker('update', new Date());
+
+             {#hide the warning #}
+            warning_msg.css('visibility', 'hidden');
+
+             {#hide the 'what ripple' text input #}
+            what_ripple.css('visibility', 'hidden');
+
+             {#click handler for ther 'other' checkbox #}
+            other_check.on('change', function () {
+                if (other_check.prop('checked')) {
+                    what_ripple.css('visibility', 'visible');
+                }
+                else{
+                    what_ripple.css('visibility', 'hidden');
+                }
+            });
+
+             {#button click handler for form_1 #}
+            next_btn.on("click", function() {
+                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))
+                {
+                    // flash warning if no checkboxes are selected
+                    warning_msg.css('color', 'red');
+                    warning_msg.css('visibility', 'visible');
+                }
+                else{
+                    form_1.modal("hide");
+                    resonate_form.modal();
+                }
+            })
+
+        });
+    </script>
 
     <style>
+        {# set the background color of title and roudned corners #}
         .modal-header{
             background-color: #91278e;
-            border-radius: 0.3rem 0.3rem 0 0;
+            -webkit-border-top-left-radius: 10px;
+            -webkit-border-top-right-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -moz-border-radius-topright: 10px;
+             border-top-left-radius: 10px;
+             border-top-right-radius: 10px;
         }
 
+        {# needs to be larger than header or get white space!!!!! #}
+        .modal-content{
+            border-radius: 12px 12px !important;
+        }
+
+        {# font color of modal title text #}
         .modal-title{
             color: white;
         }
 
+        {# close button of modal -- make it white and bigger #}
+        .modal-header .close {
+            color: #fff;
+            opacity: 1;
+            font-size: 30px;
+            margin-top: 0;
+        }
 
+        .modal-footer .btn-secondary{
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .modal-footer .btn-primary{
+            background-color: #91278e;
+            color: white;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        {# datepicker stuff #}
         label{
             margin-left: 20px;
         }
