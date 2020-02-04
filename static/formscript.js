@@ -270,7 +270,7 @@ jQuery(function () {
             } else if (ur.resonate) {
                 $("#resonate_form").modal();
             } else if (ur.other) {
-                alert("hasn't been made yet")
+                $("#other_form").modal();
             } else {
                 alert("somehow got no checked values after confirming something was checked.")
             }
@@ -284,6 +284,9 @@ jQuery(function () {
         }
         if(ur.message === undefined || ur.message === ""){
             ur.message = $("#resonate_text").val()
+        }
+        if(ur.message === undefined || ur.message === ""){
+            ur.message = $("#other_text_input").val()
         }
         // ur.message = $("textarea[name='text_input']").val()
         // alert(ur.message)
