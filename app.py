@@ -56,6 +56,16 @@ def index():
 #         return render_template('form.html', message=message)
 
 
+# This is for the javascript app to fetch the high score.
+@app.route("/fetch_data", methods=['GET'])
+def fetch_data():
+    if request.method == 'GET':
+        data = {'data': '1234567890'}
+        return jsonify(data)  # serialize and use JSON headers
+    else:
+        print('Invalid request')
+
+
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
     ripples = get_all_ripples()

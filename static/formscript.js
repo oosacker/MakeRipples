@@ -28,14 +28,15 @@ function send_data() {
     })
 }
 
-function get_data(){
 
-}
 let ur;
 
 
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
+
+
+
     // $("#activity_type_box").modal();
     $(document).ready(function() {
         ur = new user_response();
@@ -155,6 +156,11 @@ jQuery(function () {
         // alert(JSON.stringify(ur));
 
         send_user();
+
+
+        fetch_data();
+
+
     })
 
 })
@@ -206,4 +212,16 @@ function send_user(){
     }).then(function(){
         console.log('sent')
     })
+}
+
+function fetch_data() {
+    // Send a fetch request via GET
+    fetch('/fetch_data')
+        .then(function (response) {
+            // Parse response as JSON
+            return response.json();
+        })
+        .then(function (json) {
+            console.log('fetch');
+        })
 }
