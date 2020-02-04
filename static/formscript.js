@@ -51,7 +51,7 @@ jQuery(function () {
         $("#first_form").modal();
     });
 
-
+$("#first_form").modal();
     // $("#activity_type_box").modal();
     $(document).ready(function() {
         ur = new user_response();
