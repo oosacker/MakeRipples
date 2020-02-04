@@ -47,7 +47,9 @@ let ur;
 
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
-
+    $("#ripple_btn").on('click', function () {
+        $("#first_form").modal();
+    });
 
 
     // $("#activity_type_box").modal();
@@ -55,7 +57,7 @@ jQuery(function () {
         ur = new user_response();
     })
 
-    $("#first_form").modal();
+
 
     let datepicker = $("#datepicker");
     datepicker.datepicker({

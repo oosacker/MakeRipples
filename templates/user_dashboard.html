@@ -267,7 +267,9 @@
     <script>
         let ripples = JSON.parse('{{ ripples | tojson | safe }}');
     </script>
+    <script src={{ url_for('static', filename='rippleobject.js') }}></script>
     <script src={{ url_for('static', filename='timeline.js') }}></script>
+    <script src={{ url_for('static', filename='formscript.js') }}></script>
     <script src={{ url_for('static', filename='myscript.js') }}></script>
 
 {% endblock %}

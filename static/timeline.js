@@ -1,7 +1,5 @@
 jQuery(function () {
-  $("#ripple_btn").on('click', function () {
-      alert("button is linked to a function");
-  });
+
 })
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
