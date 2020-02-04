@@ -8,10 +8,25 @@
 {% block body %}
 
     <div class="container-fluid">
-        <h1 class="text-center">Stream Title</h1>
+        <div class="head-top">
+            <h1 class="text-center"><  Mountains to Sea  ></h1>
+            <button type="button" class="btn btn-success" aria-label="Add Ripple" id="ripple_btn">
+                <i class="fa fa-plus"></i> Add Ripple
+            </button>
+        </div>
+{#        <div class="row">#}
+{#            <div class="col-10">#}
+{#                <h1 class="text-center">< Mountains to Sea ></h1>#}
+{#            </div>#}
+{#            <div class="addRippleBtn col-2 d-flex align-items-center">#}
+{#                <button type="button" class="btn btn-primary" aria-label="Add Ripple">#}
+{#                <i class="fa fa-plus"></i> Add Ripple#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
         <div class="row">
             <div class="timeline col-11">
-                <h2>Timeline</h2>
+                <h4>Timeline</h4>
                 <div class="timeline-bar">
 {#                    <div class="container">#}
 {#                        <ul class="progressbar">#}
@@ -26,125 +41,222 @@
                         </div>
                         <div id="myModal" class="modal">
                             <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <p id="mainCont"></p>
-                                <a href="#">view details</a>
-                                <a href="#">Edit ripple</a>
+                                <div class="modal-title">
+                                    <p>Ripple Details</p>
+                                </div>
+{#                                <span class="close">&times;</span>#}
+                                <div class="content-wrap modal-body">
+                                    <p class="selected-date">June 12, 2015</p>
+                                    <p class="selected-content">Lorem ipsum dolor sit amet, consectetur.</p>
+                                </div>
+{#                                <p id="mainCont"></p>#}
+                                <div class="modal-footer">
+                                    <a href="#" class="mr-auto">View more details</a>
+                                    <button type="button" class="btn close-btn">Okay</button>
+                                </div>
+{#                                <a href="#" class="close close-btn">Okay</a>#}
                             </div>
                         </div>
                 </div>
             </div>
-            <div class="col-1">
-                <div class="row">
-                    <h3>Add Ripple</h3>
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary btn-circle btn-xl" aria-label="Add Ripple">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-            </div>
+{#            <div class="col-1">#}
+{#                <div class="row">#}
+{#                    <h3>Add Ripple</h3>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <button type="button" class="btn btn-primary btn-circle btn-xl" aria-label="Add Ripple">#}
+{#                        <i class="fa fa-plus"></i>#}
+{#                    </button>#}
+{#                </div>#}
+{#            </div>#}
         </div>
         <div class="row d-flex justify-content-center">
             <div class="left-section col-lg-8">
-               <div class="metrics row">
-                   <h1 class="col-12">Metrics</h1>
-{#                    <div class="">#}
-                        <div class="card col-lg-3 col-md-3 col-sm-11">
+               <div class="achievements row">
+                   <div class="title col-12">
+                       <h1>Achievements</h1>
+                   </div>
+                        <div class="card col-lg-4 col-md-4 col-sm-11">
                             <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">How I've made Ripples for changes</p>
                             </div>
-                            <img src=" {{ url_for('static', filename='image1.jpg') }}" alt="image"/>
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
                         </div>
 
-                        <div class="card col-lg-3 col-md-3 col-sm-11">
+                        <div class="card card-mid col-lg-4 col-md-4 col-sm-11">
                             <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">My Ripples and Activities</p>
+                                <div class="row content-top">
+                                    <div class="col-6">
+                                        <p class="content-left">4</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>6</p>
+                                    </div>
+                                </div>
+                                <div class="row content-bottom">
+                                    <div class="col-6">
+                                        <p>Ripples</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Events</p>
+                                    </div>
+                                </div>
                             </div>
-                            <img src=" {{ url_for('static', filename='image2.jpg') }}" alt="image"/>
+{#                            <img src=" {{ url_for('static', filename='images/image2.jpg') }}" alt="image"/>#}
+
                         </div>
 
-                        <div class="card col-lg-3 col-md-3 col-sm-11">
+                        <div class="card col-lg-4 col-md-4 col-sm-11">
                             <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">Community Ripples and Activities</p>
+                                <div class="row content-top">
+                                    <div class="col-6">
+                                        <p class="content-left">95</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>20</p>
+                                    </div>
+                                </div>
+                                <div class="row content-bottom">
+                                    <div class="col-6">
+                                        <p>Ripples</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Events</p>
+                                    </div>
+                                </div>
                             </div>
-                            <img src=" {{ url_for('static', filename='image1.jpg') }}" alt="image"/>
+{#                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>#}
+
                         </div>
-{#                    </div>#}
+
                </div>
-                <div class="activity-feed">
-                    <h1>Activity Feed</h1>
+                <div class="community-ripples">
+                    <div class="title">
+                        <h1>Community Ripples</h1>
+                    </div>
                     <div class="activity-item d-flex justify-content-center row">
-                        <div class="activity-tag col-3">
-                            <p>Individual</p>
+                        <div class="activity-tag col-2 my-auto">
+                            <p class="personal-tag">Personal</p>
                         </div>
-                        <div class="activity-desc col-7">
+                        <div class="activity-desc col-6 my-auto">
                             <p>Activity Description...Lorem ipsum dolor sit amet, consectetur.</p>
                         </div>
-                        <div class="activity-update col-2">
-                            <p>1 day ago</p>
+
+                        <div class="activity-img col-2 my-auto">
+                                <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                        </div>
+
+                        <div class="activity-update col-2 my-auto">
+                            <p>Make a ripple 2 days ago</p>
                         </div>
                     </div>
                     <div class="activity-item d-flex justify-content-center row">
-                        <div class="activity-tag col-3">
-                            <p>Individual</p>
+                        <div class="activity-tag col-2 my-auto">
+                            <p class="organised-tag">Organised</p>
                         </div>
-                        <div class="activity-desc col-7">
+                        <div class="activity-desc col-6 my-auto">
                             <p>Activity Description...Lorem ipsum dolor sit amet, consectetur.</p>
                         </div>
-                        <div class="activity-update col-2">
-                            <p>1 day ago</p>
+                        <div class="activity-img col-2 my-auto">
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                        </div>
+                        <div class="activity-update col-2 my-auto">
+                            <p>Make a ripple 4 days ago</p>
                         </div>
                     </div>
                     <div class="activity-item d-flex justify-content-center row">
-                        <div class="activity-tag col-3">
-                            <p>Individual</p>
+                        <div class="activity-tag col-2 my-auto">
+                            <p class="community-tag">Community</p>
                         </div>
-                        <div class="activity-desc col-7">
+                        <div class="activity-desc col-6 my-auto">
                             <p>Activity Description...Lorem ipsum dolor sit amet, consectetur.</p>
                         </div>
-                        <div class="activity-update col-2">
-                            <p>1 day ago</p>
+                        <div class="activity-img col-2 my-auto">
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                        </div>
+                        <div class="activity-update col-2 my-auto">
+                            <p>Make a ripple 5 days ago</p>
                         </div>
                     </div>
                     <div class="activity-item d-flex justify-content-center row">
-                        <div class="activity-tag col-3">
-                            <p>Individual</p>
+                        <div class="activity-tag col-2 my-auto">
+                            <p class="personal-tag">Personal</p>
                         </div>
-                        <div class="activity-desc col-7">
+                        <div class="activity-desc col-6 my-auto">
                             <p>Activity Description...Lorem ipsum dolor sit amet, consectetur.</p>
                         </div>
-                        <div class="activity-update col-2">
-                            <p>1 day ago</p>
+                        <div class="activity-img col-2 my-auto">
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                        </div>
+                        <div class="activity-update col-2 my-auto">
+                            <p>Make a ripple 7 days ago</p>
                         </div>
                     </div>
+
+                     <div class="activity-item d-flex justify-content-center row">
+                        <div class="activity-tag col-2 my-auto">
+                            <p class="personal-tag">Personal</p>
+                        </div>
+                        <div class="activity-desc col-6 my-auto">
+                            <p>Activity Description...Lorem ipsum dolor sit amet, consectetur.</p>
+                        </div>
+                         <div class="activity-img col-2 my-auto">
+                             <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                        </div>
+                        <div class="activity-update col-2 my-auto">
+                            <p>Make a ripple 16 days ago</p>
+                        </div>
+                    </div>
+
+                     <div class="activity-item d-flex justify-content-center row">
+                        <div class="activity-tag col-2 my-auto">
+                            <p class="organised-tag">Organised</p>
+                        </div>
+                        <div class="activity-desc col-6 my-auto">
+                            <p>Activity Description...Lorem ipsum dolor sit amet, consectetur.</p>
+                        </div>
+                         <div class="activity-img col-2 my-auto">
+                                <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                        </div>
+                        <div class="activity-update col-2 my-auto">
+                            <p>Make a ripple 17 days ago</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <div class="right-section col-lg-3">
-                <div class="media row">
+                <div class="myRipples row">
 
 {#                    <div class="row">#}
-                        <h1>Media</h1>
+                        <div class="title">
+                            <h1>My Ripples</h1>
+                        </div>
                         <div class="card col-lg-11">
-{#                            <div class="card-body">#}
-{#                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
-{#                            </div>#}
-                            <img src=" {{ url_for('static', filename='image1.jpg') }}" alt="image"/>
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                            <div class="card-body">
+                                <strong class="card-text">Native Tree Planting</strong>
+                                <p class="card-text">Make a ripple 2 days ago</p>
+                            </div>
                         </div>
 
                         <div class="card col-lg-11">
-{#                            <div class="card-body">#}
-{#                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
-{#                            </div>#}
-                            <img src=" {{ url_for('static', filename='image2.jpg') }}" alt="image"/>
+                            <img src=" {{ url_for('static', filename='images/image2.jpg') }}" alt="image"/>
+                            <div class="card-body">
+                                <strong class="card-text">Climate crisis rally</strong>
+                                <p class="card-text">Make a ripple 7 days ago</p>
+                            </div>
                         </div>
 
                         <div class="card col-lg-11">
-{#                            <div class="card-body">#}
-{#                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
-{#                            </div>#}
-                            <img src=" {{ url_for('static', filename='image1.jpg') }}" alt="image"/>
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                            <div class="card-body">
+                                <strong class="card-text">Made a donation to LandSAR</strong>
+                                <p class="card-text">Make a ripple 16 days ago</p>
+                            </div>
                         </div>
                     </div>
                </div>

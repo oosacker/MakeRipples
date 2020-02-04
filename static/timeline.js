@@ -1,19 +1,8 @@
-let keys = {};
-
-if (ripples == undefined){
-  alert("ripples didn't work")
-}
-else {
-  let message = "received:\n";
-  let i=0;
-  Object.keys(ripples).forEach(function (key) {
-    keys[i] = key;
-    message = message + ripples[key].date +", " +ripples[key].message + "\n";
-    i++;
-  })
-
-  alert(message);
-}
+jQuery(function () {
+  $("#ripple_btn").on('click', function () {
+      alert("button is linked to a function");
+  });
+})
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
 //For the purpose of stringifying MM/DD/YYYY date format
@@ -102,6 +91,13 @@ function makeCircles() {
           '%;"><div class="popupSpan">' +
           dateSpan(dates[i]) +
           "</div></div>"
+
+        //   '<div class="word" id="word' +
+        // i +
+        // '" style="left: ' +
+        // relativeInt * 100 +
+        // '%;">' +
+        // "</div>"
       );
 
       $("#mainCont").append(
@@ -146,7 +142,49 @@ $(".circle").click(function() {
   var spanNum = $(this).attr("id");
   selectDate(spanNum);
 
+  // console.log(document.getElementById(spanNum).style.left);
+  // var locate = document.getElementById(spanNum).style.left;
+
+  // document.getElementsByClassName("modal-content")[0].style.left = locate;
+  // console.log(document.getElementById("line")[0].style.width);
+
+  // var node = document.createElement("p");
+  // var textnode = document.createTextNode(document.getElementById(spanNum).childNodes[0].textContent);
+  // node.appendChild(textnode);
+  // document.getElementsByClassName("content-wrap")[0].appendChild(node);
+  document.getElementsByClassName("selected-date")[0].textContent = document.getElementById(spanNum).childNodes[0].textContent;
+  // document.getElementsByClassName("selected-content")[0].textContent = document.getElementById(spanNum).childNodes[0].textContent;
 });
+
+
+function printMousePos(event) {
+  // document.body.textContent =
+    // "clientX: " + event.clientX +
+    // " - clientY: " + event.clientY;
+  // if(event.clientX < 1010) {
+    document.getElementsByClassName("modal-content")[0].style.left = (event.clientX - 30) + "px";
+  // }
+  // else if(event.clientX > 1010){
+  //   document.getElementsByClassName("modal-content")[0].style.left = (event.clientX - 200) + "px";
+  //   var arrowup = document.getElementsByClassName("modal-content");
+  //   arrowup.pseudoStyle("before","left","60px");
+  // }
+  // console.log(event.clientX);
+}
+
+document.addEventListener("click", printMousePos);
+
+// function placeDiv(x_pos, y_pos) {
+//   var d = document.getElementById('yourDivId');
+//   d.style.position = "absolute";
+//   d.style.left = x_pos+'px';
+//   d.style.top = y_pos+'px';
+// }
+
+// var selectedCircle = document.getElementsByClassName("circle");
+// selectedCircle.onclick = function() {
+//  console.log("Click")
+// }
 
 function selectDate(selector) {
   var modal = document.getElementById("myModal");
@@ -171,8 +209,45 @@ function selectDate(selector) {
     $($spanSelector).removeClass("left");
   }
    modal.style.display = "block";
+   disableScroll();
 }
 
+
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+    document.onkeydown = null;
+}
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -181,7 +256,7 @@ var modal = document.getElementById("myModal");
 // var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close-btn")[0];
 
 // // When the user clicks the button, open the modal
 // btn.onclick = function() {
@@ -191,13 +266,20 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  enableScroll();
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+   enableScroll();
   }
 }
 
 console.log();
+
+
+
+
+
