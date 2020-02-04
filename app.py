@@ -162,7 +162,7 @@ def get_all_ripples():
             else:
                 print("bad ripple to be deleted")
 
-get_all_ripples()
+# get_all_ripples()
 
 if __name__ == '__main__':
     app.run()
