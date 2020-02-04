@@ -115,10 +115,20 @@ jQuery(function () {
     })
 
     $("button[name='back_btn']").on("click",function(){
+        //clear text areas
+        $("#text_input1").val("")
+        $("#learn_text").val("")
+        $("#resonate_text").val("")
+        $("#other_text_input").val("")
+        ur.message = undefined
+        //clear radio buttons?
+        $("input[type='radio']").prop('checked',false);
+        //hide modals
         $("#action_form").modal("hide");
         $("#learn_form").modal("hide");
         $("#resonate_form").modal("hide");
         $("#other_form").modal("hide");
+        //show first modal
         $("#first_form").modal();
     })
 
