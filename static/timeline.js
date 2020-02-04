@@ -172,7 +172,7 @@ function printMousePos(event) {
   // console.log(event.clientX);
 }
 
-document.addEventListener("click", printMousePos);
+document.getElementById("lineCont").addEventListener("click", printMousePos);
 
 
 // function placeDiv(x_pos, y_pos) {
@@ -259,7 +259,7 @@ var modal = document.getElementById("myModal");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close-btn")[0];
 
-var moreDetails = document.getElementsByClassName("close-btn")[0];
+// var modalStatus = document.getElementsByClassName("model-content");
 // // When the user clicks the button, open the modal
 // btn.onclick = function() {
 //   modal.style.display = "block";
@@ -279,9 +279,10 @@ window.onclick = function(event) {
   }
 }
 
-span.onclick = function(){
-  document.removeEventListener("click", printMousePos);
-}
+// modalStatus.onclick = function(){
+//   document.removeEventListener("click", printMousePos);
+//   console.log("Click modal!!")
+// }
 
 console.log();
 
