@@ -2,8 +2,12 @@
 
 {% block head %}
     <title>Check-in</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
-          type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}">
+
+    <script src={{ url_for('static', filename='rippleobject.js') }}></script>
+    <script src={{ url_for('static', filename='formscript.js') }}></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 {% endblock %}
 
 
@@ -41,9 +45,6 @@
                         </div>
                     </div>
 
-                    <br>
-
-
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
                             <img src="{{ url_for('static', filename='img-1.png') }}">
@@ -53,8 +54,6 @@
                             <label for="resonate">Something really resonated with me.</label>
                         </div>
                     </div>
-
-                    <br>
 
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
@@ -66,8 +65,6 @@
                         </div>
                     </div>
 
-                    <br>
-
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
                             <img src="{{ url_for('static', filename='img-3.png') }}" class="nav-logo">
@@ -78,7 +75,6 @@
                         </div>
                     </div>
 
-                    <br>
 
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
@@ -97,13 +93,12 @@
                         </div>
                     </div>
 
-
-                    <br>
-
                     <div class="row">
-                        <p id="warning">You must select at least one category</p>
+                        {# needs a column or else it does not align with other rows!!!!! #}
+                        <div class="col-lg-auto">
+                            <p id="warning">You must select at least one category</p>
+                        </div>
                     </div>
-
 
                 </div>
 
@@ -384,72 +379,5 @@
     </div>
 
 
-
-
-
-
-    <style>
-        {# set the background color of title and roudned corners #}
-        .modal-header {
-            background-color: #91278e;
-            -webkit-border-top-left-radius: 10px;
-            -webkit-border-top-right-radius: 10px;
-            -moz-border-radius-topleft: 10px;
-            -moz-border-radius-topright: 10px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        {#needs to be larger than header or get white space!!!!!#}
-        .modal-content {
-            border-radius: 15px 15px !important;
-        }
-
-        {#font color of modal title text#}
-        .modal-title {
-            color: white;
-        }
-
-        {#close button of modal -- make it white and bigger#}
-        .modal-header .close {
-            color: #fff;
-            opacity: 1;
-            font-size: 30px;
-            margin-top: 0;
-        }
-
-        .modal-footer .btn-secondary {
-            background-color: white;
-            color: black;
-            border: 1px solid black;
-            width: 120px;
-            font-weight: bold;
-        }
-
-        .modal-footer .btn-primary {
-            background-color: #91278e;
-            color: white;
-            width: 120px;
-            font-weight: bold;
-        }
-
-        {# datepicker stuff #}
-        label {
-            margin-left: 20px;
-        }
-
-        #datepicker {
-            width: 180px;
-            margin: 0 20px 20px 20px;
-        }
-
-        #datepicker > span:hover {
-            cursor: pointer;
-        }
-    </style>
-
-    <script src={{ url_for('static', filename='rippleobject.js') }}></script>
-    <script src={{ url_for('static', filename='formscript.js') }}></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 {% endblock %}
