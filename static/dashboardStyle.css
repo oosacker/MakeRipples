@@ -185,7 +185,7 @@ body{
 /*}*/
 
 /* The Modal (background) */
-.modal {
+.timeline-content .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -200,7 +200,7 @@ body{
 }
 
 /* Modal Content */
-.modal-content {
+.timeline-content .modal-content {
     background-color: #fefefe;
     /*margin: auto;*/
     /*padding: 20px;*/
@@ -211,7 +211,7 @@ body{
     /*margin-left: 260px;*/
 }
 
-.modal-content:before{
+.timeline-content .modal-content:before{
     content:"";
     position:absolute;
     width:0px;
@@ -222,33 +222,33 @@ body{
     top: -20px;
 }
 
-.modal-body{
+.timeline-content .modal-body{
     font-size: 14px;
 }
-.modal-footer{
+.timeline-content .modal-footer{
     border: none;
     margin-top: 0px;
 }
-.modal-content .modal-title{
+.timeline-content .modal-content .modal-title{
     background-color: #92278f;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     text-align: center;
 }
 
-.modal-content .modal-title p{
+.timeline-content .modal-content .modal-title p{
     color:#fff;
     margin: 5px 0px;
 }
 
-.modal-content .close-btn{
+.timeline-content .modal-content .close-btn{
     color: #fff;
     background-color: #92278f;
     font-size: 14px;
     padding: 5px 15px;
 }
 
-.modal-content .close-btn:hover{
+.timeline-content .modal-content .close-btn:hover{
     color: #fff;
     background-color: #b530b1;
     font-size: 14px;
