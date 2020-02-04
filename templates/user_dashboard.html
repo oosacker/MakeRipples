@@ -4,7 +4,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
           type="text/css"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboardStyle.css') }}">
-{#    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rippleforms.css') }}">#}
     <title>Stream Summary</title>
 {% endblock %}
 
@@ -272,7 +271,7 @@
 {#    FORM MODALS COPIED IN BELOW THIS LINE     #}
 
     <div class="ripple-forms">
-    {# NEW DIALOG BOX!!!!! #}
+        {# NEW DIALOG BOX!!!!! #}
     <div class="modal fade" tabindex="-1" role="dialog" id="first_form">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -304,9 +303,6 @@
                         </div>
                     </div>
 
-                    <br>
-
-
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
                             <img src="{{ url_for('static', filename='img-1.png') }}">
@@ -316,8 +312,6 @@
                             <label for="resonate">Something really resonated with me.</label>
                         </div>
                     </div>
-
-                    <br>
 
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
@@ -329,8 +323,6 @@
                         </div>
                     </div>
 
-                    <br>
-
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
                             <img src="{{ url_for('static', filename='img-3.png') }}" class="nav-logo">
@@ -341,7 +333,6 @@
                         </div>
                     </div>
 
-                    <br>
 
                     <div class="row align-items-center">
                         <div class="col-lg-auto">
@@ -360,13 +351,12 @@
                         </div>
                     </div>
 
-
-                    <br>
-
                     <div class="row">
-                        <p id="warning">You must select at least one category</p>
+                        {# needs a column or else it does not align with other rows!!!!! #}
+                        <div class="col-lg-auto">
+                            <p id="warning">You must select at least one category</p>
+                        </div>
                     </div>
-
 
                 </div>
 
@@ -612,7 +602,12 @@
             </div>
         </div>
     </div>
-        <div class="modal fade" tabindex="-1" role="dialog" id="other_form">
+
+
+
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="other_form">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
