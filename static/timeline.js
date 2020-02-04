@@ -1,7 +1,5 @@
 jQuery(function () {
-  $("#ripple_btn").on('click', function () {
-      alert("button is linked to a function");
-  });
+
 })
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
@@ -172,7 +170,8 @@ function printMousePos(event) {
   // console.log(event.clientX);
 }
 
-document.addEventListener("click", printMousePos);
+document.getElementById("lineCont").addEventListener("click", printMousePos);
+
 
 // function placeDiv(x_pos, y_pos) {
 //   var d = document.getElementById('yourDivId');
@@ -258,6 +257,7 @@ var modal = document.getElementById("myModal");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close-btn")[0];
 
+// var modalStatus = document.getElementsByClassName("model-content");
 // // When the user clicks the button, open the modal
 // btn.onclick = function() {
 //   modal.style.display = "block";
@@ -276,6 +276,11 @@ window.onclick = function(event) {
    enableScroll();
   }
 }
+
+// modalStatus.onclick = function(){
+//   document.removeEventListener("click", printMousePos);
+//   console.log("Click modal!!")
+// }
 
 console.log();
 
