@@ -381,14 +381,14 @@ R
             let datepicker = $("#datepicker");
             let what_ripple = $("#what_ripple");
 
-            {# items on resonate form #}
+            {# items on resonate_form #}
             let resonate_form = $("#resonate_form");
             let resonate_radio = $("#resonate_radio");
             let resonate_text = $("#resonate_text");
             let resonate_back_btn = $("#resonate_back_btn");
             let resonate_add_btn = $("#resonate_add_btn");
 
-            {# items on learn form #}
+            {# items on learn_form #}
             let learn_form = $("#learn_form");
             let learn_radio1 = $("#learn_radio1");
             let learn_radio2 = $("#learn_radio2");
@@ -396,7 +396,7 @@ R
             let learn_back_btn = $("#learn_back_btn");
             let learn_add_btn = $("#learn_add_btn");
 
-            {# items on action form #}
+            {# items on action_form #}
             let action_form = $("#action_form");
             let action_radio1 = $("#action_radio1");
             let action_radio2 = $("#action_radio2");
@@ -404,46 +404,50 @@ R
             let action_back_btn = $("#action_back_btn");
             let action_add_btn = $("#action_add_btn");
 
-            $('#first_form').modal();
+            {# items on other_form #}
+            let other_form = $('#other_form');
+            let other_text_input = $('#other_text_input');
 
-        {#    form_1.modal();#}
-        {##}
-            {# setup the date picker #}
-        {#    datepicker.datepicker({#}
-        {#        autoclose: true,#}
-        {#        todayHighlight: true#}
-        {#    }).datepicker('update', new Date());#}
-        {##}
-            {# hide the warning #}
-        {#    warning_msg.css('visibility', 'hidden');#}
-        {##}
-            {# hide the 'what ripple' text input #}
-        {#    what_ripple.css('visibility', 'hidden');#}
-        {##}
-            {# click handler for ther 'other' checkbox #}
-        {#    other_check.on('change', function () {#}
-        {#        if (other_check.prop('checked')) {#}
-        {#            what_ripple.css('visibility', 'visible');#}
-        {#        }#}
-        {#        else{#}
-        {#            what_ripple.css('visibility', 'hidden');#}
-        {#        }#}
-        {#    });#}
-        {##}
-            {# button click handler for form_1 #}
-        {#    next_btn.on("click", function() {#}
-        {#        if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))#}
-        {#        {#}
-        {#            // flash warning if no checkboxes are selected#}
-        {#            warning_msg.css('color', 'red');#}
-        {#            warning_msg.css('visibility', 'visible');#}
-        {#        }#}
-        {#        else{#}
-        {#            form_1.modal("hide");#}
-        {#            resonate_form.modal();#}
-        {#        }#}
-        {#    })#}
-        {##}
+            {# other_form.modal(); #}
+
+            form_1.modal();
+
+             {#setup the date picker #}
+            datepicker.datepicker({
+                autoclose: true,
+                todayHighlight: true
+            }).datepicker('update', new Date());
+
+             {#hide the warning #}
+            warning_msg.css('visibility', 'hidden');
+
+             {#hide the 'what ripple' text input #}
+            what_ripple.css('visibility', 'hidden');
+
+             {#click handler for ther 'other' checkbox #}
+            other_check.on('change', function () {
+                if (other_check.prop('checked')) {
+                    what_ripple.css('visibility', 'visible');
+                }
+                else{
+                    what_ripple.css('visibility', 'hidden');
+                }
+            });
+
+             {#button click handler for form_1 #}
+            next_btn.on("click", function() {
+                if (!(resonate_check.prop('checked') || learning_check.prop('checked') || action_check.prop('checked') || other_check.prop('checked')))
+                {
+                    // flash warning if no checkboxes are selected
+                    warning_msg.css('color', 'red');
+                    warning_msg.css('visibility', 'visible');
+                }
+                else{
+                    form_1.modal("hide");
+                    resonate_form.modal();
+                }
+            })
+
         });
     </script>
 
