@@ -315,7 +315,7 @@ body{
 }
 .achievements .card img{
     height: 200px;
-    padding: 10px 10px;
+    padding: 30px;
 }
 .achievements .card .content-top{
     margin-top: 60px;
@@ -367,7 +367,7 @@ body{
 .activity-tag p{
     /*background-color: grey;*/
     color: white;
-    width: 120px;
+    width: 100px;
     border-radius: 10px 10px;
     margin: 0 auto;
     padding: 5px 0px;
@@ -408,6 +408,7 @@ body{
     width: 100%;
     text-align: center;
     padding: 5px 0px;
+    margin-bottom: 10px;
 }
 .myRipples h1{
     font-size: 25px;
@@ -430,12 +431,17 @@ body{
 /*    object-fit: cover;*/
 /*}*/
 .myRipples .card{
-    padding: 0;
+    padding: 20px;
     margin: 10px auto;
     border: none;
 }
 .myRipples .card img{
     height: 150px;
+}
+
+.myRipples .card-body{
+    padding: 0px;
+    margin-top: 15px;
 }
 
 /* STYLES COPIED IN FOR THE RIPPLE FORM MODALS*/
