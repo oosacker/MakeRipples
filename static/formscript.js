@@ -176,7 +176,7 @@ jQuery(function () {
 
             clear_hide_modals();
 
-            fetch_data();
+            // fetch_data();
 
         }
     })
