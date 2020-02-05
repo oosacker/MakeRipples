@@ -1,20 +1,23 @@
+
 jQuery(function () {
+  // array of the keys to use to get the ripple data from the database
+  let keys = new Array();
   if (ripples == undefined){
-  alert("ripples didn't work")
-}
-else {
-  let message = "received user tagged:\n";
-  let i=0;
-  Object.keys(ripples).forEach(function (key) {
-    keys[i] = key;
-    if(ripples[key].source == "user"){
-      message = message + ripples[key].date +", " +ripples[key].message + "\n";
-    }
+    alert("ripples didn't work")
+  }
+  else {
+    let message = "received source tagged:\n";
+    let i=0;
+    Object.keys(ripples).forEach(function (key) {
+      // keeps only those tagged as user or org (will filter out any created before added that feature)
+      if(ripples[key].source == "user" || ripples[key].source == "org" ){
+        keys.push(key);
+        message = message + ripples[key].date +", " +ripples[key].message + "\n";
+      }
+      i++;
+    })
 
-    i++;
-  })
-
-  alert(message);
+  alert(keys.length);
 }
 
 })
