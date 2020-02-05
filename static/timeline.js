@@ -1,4 +1,18 @@
 jQuery(function () {
+  if (ripples == undefined){
+  alert("ripples didn't work")
+}
+else {
+  let message = "received:\n";
+  let i=0;
+  Object.keys(ripples).forEach(function (key) {
+    keys[i] = key;
+    message = message + ripples[key].date +", " +ripples[key].message + "\n";
+    i++;
+  })
+
+  alert(message);
+}
 
 })
 //Sample dates
