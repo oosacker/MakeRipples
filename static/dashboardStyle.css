@@ -473,7 +473,7 @@ body {
 }
 
 /* STYLES COPIED IN FOR THE RIPPLE FORM MODALS*/
-/* set the background color of title and roudned corners */
+/* set the background color of title and rounded corners */
 .ripple-forms .modal-header {
     background-color: #91278e;
     -webkit-border-top-left-radius: 10px;
@@ -482,6 +482,10 @@ body {
     -moz-border-radius-topright: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+
+    /* nats - setting the modal title bar smaller */
+    padding: 5px 16px 5px 16px;
+
 }
 
 /* needs to be larger than header or get white space!!!!! */
@@ -492,6 +496,9 @@ body {
 /*font color of modal title text*/
 .ripple-forms .modal-title {
     color: white;
+
+    /* nats - resetting the padding of title */
+    padding: 0;
 }
 
 /* close button of modal -- make it white and bigger */
@@ -500,6 +507,12 @@ body {
     opacity: 1;
     font-size: 30px;
     margin-top: 0;
+
+    /* nats - resetting the padding of x button */
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+
 }
 
 .ripple-forms .modal-footer .btn-secondary {
