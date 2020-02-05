@@ -1,5 +1,5 @@
         /* set the background color of title and roudned corners */
-        .ripple-forms .modal-header {
+        .modal-header {
             background-color: #91278e;
             -webkit-border-top-left-radius: 10px;
             -webkit-border-top-right-radius: 10px;
@@ -10,24 +10,24 @@
         }
 
         /* needs to be larger than header or get white space!!!!! */
-        .ripple-forms .modal-content {
+        .modal-content {
             border-radius: 15px 15px !important;
         }
 
         /*font color of modal title text*/
-        .ripple-forms .modal-title {
+        .modal-title {
             color: white;
         }
 
         /* close button of modal -- make it white and bigger */
-        .ripple-forms .modal-header .close {
+        .modal-header .close {
             color: #fff;
             opacity: 1;
             font-size: 30px;
             margin-top: 0;
         }
 
-        .ripple-forms .modal-footer .btn-secondary {
+        .modal-footer .btn-secondary {
             background-color: white;
             color: black;
             border: 1px solid black;
@@ -35,7 +35,7 @@
             font-weight: bold;
         }
 
-        .ripple-forms .modal-footer .btn-primary {
+        .modal-footer .btn-primary {
             background-color: #91278e;
             color: white;
             width: 120px;
@@ -43,16 +43,16 @@
         }
 
         /* datepicker stuff */
-        .ripple-forms label {
+        label {
             margin-left: 20px;
         }
 
-        .ripple-forms #datepicker {
+        #datepicker {
             width: 180px;
             margin: 0 20px 20px 20px;
         }
 
-        .ripple-forms #datepicker > span:hover {
+        #datepicker > span:hover {
             cursor: pointer;
         }
 
