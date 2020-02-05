@@ -28,6 +28,8 @@ function send_data() {
     })
 }
 
+let ur;
+
 function clear_hide_modals(){
     $("#text_input1").val("")
     $("#learn_text").val("")
@@ -35,7 +37,7 @@ function clear_hide_modals(){
     $("#other_text_input").val("")
     $("#other_text").val("")
 
-
+    ur = new user_response();
 
     $("input[type='radio']").prop('checked',false);
     $("input[type='checkbox']").prop('checked',false);
@@ -46,7 +48,7 @@ function clear_hide_modals(){
     $("#other_form").modal("hide");
 }
 
-let ur;
+
 
 
 // The code will only run if the webpage is loaded fully!!!
@@ -129,7 +131,7 @@ jQuery(function () {
     $("button[name='back_btn']").on("click",function(){
         warning_msg.css('visibility', 'hidden');
         what_ripple.css('visibility', 'hidden');
-        ur.message = undefined
+        // ur.message = undefined
         clear_hide_modals();
         //show first modal
         $("#first_form").modal();
