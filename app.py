@@ -137,6 +137,7 @@ def add_ripple():
                 other_desc = data_receive["_other_desc"]
 
             data = {
+                "source": data_receive["_source"],
                 "date": data_receive["_date"],
                 "action": data_receive["_action"],
                 "learning": data_receive["_learning"],
@@ -171,10 +172,14 @@ def get_all_ripples():
     for key in stream_keys.each():
         if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val():
             label = "r" + str(counter)
+            source = 'untagged'
+            if 'source' in key.val():
+                source = key.val()["source"]
             tldata = {
                 "ripple_id": key.key(),
                 "date": key.val()["date"],
                 "message": key.val()["message"],
+                "source": source,
             }
             ripples.update({label: tldata})
             counter += 1

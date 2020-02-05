@@ -38,6 +38,7 @@ function clear_hide_modals(){
     $("#other_text").val("")
 
     ur = new user_response();
+    ur.source = "user";
 
     $("input[type='radio']").prop('checked',false);
     $("input[type='checkbox']").prop('checked',false);
@@ -62,6 +63,7 @@ jQuery(function () {
         what_ripple.css('visibility', 'hidden');
         $("#first_form").modal();
         ur = new user_response();
+        ur.source = "user";
     });
 
     // $("#first_form").modal();

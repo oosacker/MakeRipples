@@ -3,11 +3,14 @@ jQuery(function () {
   alert("ripples didn't work")
 }
 else {
-  let message = "received:\n";
+  let message = "received user tagged:\n";
   let i=0;
   Object.keys(ripples).forEach(function (key) {
     keys[i] = key;
-    message = message + ripples[key].date +", " +ripples[key].message + "\n";
+    if(ripples[key].source == "user"){
+      message = message + ripples[key].date +", " +ripples[key].message + "\n";
+    }
+
     i++;
   })
 
