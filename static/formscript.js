@@ -28,33 +28,49 @@ function send_data() {
     })
 }
 
-
 let ur;
+
+function clear_hide_modals(){
+    $("#text_input1").val("")
+    $("#learn_text").val("")
+    $("#resonate_text").val("")
+    $("#other_text_input").val("")
+    $("#other_text").val("")
+
+    ur = new user_response();
+
+    $("input[type='radio']").prop('checked',false);
+    $("input[type='checkbox']").prop('checked',false);
+
+    $("#action_form").modal("hide");
+    $("#learn_form").modal("hide");
+    $("#resonate_form").modal("hide");
+    $("#other_form").modal("hide");
+}
+
+
 
 
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
-
-    // $("#activity_type_box").modal();
-    $(document).ready(function() {
+    let what_ripple = $("#what_ripple");
+    let warning_msg =  $('#warning');
+    $("#ripple_btn").on('click', function () {
+        // hide the warning
+        warning_msg.css('visibility', 'hidden');
+        // hide the 'what ripple' text input
+        what_ripple.css('visibility', 'hidden');
+        $("#first_form").modal();
         ur = new user_response();
-    })
+    });
 
-    $("#first_form").modal();
+    // $("#first_form").modal();
 
     let datepicker = $("#datepicker");
     datepicker.datepicker({
             autoclose: true,
             todayHighlight: true
         }).datepicker('update', new Date());
-
-    let warning_msg =  $('#warning');
-    // hide the warning
-    warning_msg.css('visibility', 'hidden');
-
-    let what_ripple = $("#what_ripple");
-     // hide the 'what ripple' text input
-    what_ripple.css('visibility', 'hidden');
 
     let resonate_check = $("#resonate");
     let learning_check = $("#learning");
@@ -113,19 +129,10 @@ jQuery(function () {
     })
 
     $("button[name='back_btn']").on("click",function(){
-        //clear text areas
-        $("#text_input1").val("")
-        $("#learn_text").val("")
-        $("#resonate_text").val("")
-        $("#other_text_input").val("")
-        ur.message = undefined
-        //clear radio buttons?
-        $("input[type='radio']").prop('checked',false);
-        //hide modals
-        $("#action_form").modal("hide");
-        $("#learn_form").modal("hide");
-        $("#resonate_form").modal("hide");
-        $("#other_form").modal("hide");
+        warning_msg.css('visibility', 'hidden');
+        what_ripple.css('visibility', 'hidden');
+        // ur.message = undefined
+        clear_hide_modals();
         //show first modal
         $("#first_form").modal();
     })
@@ -141,34 +148,37 @@ jQuery(function () {
         if(ur.message === undefined || ur.message === ""){
             ur.message = $("#other_text_input").val()
         }
-        // ur.message = $("textarea[name='text_input']").val()
-        // alert(ur.message)
-
-        if($("input[name='national_radio']:checked")){
-            ur.national = $("input[name='national_radio']:checked").val();
+        if(ur.message === undefined || ur.message === ""){
+            alert("Please enter a description")
         }
-        if($("input[name='community_radio']:checked")) {
-            ur.community = $("input[name='community_radio']:checked").val();
+
+        else {
+            if ($("input[name='national_radio']:checked")) {
+                ur.national = $("input[name='national_radio']:checked").val();
+            }
+            if ($("input[name='community_radio']:checked")) {
+                ur.community = $("input[name='community_radio']:checked").val();
+            }
+            if ($("input[name='perspective_radio']:checked")) {
+                ur.perspective = $("input[name='perspective_radio']:checked").val();
+            }
+            if ($("input[name='applied_radio']:checked")) {
+                ur.applied = $("input[name='applied_radio']:checked").val();
+            }
+            if ($("input[name='personal_radio']:checked")) {
+                ur.personal = $("input[name='personal_radio']:checked").val();
+            }
+            ur.userRating = calculate();
+
+            // alert(JSON.stringify(ur));
+
+            send_user();
+
+            clear_hide_modals();
+
+            fetch_data();
+
         }
-        if($("input[name='perspective_radio']:checked")){
-            ur.perspective = $("input[name='perspective_radio']:checked").val();
-        }
-        if($("input[name='applied_radio']:checked")) {
-            ur.applied = $("input[name='applied_radio']:checked").val();
-        }
-        if($("input[name='personal_radio']:checked")) {
-            ur.personal = $("input[name='personal_radio']:checked").val();
-        }
-        ur.userRating = calculate();
-
-        // alert(JSON.stringify(ur));
-
-        send_user();
-
-
-        fetch_data();
-
-
     })
 
 })
@@ -233,4 +243,3 @@ function fetch_data() {
             console.log('fetch');
         })
 }
-
