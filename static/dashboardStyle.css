@@ -497,7 +497,7 @@ body {
 .ripple-forms .modal-title {
     color: white;
 
-    /* nats - resetting the padding of title */
+    /* nats - resetting the padding of title - to make title bar smaller */
     padding: 0;
 }
 
