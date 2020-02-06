@@ -203,7 +203,8 @@ function printMousePos(event) {
     // "clientX: " + event.clientX +
     // " - clientY: " + event.clientY;
   // if(event.clientX < 1010) {
-    document.getElementsByClassName("modal-content")[0].style.left = (event.clientX - 30) + "px";
+    document.getElementsByClassName("modal-content")[0].style.left = (event.clientX + 40) + "px";
+    document.getElementsByClassName("modal-content")[0].style.top = (event.clientY - 120) + "px";
   // }
   // else if(event.clientX > 1010){
   //   document.getElementsByClassName("modal-content")[0].style.left = (event.clientX - 200) + "px";
