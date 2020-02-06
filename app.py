@@ -69,39 +69,45 @@ def fetch_data():
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
     ripples = get_all_ripples()
-    print(ripples)
+    # print(ripples)
     return render_template('user_dashboard.html', ripples=ripples)
 
-
-@app.route('/my_test', methods=['POST', 'GET'])
-def my_test():
-    if request.method == 'POST':
-        if request.is_json:
-            data_receive = json.loads(request.get_data())
-            print('Received JSON data_receive from web app')
-            print(data_receive)
-            return 'ok'
-        else:
-            print(request.form['myData'])
-            print('Did not receive JSON')
-            return 'fail'
+@app.route('/organiser_dashboard', methods=['POST', 'GET'])
+def organiser_dash():
+    ripples = get_all_ripples()
+    # print(ripples)
+    return render_template('organiser_dashboard.html', ripples=ripples)
 
 
-@app.route('/form', methods=['POST', 'GET'])
-def form():
-    if request.method == 'POST':
+# @app.route('/my_test', methods=['POST', 'GET'])
+# def my_test():
+#     if request.method == 'POST':
+#         if request.is_json:
+#             data_receive = json.loads(request.get_data())
+#             print('Received JSON data_receive from web app')
+#             print(data_receive)
+#             return 'ok'
+#         else:
+#             print(request.form['myData'])
+#             print('Did not receive JSON')
+#             return 'fail'
 
-        return render_template('form.html',
-                               text=request.form['text_input'],
-                               option_1=request.form['radio_set1'],
-                               option_2=request.form['radio_set2'])
 
-    else:
-        return render_template('form.html')
+# @app.route('/form', methods=['POST', 'GET'])
+# def form():
+#     if request.method == 'POST':
+#
+#         return render_template('form.html',
+#                                text=request.form['text_input'],
+#                                option_1=request.form['radio_set1'],
+#                                option_2=request.form['radio_set2'])
+#
+#     else:
+#         return render_template('form.html')
 
 
-@app.route('/form2', methods=['POST', 'GET'])
-def form2():
+# @app.route('/form2', methods=['POST', 'GET'])
+# def form2():
     # if request.method == 'POST':
     #
     #     return render_template('form2.html',
@@ -110,7 +116,19 @@ def form2():
     #                            option_2=request.form['radio_set2'])
     #
     # else:
-    return render_template('form2.html')
+    # return render_template('form2.html')
+
+def get_nlp_rating(message):
+    # TODO link to Sam's code here
+    return 0
+
+
+def flag_for_moderation(user_rating, nlp_rating):
+    if user_rating > 6 or user_rating < 2:
+        return 1
+    if abs(nlp_rating - user_rating) > 3:
+        return 1
+    return 0
 
 
 @app.route('/add_ripple', methods=['POST', 'GET'])
@@ -136,7 +154,14 @@ def add_ripple():
             if '_other_desc' in data_receive:
                 other_desc = data_receive["_other_desc"]
 
+            nlp = get_nlp_rating(data_receive["_message"])
+            if flag_for_moderation(data_receive["_userRating"], nlp) == 0:
+                flag = 'no'
+            else:
+                flag = 'yes'
+
             data = {
+                "source": data_receive["_source"],
                 "date": data_receive["_date"],
                 "action": data_receive["_action"],
                 "learning": data_receive["_learning"],
@@ -148,8 +173,9 @@ def add_ripple():
                 "rating": {
                     "userRating": data_receive["_userRating"],
                     "orgRating": data_receive["_orgRating"],
-                    "nlpRating": data_receive["_nlpRating"],
-                }
+                    "nlpRating": nlp,
+                },
+                "moderate": flag,
             }
             print(ripple_id, data)
             db.child("users").child("stream").child(ripple_id).set(data)
@@ -157,11 +183,14 @@ def add_ripple():
 
             print(db.child("users").child("stream").child(ripple_id).get().val())
 
-            return 'success'
+            print('rendering index')
+
+            return render_template('result.html')
+
         else:
-            print(request.form['myData'])
+            # print(request.form['myData'])
             print('Did not receive JSON')
-            return 'fail'
+            return render_template('result.html')
 
 
 def get_all_ripples():
@@ -169,12 +198,21 @@ def get_all_ripples():
     ripples = {}
     counter = 0
     for key in stream_keys.each():
-        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val():
+        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val() and 'moderate' in key.val():
             label = "r" + str(counter)
+            # source = 'untagged'
+            # moderate = 'untagged'
+            # if 'source' in key.val():
+            #     source = key.val()["source"]
+            # if 'moderate' in key.val():
+            #     moderate = key.val()["moderate"]
+            # date = str(key.val()["date"])[0:10]
             tldata = {
                 "ripple_id": key.key(),
                 "date": key.val()["date"],
                 "message": key.val()["message"],
+                "source": key.val()["source"],
+                "moderate": key.val()["moderate"],
             }
             ripples.update({label: tldata})
             counter += 1

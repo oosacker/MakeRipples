@@ -38,6 +38,7 @@ function clear_hide_modals(){
     $("#other_text").val("")
 
     ur = new user_response();
+    ur.source = "user";
 
     $("input[type='radio']").prop('checked',false);
     $("input[type='checkbox']").prop('checked',false);
@@ -62,6 +63,7 @@ jQuery(function () {
         what_ripple.css('visibility', 'hidden');
         $("#first_form").modal();
         ur = new user_response();
+        ur.source = "user";
     });
 
     // $("#first_form").modal();
@@ -176,7 +178,7 @@ jQuery(function () {
 
             clear_hide_modals();
 
-            fetch_data();
+            // fetch_data();
 
         }
     })
@@ -243,3 +245,18 @@ function fetch_data() {
             console.log('fetch');
         })
 }
+
+
+// document.getElementsByClassName("form-control").addEventListener('click', function(e) {
+//     // e = e || window.event;
+//     // var target = e.target || e.srcElement,
+//     //     text = target.textContent || target.innerText;
+//     console.log("Click");
+// });
+
+//
+// function checkClickDate(event) {
+//      console.log("Click");
+// }
+//
+// document.getElementById("datepicker").addEventListener("click", checkClickDate);
