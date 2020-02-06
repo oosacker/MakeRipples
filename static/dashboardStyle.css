@@ -548,6 +548,7 @@ body {
     position: absolute;
     margin-top: 11px;
     margin-left: -28px;
+    z-index: 99;
 }
 
 /**** edits by natsuki ****/
@@ -567,3 +568,35 @@ body {
 /*    height: auto;*/
 /*}*/
 
+
+
+@media only screen and (max-width: 832px) {
+    .head-top h1{
+        font-size: 33px;
+    }
+  .head-top button {
+    top: 42px;
+    right: 42px;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .head-top button {
+    top: 42px;
+    right: 58px;
+  }
+}
+
+
+@media only screen and (max-width: 376px) {
+  .head-top button {
+    top: 64px;
+    right: 42px;
+  }
+  .circle .popupSpan{
+    left: -50px;
+  }
+  .timeline{
+      margin-top: 25px;
+  }
+}

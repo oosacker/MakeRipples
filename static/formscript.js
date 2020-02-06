@@ -245,3 +245,18 @@ function fetch_data() {
             console.log('fetch');
         })
 }
+
+
+// document.getElementsByClassName("form-control").addEventListener('click', function(e) {
+//     // e = e || window.event;
+//     // var target = e.target || e.srcElement,
+//     //     text = target.textContent || target.innerText;
+//     console.log("Click");
+// });
+
+//
+// function checkClickDate(event) {
+//      console.log("Click");
+// }
+//
+// document.getElementById("datepicker").addEventListener("click", checkClickDate);
