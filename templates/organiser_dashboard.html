@@ -3,7 +3,7 @@
 {% block head %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
           type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboardStyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='organiserDashboardStyle.css') }}">
     <title>Stream Summary</title>
 {% endblock %}
 
@@ -11,9 +11,13 @@
 
     <div class="container-fluid">
         <div class="head-top">
-            <h1 class="text-center"><  Mountains to Sea  ></h1>
-            <button type="button" class="btn" aria-label="Add Ripple" id="ripple_btn">
+
+            <button type="button" class="btn btn-left" aria-label="Add Ripple" id="ripple_btn">
                 <i class="fa fa-plus"></i> Add Ripple
+            </button>
+            <h1 class="text-center"><  Mountains to Sea  ></h1>
+            <button type="button" class="btn btn-right" aria-label="Add Ripple" id="ripple_btn">
+                <i class="fa fa-plus"></i> Add Stream
             </button>
         </div>
 {#        <div class="row">#}
@@ -28,7 +32,7 @@
 {#        </div>#}
         <div class="row">
             <div class="timeline col-11">
-                <h4>Timeline</h4>
+{#                <h4>Timeline</h4>#}
                 <div class="timeline-bar">
 {#                    <div class="container">#}
 {#                        <ul class="progressbar">#}
@@ -75,19 +79,46 @@
 {#            </div>#}
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="left-section col-lg-8">
-               <div class="achievements row">
-                   <div class="title col-12">
-                       <h1>Achievements</h1>
-                   </div>
-                        <div class="card col-lg-4 col-md-4 col-sm-11">
-                            <div class="card-body">
-                                <p class="card-text">How I've made Ripples for changes</p>
-                            </div>
+            <div class="left-section col-lg-3">
+                <div class="organiserTimeline row">
+
+{#                    <div class="row">#}
+                        <div class="title">
+                            <h1>Timeline <span><i class="fas fa-chevron-left"></i></span></h1>
+                        </div>
+                        <div class="card col-lg-11 col-md-3 col-sm-3">
                             <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                            <div class="card-body">
+                                <strong class="card-text">Native Tree Planting</strong>
+                                <p class="card-text">Make a ripple 2 days ago</p>
+                            </div>
                         </div>
 
-                        <div class="card card-mid col-lg-4 col-md-4 col-sm-11">
+                        <div class="card col-lg-11 col-md-3 col-sm-3">
+                            <img src=" {{ url_for('static', filename='images/image2.jpg') }}" alt="image"/>
+                            <div class="card-body">
+                                <strong class="card-text">Climate crisis rally</strong>
+                                <p class="card-text">Make a ripple 7 days ago</p>
+                            </div>
+                        </div>
+
+                        <div class="card col-lg-11 col-md-3 col-sm-3">
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                            <div class="card-body">
+                                <strong class="card-text">Made a donation to LandSAR</strong>
+                                <p class="card-text">Make a ripple 16 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+
+            <div class="right-section col-lg-8">
+               <div class="organiserDashboard row">
+                   <div class="title col-12">
+                       <h1>Dashboard</h1>
+                   </div>
+
+                   <div class="card card-top-left col-lg-6 col-md-4 col-sm-11">
                             <div class="card-body">
                                 <p class="card-text">My Ripples and Activities</p>
                                 <div class="row content-top">
@@ -111,7 +142,31 @@
 
                         </div>
 
-                        <div class="card col-lg-4 col-md-4 col-sm-11">
+                        <div class="card col-lg-6 col-md-4 col-sm-11">
+                            <div class="card-body">
+                                <p class="card-text">My Ripples and Activities</p>
+                                <div class="row content-top">
+                                    <div class="col-6">
+                                        <p class="content-left">4</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>6</p>
+                                    </div>
+                                </div>
+                                <div class="row content-bottom">
+                                    <div class="col-6">
+                                        <p>Ripples</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Events</p>
+                                    </div>
+                                </div>
+                            </div>
+{#                            <img src=" {{ url_for('static', filename='images/image2.jpg') }}" alt="image"/>#}
+
+                        </div>
+
+                        <div class="card col-lg-6 col-md-4 col-sm-11">
                             <div class="card-body">
                                 <p class="card-text">Community Ripples and Activities</p>
                                 <div class="row content-top">
@@ -133,6 +188,13 @@
                             </div>
 {#                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>#}
 
+                        </div>
+
+                        <div class="card card-bottom-down col-lg-6 col-md-4 col-sm-11">
+                            <div class="card-body">
+                                <p class="card-text">How I've made Ripples for changes</p>
+                            </div>
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
                         </div>
 
                </div>
@@ -231,40 +293,7 @@
 
                 </div>
             </div>
-
-            <div class="right-section col-lg-3">
-                <div class="myRipples row">
-
-{#                    <div class="row">#}
-                        <div class="title">
-                            <h1>My Ripples</h1>
-                        </div>
-                        <div class="card col-lg-11 col-md-3 col-sm-3">
-                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
-                            <div class="card-body">
-                                <strong class="card-text">Native Tree Planting</strong>
-                                <p class="card-text">Make a ripple 2 days ago</p>
-                            </div>
-                        </div>
-
-                        <div class="card col-lg-11 col-md-3 col-sm-3">
-                            <img src=" {{ url_for('static', filename='images/image2.jpg') }}" alt="image"/>
-                            <div class="card-body">
-                                <strong class="card-text">Climate crisis rally</strong>
-                                <p class="card-text">Make a ripple 7 days ago</p>
-                            </div>
-                        </div>
-
-                        <div class="card col-lg-11 col-md-3 col-sm-3">
-                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
-                            <div class="card-body">
-                                <strong class="card-text">Made a donation to LandSAR</strong>
-                                <p class="card-text">Make a ripple 16 days ago</p>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-            </div>
+           </div>
         </div>
     </div>
 
@@ -625,9 +654,9 @@
 
 {#    FORM MODALS COPIED IN ABOVE THIS LINE      #}
 {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>#}
-    <script>
-        let ripples = JSON.parse('{{ ripples | tojson | safe }}');
-    </script>
+{#    <script>#}
+{#        let ripples = JSON.parse('{{ ripples | tojson | safe }}');#}
+{#    </script>#}
     <script src={{ url_for('static', filename='rippleobject.js') }}></script>
     <script src={{ url_for('static', filename='timeline.js') }}></script>
     <script src={{ url_for('static', filename='formscript.js') }}></script>
