@@ -30,54 +30,38 @@
 {#                </button>#}
 {#            </div>#}
 {#        </div>#}
-        <div class="row">
-            <div class="timeline col-11">
-{#                <h4>Timeline</h4>#}
-                <div class="timeline-bar">
-{#                    <div class="container">#}
-{#                        <ul class="progressbar">#}
-{#                            <li class="active">Step 1</li>#}
-{#                            <li>Step 2</li>#}
-{#                            <li>Step 3</li>#}
-{#                        </ul>#}
-{#                     </div>#}
-                        <div id="lineCont">
-                            <div id="line"></div>
-                            <div id="span">Date Placeholder</div>
-                        </div>
-                        <div class="timeline-content">
-                            <div id="myModal" class="modal">
-                                <div class="modal-content">
-                                    <div class="modal-title">
-                                        <p>Ripple Details</p>
-                                    </div>
+
+
+{#        <div class="row">#}
+{#            <div class="timeline col-11">#}
+{#                <div class="timeline-bar">#}
+{#                        <div id="lineCont">#}
+{#                            <div id="line"></div>#}
+{#                            <div id="span">Date Placeholder</div>#}
+{#                        </div>#}
+{#                        <div class="timeline-content">#}
+{#                            <div id="myModal" class="modal">#}
+{#                                <div class="modal-content">#}
+{#                                    <div class="modal-title">#}
+{#                                        <p>Ripple Details</p>#}
+{#                                    </div>#}
     {#                                <span class="close">&times;</span>#}
-                                    <div class="content-wrap modal-body">
-                                        <p class="selected-date">June 12, 2015</p>
-                                        <p class="selected-content">Lorem ipsum dolor sit amet, consectetur.</p>
-                                    </div>
+{#                                    <div class="content-wrap modal-body">#}
+{#                                        <p class="selected-date">June 12, 2015</p>#}
+{#                                        <p class="selected-content">Lorem ipsum dolor sit amet, consectetur.</p>#}
+{#                                    </div>#}
     {#                                <p id="mainCont"></p>#}
-                                    <div class="modal-footer">
-                                        <a href="#" class="mr-auto">View more details</a>
-                                        <button type="button" class="btn close-btn">Okay</button>
-                                    </div>
+{#                                    <div class="modal-footer">#}
+{#                                        <a href="#" class="mr-auto">View more details</a>#}
+{#                                        <button type="button" class="btn close-btn">Okay</button>#}
+{#                                    </div>#}
     {#                                <a href="#" class="close close-btn">Okay</a>#}
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-{#            <div class="col-1">#}
-{#                <div class="row">#}
-{#                    <h3>Add Ripple</h3>#}
-{#                </div>#}
-{#                <div class="row">#}
-{#                    <button type="button" class="btn btn-primary btn-circle btn-xl" aria-label="Add Ripple">#}
-{#                        <i class="fa fa-plus"></i>#}
-{#                    </button>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
 {#                </div>#}
 {#            </div>#}
-        </div>
+{#        </div>#}
         <div class="row d-flex justify-content-center">
             <div class="left-section col-lg-3">
                 <div class="organiserTimeline row">
@@ -86,29 +70,61 @@
                         <div class="title">
                             <h1>Timeline <span><i class="fas fa-chevron-left"></i></span></h1>
                         </div>
-                        <div class="card col-lg-11 col-md-3 col-sm-3">
-                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
-                            <div class="card-body">
-                                <strong class="card-text">Native Tree Planting</strong>
-                                <p class="card-text">Make a ripple 2 days ago</p>
+                        <div class="row">
+                            <div class="timeline col-11">
+                                <div class="timeline-bar">
+                                        <div id="lineCont">
+                                            <div id="line"></div>
+                                            <div id="span">Date Placeholder</div>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <div id="myModal" class="modal">
+                                                <div class="modal-content">
+                                                    <div class="modal-title">
+                                                        <p>Ripple Details</p>
+                                                    </div>
+                                                    <span class="close">&times;</span>
+                                                    <div class="content-wrap modal-body">
+                                                        <p class="selected-date">June 12, 2015</p>
+                                                        <p class="selected-content">Lorem ipsum dolor sit amet, consectetur.</p>
+                                                    </div>
+                                                    <p id="mainCont"></p>
+                                                    <div class="modal-footer">
+                                                        <a href="#" class="mr-auto">View more details</a>
+                                                        <button type="button" class="btn close-btn">Okay</button>
+                                                    </div>
+                                                    <a href="#" class="close close-btn">Okay</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="card col-lg-11 col-md-3 col-sm-3">
-                            <img src=" {{ url_for('static', filename='images/image2.jpg') }}" alt="image"/>
-                            <div class="card-body">
-                                <strong class="card-text">Climate crisis rally</strong>
-                                <p class="card-text">Make a ripple 7 days ago</p>
-                            </div>
-                        </div>
 
-                        <div class="card col-lg-11 col-md-3 col-sm-3">
-                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
-                            <div class="card-body">
-                                <strong class="card-text">Made a donation to LandSAR</strong>
-                                <p class="card-text">Make a ripple 16 days ago</p>
-                            </div>
-                        </div>
+{#                        <div class="card col-lg-11 col-md-3 col-sm-3">#}
+{#                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>#}
+{#                            <div class="card-body">#}
+{#                                <strong class="card-text">Native Tree Planting</strong>#}
+{#                                <p class="card-text">Make a ripple 2 days ago</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="card col-lg-11 col-md-3 col-sm-3">#}
+{#                            <img src=" {{ url_for('static', filename='images/image2.jpg') }}" alt="image"/>#}
+{#                            <div class="card-body">#}
+{#                                <strong class="card-text">Climate crisis rally</strong>#}
+{#                                <p class="card-text">Make a ripple 7 days ago</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="card col-lg-11 col-md-3 col-sm-3">#}
+{#                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>#}
+{#                            <div class="card-body">#}
+{#                                <strong class="card-text">Made a donation to LandSAR</strong>#}
+{#                                <p class="card-text">Make a ripple 16 days ago</p>#}
+{#                            </div>#}
+{#                        </div>#}
                     </div>
                </div>
 
@@ -117,24 +133,30 @@
                    <div class="title col-12">
                        <h1>Dashboard</h1>
                    </div>
-
-                   <div class="card card-top-left col-lg-6 col-md-4 col-sm-11">
+                   <div class="organiserDashboard-wrap col-12 row">
+                       <div class="card card-top-left col-lg-6 col-md-4 col-sm-11">
                             <div class="card-body">
-                                <p class="card-text">My Ripples and Activities</p>
+                                <p class="card-text">Social Impact Categorisation</p>
                                 <div class="row content-top">
-                                    <div class="col-6">
-                                        <p class="content-left">4</p>
+                                    <div class="col-4">
+                                        <p>1</p>
                                     </div>
-                                    <div class="col-6">
-                                        <p>6</p>
+                                    <div class="col-4">
+                                        <p class="content-mid">5</p>
+                                    </div>
+                                     <div class="col-4">
+                                        <p>25</p>
                                     </div>
                                 </div>
                                 <div class="row content-bottom">
-                                    <div class="col-6">
-                                        <p>Ripples</p>
+                                    <div class="col-4">
+                                        <p>National</p>
                                     </div>
-                                    <div class="col-6">
-                                        <p>Events</p>
+                                    <div class="col-4">
+                                        <p>Community</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p>Personal</p>
                                     </div>
                                 </div>
                             </div>
@@ -144,21 +166,21 @@
 
                         <div class="card col-lg-6 col-md-4 col-sm-11">
                             <div class="card-body">
-                                <p class="card-text">My Ripples and Activities</p>
+                                <p class="card-text">Check-in Moderation</p>
                                 <div class="row content-top">
                                     <div class="col-6">
-                                        <p class="content-left">4</p>
+                                        <p class="content-left">31</p>
                                     </div>
                                     <div class="col-6">
-                                        <p>6</p>
+                                        <p>9 <span><i class="fas fa-exclamation"></i></span></p>
                                     </div>
                                 </div>
                                 <div class="row content-bottom">
                                     <div class="col-6">
-                                        <p>Ripples</p>
+                                        <p>Resolved</p>
                                     </div>
                                     <div class="col-6">
-                                        <p>Events</p>
+                                        <p>Pending</p>
                                     </div>
                                 </div>
                             </div>
@@ -166,15 +188,15 @@
 
                         </div>
 
-                        <div class="card col-lg-6 col-md-4 col-sm-11">
+                        <div class="card card-bottom-left col-lg-6 col-md-4 col-sm-11">
                             <div class="card-body">
-                                <p class="card-text">Community Ripples and Activities</p>
+                                <p class="card-text">Ripples and Activities</p>
                                 <div class="row content-top">
                                     <div class="col-6">
-                                        <p class="content-left">95</p>
+                                        <p class="content-left">6</p>
                                     </div>
                                     <div class="col-6">
-                                        <p>20</p>
+                                        <p>34</p>
                                     </div>
                                 </div>
                                 <div class="row content-bottom">
@@ -182,7 +204,7 @@
                                         <p>Ripples</p>
                                     </div>
                                     <div class="col-6">
-                                        <p>Events</p>
+                                        <p>Activities</p>
                                     </div>
                                 </div>
                             </div>
@@ -190,12 +212,14 @@
 
                         </div>
 
-                        <div class="card card-bottom-down col-lg-6 col-md-4 col-sm-11">
+                        <div class="card card-bottom-right col-lg-6 col-md-4 col-sm-11">
                             <div class="card-body">
-                                <p class="card-text">How I've made Ripples for changes</p>
+                                <p class="card-text">Activity Contribution Trend</p>
                             </div>
                             <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
                         </div>
+                   </div>
+
 
                </div>
                 <div class="community-ripples">
@@ -658,7 +682,7 @@
 {#        let ripples = JSON.parse('{{ ripples | tojson | safe }}');#}
 {#    </script>#}
     <script src={{ url_for('static', filename='rippleobject.js') }}></script>
-    <script src={{ url_for('static', filename='timeline.js') }}></script>
+    <script src={{ url_for('static', filename='vertical-timeline.js') }}></script>
     <script src={{ url_for('static', filename='formscript.js') }}></script>
     <script src={{ url_for('static', filename='myscript.js') }}></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
