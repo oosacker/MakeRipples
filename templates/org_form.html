@@ -1,0 +1,199 @@
+{% extends 'template.html' %}
+
+{% block head %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboardStyle.css') }}">
+    <title>Stream Summary</title>
+{% endblock %}
+
+{% block body %}
+
+    <div class="ripple-forms">
+        <div class="modal fade" tabindex="-1" role="dialog" id="first_form">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title my-auto">Create a New Ripple</h4>
+                        <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+
+                    <div class="modal-body">
+
+{#                        <div class="row">#}
+
+{#                            <div class="col-lg-auto">#}
+                               <p><strong>Select a ripple date:</strong></p>
+                                <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+                                    <input class="form-control" type="text"/>
+                                    <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+                                </div>
+{#                            </div>#}
+
+{#                        </div>#}
+
+{#                        <div class="row">#}
+                            <p><strong>Ripple description</strong></p>
+                            <textarea class="form-control" id="text_input1" name="text_input" rows="3"
+                                      required></textarea>
+{#                        </div>#}
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <p class="mr-auto">Page 1 of 2</p>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="next_btn">Next</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .ripple-forms .modal-header {
+            background-color: #91278e;
+            -webkit-border-top-left-radius: 10px;
+            -webkit-border-top-right-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -moz-border-radius-topright: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+            /* nats - setting the modal title bar smaller */
+            padding: 5px 16px 5px 16px;
+
+        }
+
+        /* needs to be larger than header or get white space!!!!! */
+        .ripple-forms .modal-content {
+            border-radius: 15px 15px !important;
+        }
+
+        /*font color of modal title text*/
+        .ripple-forms .modal-title {
+            color: white;
+
+            /* nats - resetting the padding of title - to make title bar smaller */
+            padding: 0;
+        }
+
+        /* close button of modal -- make it white and bigger */
+        .ripple-forms .modal-header .close {
+            color: #fff;
+            opacity: 1;
+            font-size: 30px;
+            margin-top: 0;
+
+            /* nats - resetting the padding of x button */
+            padding-top: 0;
+            padding-bottom: 0;
+            vertical-align: middle;
+
+        }
+
+        .ripple-forms .modal-footer .btn-secondary {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            width: 120px;
+            font-weight: bold;
+        }
+
+        .ripple-forms .modal-footer .btn-primary {
+            background-color: #91278e;
+            color: white;
+            width: 120px;
+            font-weight: bold;
+        }
+
+        /* datepicker stuff */
+        .ripple-forms #datepicker {
+            width: 180px;
+            margin-left: 0px;
+        }
+
+        .ripple-forms #datepicker > span:hover {
+            cursor: pointer;
+        }
+
+        .fa-calendar-alt {
+            position: absolute;
+            margin-top: 11px;
+            margin-left: -28px;
+            z-index: 99;
+        }
+
+        /**** edits by natsuki ****/
+        /* label is too close to radio buttons */
+        .ripple-forms input[type="radio"] {
+            margin-left: 10px;
+        }
+
+        /* otherwise will not line up vertically with the checkbox + horizontally with calendar */
+        .ripple-forms #what_ripple {
+            margin-bottom: 0px;
+            padding: 0 20px;
+        }
+
+        @media only screen and (max-width: 832px) {
+            .head-top h1 {
+                font-size: 33px;
+            }
+
+            .head-top button {
+                top: 42px;
+                right: 42px;
+            }
+        }
+
+        ​
+
+        @media only screen and (max-width: 769px) {
+            .head-top button {
+                top: 42px;
+                right: 58px;
+            }
+        }
+
+        ​
+        ​
+
+        @media only screen and (max-width: 376px) {
+            .head-top button {
+                top: 64px;
+                right: 42px;
+            }
+
+            .circle .popupSpan {
+                left: -50px;
+            }
+
+            .timeline {
+                margin-top: 25px;
+            }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <script>
+        let datepicker = $("#datepicker");
+        datepicker.datepicker({
+            autoclose: true,
+            todayHighlight: true
+        }).datepicker('update', new Date());
+
+        jQuery(function () {
+            $('#first_form').modal();
+        })
+    </script>
+
+
+
+{% endblock %}

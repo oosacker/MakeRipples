@@ -559,14 +559,13 @@ body {
   margin-left: 10px;
 }
 
-/* otherwise will not line up vertically with the checkbox */
+/* otherwise will not line up vertically with the checkbox + horizontally with calendar */
 .ripple-forms #what_ripple{
     margin-bottom: 0px;
+    /*padding: 0 20px;*/
+    margin-right: 20px; /* same as datepicker's margin (See above) */
 }
 
-.what-ripple-class{
-    padding-right: 0;
-}
 
 /* for the icons */
 /* warning -- will enlarge when in mobile mode!!!!! */
