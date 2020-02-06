@@ -14,6 +14,7 @@ function getRippleDetails() {
           ripple.message = ripples[key].message;
           ripple.date = new Date(ripples[key].date);
           ripple.id = ripples[key].ripple_id;
+          ripple.moderationflag = ripples[key].moderate
           ripple_objs.push(ripple);
           // message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
           // i++;
@@ -22,7 +23,27 @@ function getRippleDetails() {
       // alert(message + " saved " + ripple_objs.length + " objects");
   }
 }
-getRippleDetails();
+
+
+function getModerationCount() {
+    getRippleDetails();
+    let count_yes = 0;
+    let count_no = 0;
+
+    for(let i = 0; i < ripple_objs.length; i ++){
+        if(ripple_objs[i].moderationflag == 'yes'){
+            count_yes++
+        }
+        if(ripple_objs[i].moderationflag == 'no'){
+            count_no++
+        }
+    }
+    alert("Moderate: " + count_yes +"\nDon't Moderate: " + count_no + "\n Total: " + ripple_objs.length);
+
+}
+
+getModerationCount();
+
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
 //For the purpose of stringifying MM/DD/YYYY date format

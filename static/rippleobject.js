@@ -1,4 +1,11 @@
 class user_response{
+    get moderationflag() {
+        return this._moderationflag;
+    }
+
+    set moderationflag(value) {
+        this._moderationflag = value;
+    }
     _id;
     get id() {
         return this._id;
@@ -24,6 +31,7 @@ class user_response{
     _resonate;
     _other;
     _source;
+    _moderationflag;
     get source() {
         return this._source;
     }
