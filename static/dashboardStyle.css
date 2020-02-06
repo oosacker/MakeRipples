@@ -556,6 +556,10 @@ body {
   margin-left: 10px;
 }
 
+/* otherwise will not line up vertically with the checkbox */
+.ripple-forms #what_ripple{
+    margin-bottom: 0px;
+}
 /* for the icons */
 /* warning -- will enlarge when in mobile mode!!!!! */
 /*.ripple-forms .form-icon {*/
