@@ -503,6 +503,13 @@ body{
             cursor: pointer;
         }
 
+.fa-calendar-alt {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: -28px;
+    z-index: 99;
+}
+
 @media only screen and (max-width: 832px) {
     .head-top h1{
         font-size: 33px;
