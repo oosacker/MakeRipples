@@ -1,7 +1,8 @@
 {% extends 'template.html' %}
 
 {% block head %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
+          type="text/css"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboardStyle.css') }}">
     <title>Stream Summary</title>
 {% endblock %}
@@ -23,23 +24,35 @@
 
                     <div class="modal-body">
 
-{#                        <div class="row">#}
+                        <div class="form-group" id="my_date">
+                            <p><strong>Select a ripple date:</strong></p>
+                            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+                                <input class="form-control" type="text"/>
+                                <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+                            </div>
+                        </div>
 
-{#                            <div class="col-lg-auto">#}
-                               <p><strong>Select a ripple date:</strong></p>
-                                <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-                                    <input class="form-control" type="text"/>
-                                    <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
-                                </div>
-{#                            </div>#}
-
-{#                        </div>#}
-
-{#                        <div class="row">#}
+                        <div class="form-group" id="my_desc">
                             <p><strong>Ripple description</strong></p>
-                            <textarea class="form-control" id="text_input1" name="text_input" rows="3"
-                                      required></textarea>
-{#                        </div>#}
+                            <textarea class="form-control" id="text_input1" name="text_input" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group" id="my_impact">
+                            <p><strong>Select social impact level</strong></p>
+                            <select id="impact_score" name="impact_score" class="form-control">
+                                <option>9</option>
+                                <option>8</option>
+                                <option>7</option>
+                                <option>6</option>
+                                <option>5</option>
+                                <option>4</option>
+                                <option>3</option>
+                                <option>2</option>
+                                <option>1</option>
+                                <option>0</option>
+                            </select>
+                        </div>
+
 
 
                     </div>
@@ -119,6 +132,10 @@
             margin-left: 0px;
         }
 
+        .ripple-forms #impact_score{
+            width: 180px;
+        }
+
         .ripple-forms #datepicker > span:hover {
             cursor: pointer;
         }
@@ -130,17 +147,6 @@
             z-index: 99;
         }
 
-        /**** edits by natsuki ****/
-        /* label is too close to radio buttons */
-        .ripple-forms input[type="radio"] {
-            margin-left: 10px;
-        }
-
-        /* otherwise will not line up vertically with the checkbox + horizontally with calendar */
-        .ripple-forms #what_ripple {
-            margin-bottom: 0px;
-            padding: 0 20px;
-        }
 
         @media only screen and (max-width: 832px) {
             .head-top h1 {
@@ -153,17 +159,12 @@
             }
         }
 
-        ​
-
         @media only screen and (max-width: 769px) {
             .head-top button {
                 top: 42px;
                 right: 58px;
             }
         }
-
-        ​
-        ​
 
         @media only screen and (max-width: 376px) {
             .head-top button {
