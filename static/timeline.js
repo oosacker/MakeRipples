@@ -161,6 +161,7 @@ function makeCircles() {
     $(".circle:first").addClass("active");
 }
 
+//Changed circles to pull dates from db
 function makeRippleCircles() {
     //Forget the timeline if there's only one date. Who needs it!?
     getRippleDetails();
@@ -172,75 +173,88 @@ function makeRippleCircles() {
         //This is what you really want.
     } else {
         //Set day, month and year variables for the math
-        let first = ripple_objs[ripple_objs.length -1].date;
+        let first = ripple_objs[0].date;
         let last = ripple_objs[0].date;
+        let firstInt = 0;
+        let lastInt = 0;
+
+        for(let r = 0; r < ripple_objs.length; r++){
+            if(ripple_objs[r].date<first){
+                first = ripple_objs[r].date;
+                firstInt = r;
+            }
+            if(ripple_objs[r].date>last){
+                last = ripple_objs[r].date;
+                lastInt = r;
+            }
+        }
 
         //Integer representation of the last day. The first day is represnted as 0
         const oneDay = 24 * 60 * 60 * 1000;
-        let lastInt = Math.round(Math.abs((last - first) / oneDay));
+        let lenghtInt = Math.round(Math.abs((last - first) / oneDay));
 
         //Draw first date circle
         $("#line").append(
             '<div class="circle" id="circle0" style="left: ' +
             0 +
             '%;"><div class="popupSpan">' +
-            rippleDateSpan(ripple_objs[0].date) +
+            rippleDateSpan(ripple_objs[firstInt].date) +
             "</div></div>"
         );
 
         $("#mainCont").append(
-            '<span id="span0" class="center">' + rippleDateSpan(ripple_objs[0].date) + "</span>"
+            '<span id="span' + firstInt +'" class="center">' + rippleDateSpan(ripple_objs[firstInt].date) + "</span>"
         );
 
         //Loop through middle dates
-        for (i = 1; i < ripple_objs.length - 1; i++) {
+        for (i = 1; i < ripple_objs.length; i++) {
+            if (i != lastInt && i != firstInt) {
+                //Integer representation of the date
+                let thisInt = Math.round(Math.abs((ripple_objs[i].date - first) / oneDay));
 
-            //Integer representation of the date
-            let thisInt = Math.round(Math.abs((ripple_objs[i].date - first) / oneDay));
+                //Integer relative to the first and last dates
+                let relativeInt = thisInt / lenghtInt;
 
-            //Integer relative to the first and last dates
-            let relativeInt = thisInt / lastInt;
+                //Draw the date circle
+                $("#line").append(
+                    '<div class="circle" id="circle' +
+                    i +
+                    '" style="left: ' +
+                    relativeInt * 100 +
+                    '%;"><div class="popupSpan">' +
+                    rippleDateSpan(ripple_objs[i].date) +
+                    "</div></div>"
 
-            //Draw the date circle
-            $("#line").append(
-                '<div class="circle" id="circle' +
-                i +
-                '" style="left: ' +
-                relativeInt * 100 +
-                '%;"><div class="popupSpan">' +
-                rippleDateSpan(ripple_objs[i].date) +
-                "</div></div>"
+                    //   '<div class="word" id="word' +
+                    // i +
+                    // '" style="left: ' +
+                    // relativeInt * 100 +
+                    // '%;">' +
+                    // "</div>"
+                );
 
-                //   '<div class="word" id="word' +
-                // i +
-                // '" style="left: ' +
-                // relativeInt * 100 +
-                // '%;">' +
-                // "</div>"
-            );
-
-            $("#mainCont").append(
-                '<span id="span' +
-                i +
-                '" class="right">' +
-                rippleDateSpan(ripple_objs[i].date) +
-                "</span>"
-            );
+                $("#mainCont").append(
+                    '<span id="span' +
+                    i +
+                    '" class="right">' +
+                    rippleDateSpan(ripple_objs[i].date) +
+                    "</span>"
+                );
+            }
         }
-
         //Draw the last date circle
         $("#line").append(
             '<div class="circle" id="circle' +
-            i +
+            lastInt +
             '" style="left: ' +
             99 +
             '%;"><div class="popupSpan">' +
-            rippleDateSpan(ripple_objs[ripple_objs.length -1].date) +
+            rippleDateSpan(ripple_objs[lastInt].date) +
             "</div></div>"
         );
 
         $("#mainCont").append(
-            '<span id="span' + i + '" class="right">' + rippleDateSpan(ripple_objs[i].date) + "</span>"
+            '<span id="span' + i + '" class="right">' + rippleDateSpan(ripple_objs[lastInt].date) + "</span>"
         );
     }
 
@@ -261,6 +275,7 @@ $(".circle").mouseleave(function () {
 $(".circle").click(function () {
     var spanNum = $(this).attr("id");
     selectDate(spanNum);
+    alert(spanNum);
 
     // console.log(document.getElementById(spanNum).style.left);
     // var locate = document.getElementById(spanNum).style.left;
