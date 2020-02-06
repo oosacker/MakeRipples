@@ -1,4 +1,13 @@
 class user_response{
+    _id;
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
+    }
+
     _message;
     _other_desc;
     _date;

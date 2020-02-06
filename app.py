@@ -69,7 +69,7 @@ def fetch_data():
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
     ripples = get_all_ripples()
-    print(ripples)
+    # print(ripples)
     return render_template('user_dashboard.html', ripples=ripples)
 
 
@@ -112,6 +112,18 @@ def user_dash():
     # else:
     # return render_template('form2.html')
 
+def get_nlp_rating(message):
+    # TODO link to Sam's code here
+    return 0
+
+
+def flag_for_moderation(user_rating, nlp_rating):
+    if user_rating > 6 or user_rating < 2:
+        return 1
+    if abs(nlp_rating - user_rating) > 3:
+        return 1
+    return 0
+
 
 @app.route('/add_ripple', methods=['POST', 'GET'])
 def add_ripple():
@@ -136,6 +148,12 @@ def add_ripple():
             if '_other_desc' in data_receive:
                 other_desc = data_receive["_other_desc"]
 
+            nlp = get_nlp_rating(data_receive["_message"])
+            if flag_for_moderation(data_receive["_userRating"], nlp) == 0:
+                flag = 'no'
+            else:
+                flag = 'yes'
+
             data = {
                 "source": data_receive["_source"],
                 "date": data_receive["_date"],
@@ -149,8 +167,9 @@ def add_ripple():
                 "rating": {
                     "userRating": data_receive["_userRating"],
                     "orgRating": data_receive["_orgRating"],
-                    "nlpRating": data_receive["_nlpRating"],
-                }
+                    "nlpRating": nlp,
+                },
+                "moderate": flag,
             }
             print(ripple_id, data)
             db.child("users").child("stream").child(ripple_id).set(data)
@@ -173,16 +192,21 @@ def get_all_ripples():
     ripples = {}
     counter = 0
     for key in stream_keys.each():
-        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val():
+        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val() and 'moderate' in key.val():
             label = "r" + str(counter)
-            source = 'untagged'
-            if 'source' in key.val():
-                source = key.val()["source"]
+            # source = 'untagged'
+            # moderate = 'untagged'
+            # if 'source' in key.val():
+            #     source = key.val()["source"]
+            # if 'moderate' in key.val():
+            #     moderate = key.val()["moderate"]
+            # date = str(key.val()["date"])[0:10]
             tldata = {
                 "ripple_id": key.key(),
                 "date": key.val()["date"],
                 "message": key.val()["message"],
-                "source": source,
+                "source": key.val()["source"],
+                "moderate": key.val()["moderate"],
             }
             ripples.update({label: tldata})
             counter += 1

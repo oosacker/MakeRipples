@@ -1,28 +1,31 @@
+// array of the keys to use to get the ripple data from the database
+let ripple_objs = new Array();
 
-jQuery(function () {
-  // array of the keys to use to get the ripple data from the database
-  let keys = new Array();
-  if (ripples == undefined){
+function getRippleDetails() {
+ if (ripples == undefined){
     alert("ripples didn't work")
   }
   else {
-    let message = "received source tagged:\n";
-    let i=0;
-    Object.keys(ripples).forEach(function (key) {
-      // keeps only those tagged as user or org (will filter out any created before added that feature)
-      if(ripples[key].source == "user" || ripples[key].source == "org" ){
-        keys.push(key);
-        message = message + ripples[key].date +", " +ripples[key].message + "\n";
-      }
-      i++;
-    })
+      let message = "received source and mod tagged:\n";
+      let i = 0;
+      Object.keys(ripples).forEach(function (key) {
+          ripple = new user_response();
+          ripple.source = ripples[key].source;
+          ripple.message = ripples[key].message;
+          ripple.date = new Date(ripples[key].date);
+          ripple.id = ripples[key].ripple_id;
+          ripple_objs.push(ripple);
+          message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
+          i++;
+      })
 
-  alert(keys.length);
+      alert(message + " saved " + ripple_objs.length + " objects");
+  }
 }
 
-})
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
+
 //For the purpose of stringifying MM/DD/YYYY date format
 var monthSpan = [
     "January",
@@ -48,6 +51,18 @@ function dateSpan(date) {
         day = day.charAt(1);
     }
     var year = date.split("/")[2];
+
+    //Spit it out!
+    return month + " " + day + ", " + year;
+}
+
+//Format YYYY-MM-DD into string
+function rippleDateSpan(date) {
+    let month = date.getMonth();
+    month = monthSpan[month];
+    let day = date.getDate();
+
+    let year = date.getFullYear();
 
     //Spit it out!
     return month + " " + day + ", " + year;
@@ -146,7 +161,94 @@ function makeCircles() {
     $(".circle:first").addClass("active");
 }
 
-makeCircles();
+function makeRippleCircles() {
+    //Forget the timeline if there's only one date. Who needs it!?
+    getRippleDetails();
+    if (ripple_objs.length < 2) {
+        $("#line").hide();
+        $("#span")
+            .show()
+            .text(rippleDateSpan(ripple_objs[0].date));
+        //This is what you really want.
+    } else {
+        //Set day, month and year variables for the math
+        let first = ripple_objs[ripple_objs.length -1].date;
+        let last = ripple_objs[0].date;
+
+        //Integer representation of the last day. The first day is represnted as 0
+        const oneDay = 24 * 60 * 60 * 1000;
+        let lastInt = Math.round(Math.abs((last - first) / oneDay));
+
+        //Draw first date circle
+        $("#line").append(
+            '<div class="circle" id="circle0" style="left: ' +
+            0 +
+            '%;"><div class="popupSpan">' +
+            rippleDateSpan(ripple_objs[0].date) +
+            "</div></div>"
+        );
+
+        $("#mainCont").append(
+            '<span id="span0" class="center">' + rippleDateSpan(ripple_objs[0].date) + "</span>"
+        );
+
+        //Loop through middle dates
+        for (i = 1; i < ripple_objs.length - 1; i++) {
+
+            //Integer representation of the date
+            let thisInt = Math.round(Math.abs((ripple_objs[i].date - first) / oneDay));
+
+            //Integer relative to the first and last dates
+            let relativeInt = thisInt / lastInt;
+
+            //Draw the date circle
+            $("#line").append(
+                '<div class="circle" id="circle' +
+                i +
+                '" style="left: ' +
+                relativeInt * 100 +
+                '%;"><div class="popupSpan">' +
+                rippleDateSpan(ripple_objs[i].date) +
+                "</div></div>"
+
+                //   '<div class="word" id="word' +
+                // i +
+                // '" style="left: ' +
+                // relativeInt * 100 +
+                // '%;">' +
+                // "</div>"
+            );
+
+            $("#mainCont").append(
+                '<span id="span' +
+                i +
+                '" class="right">' +
+                rippleDateSpan(ripple_objs[i].date) +
+                "</span>"
+            );
+        }
+
+        //Draw the last date circle
+        $("#line").append(
+            '<div class="circle" id="circle' +
+            i +
+            '" style="left: ' +
+            99 +
+            '%;"><div class="popupSpan">' +
+            rippleDateSpan(ripple_objs[ripple_objs.length -1].date) +
+            "</div></div>"
+        );
+
+        $("#mainCont").append(
+            '<span id="span' + i + '" class="right">' + rippleDateSpan(ripple_objs[i].date) + "</span>"
+        );
+    }
+
+    $(".circle:first").addClass("active");
+}
+
+// makeCircles();
+makeRippleCircles();
 
 $(".circle").mouseenter(function () {
     $(this).addClass("hover");
@@ -302,9 +404,9 @@ window.onclick = function (event) {
 //   console.log("Click modal!!")
 // }
 
-console.log();
 
 
+console.log()
 
 
 
