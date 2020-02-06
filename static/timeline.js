@@ -191,7 +191,7 @@ function makeRippleCircles() {
 
         //Integer representation of the last day. The first day is represnted as 0
         const oneDay = 24 * 60 * 60 * 1000;
-        let lenghtInt = Math.round(Math.abs((last - first) / oneDay));
+        let lengthInt = Math.round(Math.abs((last - first) / oneDay));
 
         //Draw first date circle
         $("#line").append(
@@ -213,7 +213,7 @@ function makeRippleCircles() {
                 let thisInt = Math.round(Math.abs((ripple_objs[i].date - first) / oneDay));
 
                 //Integer relative to the first and last dates
-                let relativeInt = thisInt / lenghtInt;
+                let relativeInt = thisInt / lengthInt;
 
                 //Draw the date circle
                 $("#line").append(
