@@ -18,6 +18,8 @@ body {
     -webkit-box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
+    background-color: #92278f;
+    color: #fff;
 }
 
 .timeline {
@@ -497,7 +499,7 @@ body {
 .ripple-forms .modal-title {
     color: white;
 
-    /* nats - resetting the padding of title */
+    /* nats - resetting the padding of title - to make title bar smaller */
     padding: 0;
 }
 
@@ -561,14 +563,17 @@ body {
 .ripple-forms #what_ripple{
     margin-bottom: 0px;
 }
+
+.what-ripple-class{
+    padding-right: 0;
+}
+
 /* for the icons */
 /* warning -- will enlarge when in mobile mode!!!!! */
 /*.ripple-forms .form-icon {*/
 /*    width: 50%;*/
 /*    height: auto;*/
 /*}*/
-
-
 
 @media only screen and (max-width: 832px) {
     .head-top h1{
@@ -579,15 +584,15 @@ body {
     right: 42px;
   }
 }
-
+​
 @media only screen and (max-width: 769px) {
   .head-top button {
     top: 42px;
     right: 58px;
   }
 }
-
-
+​
+​
 @media only screen and (max-width: 376px) {
   .head-top button {
     top: 64px;
@@ -600,3 +605,7 @@ body {
       margin-top: 25px;
   }
 }
+
+
+
+
