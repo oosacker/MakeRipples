@@ -79,6 +79,10 @@ def organiser_dash():
     return render_template('organiser_dashboard.html', ripples=ripples)
 
 
+@app.route('/nat_test', methods=['POST', 'GET'])
+def nat_test():
+    return render_template('org_form.html')
+
 # @app.route('/my_test', methods=['POST', 'GET'])
 # def my_test():
 #     if request.method == 'POST':

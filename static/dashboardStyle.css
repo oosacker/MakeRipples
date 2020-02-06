@@ -508,6 +508,11 @@ body{
     font-weight: bold;
 }
 
+/* to align the text box with the "other" checkbox when in mobile mode */
+.ripple-forms #other_text{
+    margin-left: 20px;
+}
+
 /* datepicker stuff */
 .ripple-forms label {
     margin-left: 20px;
@@ -532,17 +537,16 @@ body{
 /**** edits by natsuki ****/
 /* label is too close to radio buttons */
 .ripple-forms input[type="radio"] {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
-/* otherwise will not line up vertically with the checkbox */
+/* otherwise will not line up vertically with the checkbox + horizontally with calendar */
 .ripple-forms #what_ripple{
     margin-bottom: 0px;
+    /*padding: 0 20px;*/
+    margin-right: 20px; /* same as datepicker's margin (See above) */
 }
 
-.what-ripple-class{
-    padding-right: 0;
-}
 
 /* for the icons */
 /* warning -- will enlarge when in mobile mode!!!!! */
