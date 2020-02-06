@@ -275,7 +275,8 @@ $(".circle").mouseleave(function () {
 $(".circle").click(function () {
     var spanNum = $(this).attr("id");
     selectDate(spanNum);
-    alert(spanNum);
+    let arrayIndex = parseInt(spanNum.substring(6))
+    let text = ripple_objs[arrayIndex].message
 
     // console.log(document.getElementById(spanNum).style.left);
     // var locate = document.getElementById(spanNum).style.left;
@@ -287,8 +288,9 @@ $(".circle").click(function () {
     // var textnode = document.createTextNode(document.getElementById(spanNum).childNodes[0].textContent);
     // node.appendChild(textnode);
     // document.getElementsByClassName("content-wrap")[0].appendChild(node);
+
     document.getElementsByClassName("selected-date")[0].textContent = document.getElementById(spanNum).childNodes[0].textContent;
-    // document.getElementsByClassName("selected-content")[0].textContent = document.getElementById(spanNum).childNodes[0].textContent;
+    document.getElementsByClassName("selected-content")[0].textContent = text;
 });
 
 
