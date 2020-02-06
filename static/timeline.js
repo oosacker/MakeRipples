@@ -6,8 +6,8 @@ function getRippleDetails() {
     alert("ripples didn't work")
   }
   else {
-      let message = "received source and mod tagged:\n";
-      let i = 0;
+      // let message = "received source and mod tagged:\n";
+      // let i = 0;
       Object.keys(ripples).forEach(function (key) {
           ripple = new user_response();
           ripple.source = ripples[key].source;
@@ -15,11 +15,11 @@ function getRippleDetails() {
           ripple.date = new Date(ripples[key].date);
           ripple.id = ripples[key].ripple_id;
           ripple_objs.push(ripple);
-          message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
-          i++;
+          // message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
+          // i++;
       })
 
-      alert(message + " saved " + ripple_objs.length + " objects");
+      // alert(message + " saved " + ripple_objs.length + " objects");
   }
 }
 
