@@ -73,35 +73,35 @@ def user_dash():
     return render_template('user_dashboard.html', ripples=ripples)
 
 
-@app.route('/my_test', methods=['POST', 'GET'])
-def my_test():
-    if request.method == 'POST':
-        if request.is_json:
-            data_receive = json.loads(request.get_data())
-            print('Received JSON data_receive from web app')
-            print(data_receive)
-            return 'ok'
-        else:
-            print(request.form['myData'])
-            print('Did not receive JSON')
-            return 'fail'
+# @app.route('/my_test', methods=['POST', 'GET'])
+# def my_test():
+#     if request.method == 'POST':
+#         if request.is_json:
+#             data_receive = json.loads(request.get_data())
+#             print('Received JSON data_receive from web app')
+#             print(data_receive)
+#             return 'ok'
+#         else:
+#             print(request.form['myData'])
+#             print('Did not receive JSON')
+#             return 'fail'
 
 
-@app.route('/form', methods=['POST', 'GET'])
-def form():
-    if request.method == 'POST':
+# @app.route('/form', methods=['POST', 'GET'])
+# def form():
+#     if request.method == 'POST':
+#
+#         return render_template('form.html',
+#                                text=request.form['text_input'],
+#                                option_1=request.form['radio_set1'],
+#                                option_2=request.form['radio_set2'])
+#
+#     else:
+#         return render_template('form.html')
 
-        return render_template('form.html',
-                               text=request.form['text_input'],
-                               option_1=request.form['radio_set1'],
-                               option_2=request.form['radio_set2'])
 
-    else:
-        return render_template('form.html')
-
-
-@app.route('/form2', methods=['POST', 'GET'])
-def form2():
+# @app.route('/form2', methods=['POST', 'GET'])
+# def form2():
     # if request.method == 'POST':
     #
     #     return render_template('form2.html',
@@ -110,7 +110,7 @@ def form2():
     #                            option_2=request.form['radio_set2'])
     #
     # else:
-    return render_template('form2.html')
+    # return render_template('form2.html')
 
 
 @app.route('/add_ripple', methods=['POST', 'GET'])
@@ -158,11 +158,14 @@ def add_ripple():
 
             print(db.child("users").child("stream").child(ripple_id).get().val())
 
-            return 'success'
+            print('rendering index')
+
+            return render_template('result.html')
+
         else:
-            print(request.form['myData'])
+            # print(request.form['myData'])
             print('Did not receive JSON')
-            return 'fail'
+            return render_template('result.html')
 
 
 def get_all_ripples():
