@@ -9,7 +9,7 @@ function getRippleDetails() {
       // let message = "received source and mod tagged:\n";
       // let i = 0;
       Object.keys(ripples).forEach(function (key) {
-          ripple = new user_response();
+          let ripple = new user_response();
           ripple.source = ripples[key].source;
           ripple.message = ripples[key].message;
           ripple.date = new Date(ripples[key].date);

@@ -1,6 +1,28 @@
-jQuery(function () {
+// array of the keys to use to get the ripple data from the database
+let ripple_objs = [];
 
-})
+function getRippleDetails() {
+ if (ripples == undefined){
+    alert("ripples didn't work")
+  }
+  else {
+      // let message = "received source and mod tagged:\n";
+      // let i = 0;
+      Object.keys(ripples).forEach(function (key) {
+          let ripple = new user_response();
+          ripple.source = ripples[key].source;
+          ripple.message = ripples[key].message;
+          ripple.date = new Date(ripples[key].date);
+          ripple.id = ripples[key].ripple_id;
+          ripple_objs.push(ripple);
+          // message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
+          // i++;
+      })
+
+      // alert(message + " saved " + ripple_objs.length + " objects");
+  }
+}
+getRippleDetails();
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
 //For the purpose of stringifying MM/DD/YYYY date format

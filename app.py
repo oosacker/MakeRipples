@@ -74,9 +74,9 @@ def user_dash():
 
 @app.route('/organiser_dashboard', methods=['POST', 'GET'])
 def organiser_dash():
-    # organiser = get_all_ripples()
-    # print(organiser)
-    return render_template('organiser_dashboard.html')
+    ripples = get_all_ripples()
+    # print(ripples)
+    return render_template('organiser_dashboard.html', ripples=ripples)
 
 
 # @app.route('/my_test', methods=['POST', 'GET'])
