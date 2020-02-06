@@ -560,6 +560,11 @@ body {
 .ripple-forms #what_ripple{
     margin-bottom: 0px;
 }
+
+.ripple-forms .what-ripple-class{
+    padding-right: 0;
+}
+
 /* for the icons */
 /* warning -- will enlarge when in mobile mode!!!!! */
 /*.ripple-forms .form-icon {*/
