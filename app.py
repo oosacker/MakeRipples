@@ -72,6 +72,7 @@ def user_dash():
     print(ripples)
     return render_template('user_dashboard.html', ripples=ripples)
 
+
 @app.route('/organiser_dashboard', methods=['POST', 'GET'])
 def organiser_dash():
     # organiser = get_all_ripples()
@@ -82,6 +83,7 @@ def organiser_dash():
 @app.route('/nat_test', methods=['POST', 'GET'])
 def nat_test():
     return render_template('org_form.html')
+
 
 # @app.route('/my_test', methods=['POST', 'GET'])
 # def my_test():
@@ -112,15 +114,15 @@ def nat_test():
 
 # @app.route('/form2', methods=['POST', 'GET'])
 # def form2():
-    # if request.method == 'POST':
-    #
-    #     return render_template('form2.html',
-    #                            text=request.form['text_input'],
-    #                            option_1=request.form['radio_set1'],
-    #                            option_2=request.form['radio_set2'])
-    #
-    # else:
-    # return render_template('form2.html')
+# if request.method == 'POST':
+#
+#     return render_template('form2.html',
+#                            text=request.form['text_input'],
+#                            option_1=request.form['radio_set1'],
+#                            option_2=request.form['radio_set2'])
+#
+# else:
+# return render_template('form2.html')
 
 
 @app.route('/add_ripple', methods=['POST', 'GET'])
