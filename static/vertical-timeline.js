@@ -361,4 +361,37 @@ ripple_brn.on('click', function(){
   $('#first_form').modal();
 })
 
+let create_ripple_btn = $("#create_ripple_btn");
+create_ripple_btn.on('click', function () {
+    // TODO check for no empty sections
+    let ripple = new user_response();
+    ripple.source = "organiser";
+    ripple.moderationflag = "N/A";
+    ripple.date = datepicker.datepicker("getDate");
+    ripple.message = $("#text_input1").val();
+    ripple.orgRating = $("#impact_score").val();
 
+    send_ripple(ripple);
+    $("#text_input1").val("");
+    $("#impact_score").val("");
+
+    $('#first_form').modal("hide");
+
+})
+
+function send_ripple(ripple){
+    // alert("started send user")
+    $.ajax('/add_ripple', {
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(ripple),
+        success: function (data, status, xhr) {
+            console.log(status)
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(textStatus);
+        }
+    }).then(function(){
+        console.log('sent')
+    })
+}

@@ -69,14 +69,14 @@ def fetch_data():
 @app.route('/user_dashboard', methods=['POST', 'GET'])
 def user_dash():
     ripples = get_all_ripples()
-    # print(ripples)
+    print(ripples)
     return render_template('user_dashboard.html', ripples=ripples)
 
 
 @app.route('/organiser_dashboard', methods=['POST', 'GET'])
 def organiser_dash():
     ripples = get_all_ripples()
-    # print(ripples)
+    print(ripples)
     return render_template('organiser_dashboard.html', ripples=ripples)
 
 
@@ -149,43 +149,57 @@ def add_ripple():
                 ripple_id = data_receive["_id"]
             else:
                 ripple_id = "Ripple" + now
-            answer = {}
-            if '_national' in data_receive:
-                answer.update({"national": data_receive["_national"]})
-            if '_community' in data_receive:
-                answer.update({"community": data_receive["_community"]})
-            if '_applied' in data_receive:
-                answer.update({"applied": data_receive["_applied"]})
-            if '_perspective' in data_receive:
-                answer.update({"perspective": data_receive["_perspective"]})
-            if '_personal' in data_receive:
-                answer.update({"personal": data_receive["_personal"]})
-            if '_other_desc' in data_receive:
-                other_desc = data_receive["_other_desc"]
+            if data_receive['_source'] == "user":
+                answer = {}
+                if '_national' in data_receive:
+                    answer.update({"national": data_receive["_national"]})
+                if '_community' in data_receive:
+                    answer.update({"community": data_receive["_community"]})
+                if '_applied' in data_receive:
+                    answer.update({"applied": data_receive["_applied"]})
+                if '_perspective' in data_receive:
+                    answer.update({"perspective": data_receive["_perspective"]})
+                if '_personal' in data_receive:
+                    answer.update({"personal": data_receive["_personal"]})
+                if '_other_desc' in data_receive:
+                    other_desc = data_receive["_other_desc"]
 
-            nlp = get_nlp_rating(data_receive["_message"])
-            if flag_for_moderation(data_receive["_userRating"], nlp) == 0:
-                flag = 'no'
-            else:
-                flag = 'yes'
+                nlp = get_nlp_rating(data_receive["_message"])
+                if flag_for_moderation(data_receive["_userRating"], nlp) == 0:
+                    flag = 'no'
+                else:
+                    flag = 'yes'
 
-            data = {
-                "source": data_receive["_source"],
-                "date": data_receive["_date"],
-                "action": data_receive["_action"],
-                "learning": data_receive["_learning"],
-                "resonate": data_receive["_resonate"],
-                "message": data_receive["_message"],
-                "other": data_receive["_other"],
-                "other_description": other_desc,
-                "answer": answer,
-                "rating": {
-                    "userRating": data_receive["_userRating"],
-                    "orgRating": data_receive["_orgRating"],
-                    "nlpRating": nlp,
-                },
-                "moderate": flag,
-            }
+                data = {
+                    "source": data_receive["_source"],
+                    "date": data_receive["_date"],
+                    "action": data_receive["_action"],
+                    "learning": data_receive["_learning"],
+                    "resonate": data_receive["_resonate"],
+                    "message": data_receive["_message"],
+                    "other": data_receive["_other"],
+                    "other_description": other_desc,
+                    "answer": answer,
+                    "rating": {
+                        "userRating": data_receive["_userRating"],
+                        "orgRating": data_receive["_orgRating"],
+                        "nlpRating": nlp,
+                    },
+                    "moderate": flag,
+                }
+            elif data_receive["_source"] == "organiser":
+                nlp = get_nlp_rating(data_receive["_message"])
+                data = {
+                    "source": data_receive["_source"],
+                    "date": data_receive["_date"],
+                    "message": data_receive["_message"],
+                    "rating": {
+                        "userRating": 0,
+                        "orgRating": data_receive["_orgRating"],
+                        "nlpRating": get_nlp_rating(data_receive["_message"]),
+                    },
+                }
+
             print(ripple_id, data)
             db.child("users").child("stream").child(ripple_id).set(data)
             # print('sent to database(hopefully)')
@@ -207,21 +221,21 @@ def get_all_ripples():
     ripples = {}
     counter = 0
     for key in stream_keys.each():
-        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val() and 'moderate' in key.val():
+        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val():
             label = "r" + str(counter)
             # source = 'untagged'
-            # moderate = 'untagged'
+            moderate = 'untagged'
             # if 'source' in key.val():
             #     source = key.val()["source"]
-            # if 'moderate' in key.val():
-            #     moderate = key.val()["moderate"]
+            if 'moderate' in key.val():
+                moderate = key.val()["moderate"]
             # date = str(key.val()["date"])[0:10]
             tldata = {
                 "ripple_id": key.key(),
                 "date": key.val()["date"],
                 "message": key.val()["message"],
                 "source": key.val()["source"],
-                "moderate": key.val()["moderate"],
+                "moderate": moderate,
             }
             ripples.update({label: tldata})
             counter += 1
