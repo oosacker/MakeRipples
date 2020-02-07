@@ -180,6 +180,8 @@ jQuery(function () {
 
             // fetch_data();
 
+            location.reload();
+
         }
     })
 
