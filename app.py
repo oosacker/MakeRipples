@@ -84,6 +84,7 @@ def organiser_dash():
 def nat_test():
     return render_template('org_form.html')
 
+
 # @app.route('/my_test', methods=['POST', 'GET'])
 # def my_test():
 #     if request.method == 'POST':
@@ -113,15 +114,15 @@ def nat_test():
 
 # @app.route('/form2', methods=['POST', 'GET'])
 # def form2():
-    # if request.method == 'POST':
-    #
-    #     return render_template('form2.html',
-    #                            text=request.form['text_input'],
-    #                            option_1=request.form['radio_set1'],
-    #                            option_2=request.form['radio_set2'])
-    #
-    # else:
-    # return render_template('form2.html')
+# if request.method == 'POST':
+#
+#     return render_template('form2.html',
+#                            text=request.form['text_input'],
+#                            option_1=request.form['radio_set1'],
+#                            option_2=request.form['radio_set2'])
+#
+# else:
+# return render_template('form2.html')
 
 def get_nlp_rating(message):
     # TODO link to Sam's code here
