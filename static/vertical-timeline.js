@@ -60,7 +60,7 @@ function makeCircles() {
     $("#line").append(
       '<div class="circle" id="circle0" style="top: ' +
         0 +
-        '%;"><div class="popupSpan">' +
+        '%;"><i class="fas fa-star"></i><div class="popupSpan">' +
         dateSpan(dates[0]) +
         "</div></div>"
     );
@@ -86,7 +86,7 @@ function makeCircles() {
           i +
           '" style="top: ' +
           relativeInt * 100 +
-          '%;"><div class="popupSpan">' +
+          '%;"><i class="fas fa-check"></i><div class="popupSpan">' +
           dateSpan(dates[i]) +
           "</div></div>"
 
