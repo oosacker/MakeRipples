@@ -38,8 +38,9 @@ function getModerationCount() {
             count_no++
         }
     }
-    alert("Moderate: " + count_yes +"\nDon't Moderate: " + count_no + "\n Total: " + ripple_objs.length);
-
+    // alert("Moderate: " + count_yes +"\nDon't Moderate: " + count_no + "\n Total: " + ripple_objs.length);
+    document.getElementById("moderation_count").innerText = count_yes;
+    document.getElementById("moderation_complete").innerText = count_no;
 }
 
 getModerationCount();

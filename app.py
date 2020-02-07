@@ -72,6 +72,7 @@ def user_dash():
     # print(ripples)
     return render_template('user_dashboard.html', ripples=ripples)
 
+
 @app.route('/organiser_dashboard', methods=['POST', 'GET'])
 def organiser_dash():
     ripples = get_all_ripples()
@@ -143,7 +144,10 @@ def add_ripple():
             print('Received JSON data_receive from user object')
             print(data_receive)
             now = datetime.now().strftime("%d%m%Y%H%M%S")
-            ripple_id = "Ripple" + now
+            if '_id' in data_receive:
+                ripple_id = data_receive["_id"]
+            else:
+                ripple_id = "Ripple" + now
             answer = {}
             if '_national' in data_receive:
                 answer.update({"national": data_receive["_national"]})
