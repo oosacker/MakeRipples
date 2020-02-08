@@ -96,9 +96,21 @@ $("#next_btn").on("click", function () {
         /* decide which form to display based on checkboxes */
         if (ur.action) {
             $("#action_form").modal();
-        } else if (ur.learning) {
+        }
+        else if (ur.learning) {
             $("#learn_form").modal();
-        } else if (ur.resonate) {
+
+            // by natsuki
+            $('#warning_learn1').css('color', 'red');
+            $('#warning_learn1').css('visibility', 'hidden');
+
+            $('#warning_learn2').css('color', 'red');
+            $('#warning_learn2').css('visibility', 'hidden');
+
+            $('#warning_learn3').css('color', 'red');
+            $('#warning_learn3').css('visibility', 'hidden');
+        }
+        else if (ur.resonate) {
             $("#resonate_form").modal();
 
             // by natsuki
@@ -122,6 +134,7 @@ $("button[name='submit_btn']").on("click", function () {
     ur.message = $("#text_input1").val()
 
     if (ur.message === undefined || ur.message === "") {
+        $('#warning_learn3').css('visibility', 'visible');
         ur.message = $("#learn_text").val()
     }
 
@@ -139,29 +152,49 @@ $("button[name='submit_btn']").on("click", function () {
 
     else {
 
-        if ($("input[name='national_radio']:checked")) {
+        // action form
+        if ($("input:radio[name='national_radio']:checked").val() != undefined) {
             ur.national = $("input[name='national_radio']:checked").val();
+            ur.userRating = calculate();
+            send_user();
+            clear_hide_modals();
         }
 
-        if ($("input[name='community_radio']:checked")) {
+        // action form
+        if ($("input:radio[name='community_radio']:checked").val() != undefined) {
             ur.community = $("input[name='community_radio']:checked").val();
+            ur.userRating = calculate();
+            send_user();
+            clear_hide_modals();
         }
 
-        if ($("input[name='perspective_radio']:checked")) {
-            ur.perspective = $("input[name='perspective_radio']:checked").val();
-        }
 
-        if ($('input[name="applied_radio"]:checked')) {
+
+        // learn form
+        if( ($("input:radio[name='applied_radio']:checked").val() != undefined) && $("input:radio[name='perspective_radio']:checked").val() != undefined ) {
             ur.applied = $("input[name='applied_radio']:checked").val();
+            ur.perspective = $("input[name='perspective_radio']:checked").val();
+            send_user();
+            clear_hide_modals();
+            console.log('good');
+        }
+        else if ($("input:radio[name='perspective_radio']:checked").val() == undefined) {
+            console.log('undef1');
+            $('#warning_learn2').css('visibility', 'visible');
+        }
+        else if ($("input:radio[name='applied_radio']:checked").val() == undefined) {
+            console.log('undef2');
+            $('#warning_learn1').css('visibility', 'visible');
         }
 
 
+        // resonate form
         if ($("input:radio[name='personal_radio']:checked").val() != undefined) {
             ur.personal = $('input[name="personal_radio"]').val();
             ur.userRating = calculate();
             send_user();
             clear_hide_modals();
-        } 
+        }
         else if ($("input:radio[name='personal_radio']:checked").val() == undefined) {
             $('#warning_resonate1').css('visibility', 'visible');
         }
@@ -178,13 +211,7 @@ $("button[name='back_btn']").on("click", function () {
     $("#first_form").modal();
 })
 
-// The code will only run if the webpage is loaded fully!!!
-jQuery(function () {
-    $("#datepicker").datepicker({
-        autoclose: true,
-        todayHighlight: true
-    }).datepicker('update', new Date());
-})
+
 
 // Logic for getting impact value from user input
 function calculate() {
@@ -197,7 +224,8 @@ function calculate() {
             return 8;
         }
         return 7;
-    } else if (ur.learning) {
+    }
+    else if (ur.learning) {
         if (ur.perspective == 'yes') {
             return 6;
         }
@@ -205,15 +233,18 @@ function calculate() {
             return 5;
         }
         return 4;
-    } else if (ur.resonate) {
+    }
+    else if (ur.resonate) {
         if (ur.personal == 'yes') {
             return 3;
         }
         return 2;
-    } else {
+    }
+    else {
         return 0;
     }
 }
+
 
 function send_user() {
     // alert("started send user")
@@ -232,6 +263,7 @@ function send_user() {
     })
 }
 
+
 function fetch_data() {
     // Send a fetch request via GET
     fetch('/fetch_data')
@@ -245,16 +277,10 @@ function fetch_data() {
 }
 
 
-// document.getElementsByClassName("form-control").addEventListener('click', function(e) {
-//     // e = e || window.event;
-//     // var target = e.target || e.srcElement,
-//     //     text = target.textContent || target.innerText;
-//     console.log("Click");
-// });
-
-//
-// function checkClickDate(event) {
-//      console.log("Click");
-// }
-//
-// document.getElementById("datepicker").addEventListener("click", checkClickDate);
+// The code will only run if the webpage is loaded fully!!!
+jQuery(function () {
+    $("#datepicker").datepicker({
+        autoclose: true,
+        todayHighlight: true
+    }).datepicker('update', new Date());
+})
