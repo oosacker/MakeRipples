@@ -1,15 +1,5 @@
-// $.post('/my_test',   // url
-//     {myData: 'This is my data.', myData2: 'lalala'}, // data to be submit
-//     function (data, status, jqXHR) {// success callback
-//         console.log(status)
-//     })
-
-// Variables to send to db
-// let action = false;
-// let learning = false;
-// let resonate = false;
-// let other = false;
-// let userRating;
+let ur;
+let current_form = null;
 
 function send_data() {
     $.ajax('/my_test', {
@@ -26,8 +16,6 @@ function send_data() {
         console.log('sent')
     })
 }
-
-let ur;
 
 function clear_hide_modals() {
     $("#text_input1").val("")
@@ -68,26 +56,27 @@ $("#other").on('change', function () {
 
 // click handler for the next button of first form
 $("#next_btn").on("click", function () {
+
+    // flash warning if no checkboxes are selected
     if (!($("#resonate").prop('checked') || $("#learning").prop('checked') || $("#action").prop('checked') || $("#other").prop('checked'))) {
-        // flash warning if no checkboxes are selected
         $('#warning').css('color', 'red');
         $('#warning').css('visibility', 'visible');
         console.log('no input');
-    }
-    else {
+    } else {
         ur.date = $("#datepicker").datepicker("getDate");
+
         if ($("#resonate").prop("checked") === true) {
-            ur.resonate = true
+            ur.resonate = true;
         }
         if ($("#learning").prop("checked") === true) {
-            ur.learning = true
+            ur.learning = true;
         }
         if ($("#action").prop("checked") === true) {
-            ur.action = true
+            ur.action = true;
         }
         if ($("#other").prop("checked") === true) {
-            ur.other = true
-            ur.other_desc = $("#other_text").val()
+            ur.other = true;
+            ur.other_desc = $("#other_text").val();
         }
 
         $("#first_form").modal("hide");
@@ -96,6 +85,7 @@ $("#next_btn").on("click", function () {
         /* decide which form to display based on checkboxes */
         if (ur.action) {
             $("#action_form").modal();
+            current_form = 'action';
 
             // by natsuki
             $('#warning_action1').css('color', 'red');
@@ -106,9 +96,9 @@ $("#next_btn").on("click", function () {
 
             $('#warning_action3').css('color', 'red');
             $('#warning_action3').css('visibility', 'hidden');
-        }
-        else if (ur.learning) {
+        } else if (ur.learning) {
             $("#learn_form").modal();
+            current_form = 'learn';
 
             // by natsuki
             $('#warning_learn1').css('color', 'red');
@@ -119,9 +109,9 @@ $("#next_btn").on("click", function () {
 
             $('#warning_learn3').css('color', 'red');
             $('#warning_learn3').css('visibility', 'hidden');
-        }
-        else if (ur.resonate) {
+        } else if (ur.resonate) {
             $("#resonate_form").modal();
+            current_form = 'resonate';
 
             // by natsuki
             $('#warning_resonate1').css('color', 'red');
@@ -130,107 +120,138 @@ $("#next_btn").on("click", function () {
             $('#warning_resonate2').css('color', 'red');
             $('#warning_resonate2').css('visibility', 'hidden');
 
-        }
-        else if (ur.other) {
+        } else if (ur.other) {
             $("#other_form").modal();
+            current_form = 'other';
 
             // by natsuki
             $('#warning_other').css('color', 'red');
             $('#warning_other').css('visibility', 'hidden');
-        }
-        else {
+        } else {
             alert("somehow got no checked values after confirming something was checked.")
         }
     }
 })
 
+
 // click handler for the submit buttons for all forms
 $("button[name='submit_btn']").on("click", function () {
 
-    ur.message = $("#text_input1").val()
+    //ur.message = $("#text_input1").val()
 
-    // action form
-    if (ur.message === undefined || ur.message === "") {
-        $('#warning_action3').css('visibility', 'visible');
-        ur.message = $("#text_input1").val()
-    }
+    switch (current_form) {
 
-    // learn form
-    if (ur.message === undefined || ur.message === "") {
-        $('#warning_learn3').css('visibility', 'visible');
-        ur.message = $("#learn_text").val()
-    }
+        case('action'): {
 
-    // text area for
-    if (ur.message === undefined || ur.message === "") {
-        $('#warning_resonate2').css('visibility', 'visible');
-        ur.message = $("#resonate_text").val()
-    }
+            console.log('action')
 
-    // text area for first form
-    if (ur.message === undefined || ur.message === "") {
-        $('#warning_other').css('visibility', 'visible');
-        ur.message = $("#other_text_input").val()
-    }
+            // check the radio buttons
+            if ($("input:radio[name='national_radio']:checked").val() != undefined && $("input:radio[name='community_radio']:checked").val() != undefined) {
+                ur.national = $("input[name='national_radio']:checked").val();
+                ur.community = $("input[name='community_radio']:checked").val();
 
-    // text area for resonate form
-    // if (ur.message === undefined || ur.message === "") {
-    //     $('#warning_resonate2').css('visibility', 'visible');
-    // }
-
-    else {
-
-        // action form
-        if ($("input:radio[name='national_radio']:checked").val() != undefined && $("input:radio[name='community_radio']:checked").val() != undefined) {
-            ur.national = $("input[name='national_radio']:checked").val();
-            ur.community = $("input[name='community_radio']:checked").val();
-            ur.userRating = calculate();
-            send_user();
-            clear_hide_modals();
-        }
-        else{
-            if ($("input:radio[name='community_radio']:checked").val() == undefined) {
-            $('#warning_action2').css('visibility', 'visible');
+                // check the textbox
+                ur.message = $("#text_input1").val();
+                if (ur.message === undefined || ur.message === "") {
+                    $('#warning_action3').css('visibility', 'visible');
+                } else {
+                    ur.userRating = calculate();
+                    send_user();
+                    clear_hide_modals();
+                }
+            } else {
+                if ($("input:radio[name='national_radio']:checked").val() == undefined) {
+                    $('#warning_action2').css('visibility', 'visible');
+                }
+                if ($("input:radio[name='community_radio']:checked").val() == undefined) {
+                    $('#warning_action1').css('visibility', 'visible');
+                }
             }
-            if ($("input:radio[name='community_radio']:checked").val() == undefined) {
-                $('#warning_action1').css('visibility', 'visible');
+            break;
+        }
+
+
+        case('resonate'): {
+
+            console.log('resonate')
+
+            // check the radio buttons
+            if ($("input:radio[name='personal_radio']:checked").val() != undefined) {
+                ur.personal = $('input[name="personal_radio"]').val();
+
+                // check the text box
+                ur.message = $("#resonate_text").val();
+                if (ur.message === undefined || ur.message === "") {
+                    $('#warning_resonate2').css('visibility', 'visible');
+                } else {
+                    ur.userRating = calculate();
+                    send_user();
+                    clear_hide_modals();
+                }
+
+            } else {
+                if ($("input:radio[name='personal_radio']:checked").val() == undefined) {
+                    $('#warning_resonate1').css('visibility', 'visible');
+                }
             }
+            break;
         }
 
 
+        case('learn'): {
 
+            console.log('learn');
 
-        // learn form
-        if( ($("input:radio[name='applied_radio']:checked").val() != undefined) && $("input:radio[name='perspective_radio']:checked").val() != undefined ) {
-            ur.applied = $("input[name='applied_radio']:checked").val();
-            ur.perspective = $("input[name='perspective_radio']:checked").val();
-            send_user();
-            clear_hide_modals();
-            console.log('good');
-        }
-        else{
-            if ($("input:radio[name='perspective_radio']:checked").val() == undefined) {
-                console.log('undef1');
-                $('#warning_learn2').css('visibility', 'visible');
+            // check the radio buttons
+            if (($("input:radio[name='applied_radio']:checked").val() != undefined) && $("input:radio[name='perspective_radio']:checked").val() != undefined) {
+                ur.applied = $("input[name='applied_radio']:checked").val();
+                ur.perspective = $("input[name='perspective_radio']:checked").val();
+
+                // check the textbox
+                ur.message = $("#learn_text").val();
+                if (ur.message === undefined || ur.message === "") {
+                    $('#warning_learn3').css('visibility', 'visible');
+                } else {
+                    ur.userRating = calculate();
+                    send_user();
+                    clear_hide_modals();
+                }
+            } else {
+                if ($("input:radio[name='perspective_radio']:checked").val() == undefined) {
+                    $('#warning_learn2').css('visibility', 'visible');
+                }
+                if ($("input:radio[name='applied_radio']:checked").val() == undefined) {
+                    $('#warning_learn1').css('visibility', 'visible');
+                }
             }
-            if ($("input:radio[name='applied_radio']:checked").val() == undefined) {
-                console.log('undef2');
-                $('#warning_learn1').css('visibility', 'visible');
+            break;
+        }
+
+
+        case('other'): {
+
+            console.log('other')
+
+            ur.message = $("#other_text_input").val();
+            if (ur.message === undefined || ur.message === "") {
+                $('#warning_other').css('visibility', 'visible');
+                console.log('not input')
+            } else {
+                ur.userRating = calculate();
+                send_user();
+                clear_hide_modals();
             }
+            break;
         }
 
 
-        // resonate form
-        if ($("input:radio[name='personal_radio']:checked").val() != undefined) {
-            ur.personal = $('input[name="personal_radio"]').val();
-            ur.userRating = calculate();
-            send_user();
-            clear_hide_modals();
+        default: {
+            console.log('error in switch');
+            break;
         }
-        else if ($("input:radio[name='personal_radio']:checked").val() == undefined) {
-            $('#warning_resonate1').css('visibility', 'visible');
-        }
+
     }
+
 })
 
 // click handler for the back button of the first form
@@ -244,7 +265,6 @@ $("button[name='back_btn']").on("click", function () {
 })
 
 
-
 // Logic for getting impact value from user input
 function calculate() {
     // alert("started calculate()")
@@ -256,8 +276,7 @@ function calculate() {
             return 8;
         }
         return 7;
-    }
-    else if (ur.learning) {
+    } else if (ur.learning) {
         if (ur.perspective == 'yes') {
             return 6;
         }
@@ -265,14 +284,12 @@ function calculate() {
             return 5;
         }
         return 4;
-    }
-    else if (ur.resonate) {
+    } else if (ur.resonate) {
         if (ur.personal == 'yes') {
             return 3;
         }
         return 2;
-    }
-    else {
+    } else {
         return 0;
     }
 }
