@@ -137,7 +137,7 @@ $("#next_btn").on("click", function () {
 // click handler for the submit buttons for all forms
 $("button[name='submit_btn']").on("click", function () {
 
-    //ur.message = $("#text_input1").val()
+    //ur = new user_response();
 
     switch (current_form) {
 
@@ -145,28 +145,57 @@ $("button[name='submit_btn']").on("click", function () {
 
             console.log('action')
 
-            // check the radio buttons
-            if ($("input:radio[name='national_radio']:checked").val() != undefined && $("input:radio[name='community_radio']:checked").val() != undefined) {
+            if ($("input:radio[name='national_radio']:checked").val() === undefined) {
+                $('#warning_action2').css('visibility', 'visible');
+            }else{
                 ur.national = $("input[name='national_radio']:checked").val();
-                ur.community = $("input[name='community_radio']:checked").val();
-
-                // check the textbox
-                ur.message = $("#text_input1").val();
-                if (ur.message === undefined || ur.message === "") {
-                    $('#warning_action3').css('visibility', 'visible');
-                } else {
-                    ur.userRating = calculate();
-                    send_user();
-                    clear_hide_modals();
-                }
-            } else {
-                if ($("input:radio[name='national_radio']:checked").val() == undefined) {
-                    $('#warning_action2').css('visibility', 'visible');
-                }
-                if ($("input:radio[name='community_radio']:checked").val() == undefined) {
-                    $('#warning_action1').css('visibility', 'visible');
-                }
+                console.log(ur.national);
             }
+
+            if ($("input:radio[name='community_radio']:checked").val() === undefined) {
+                $('#warning_action1').css('visibility', 'visible');
+            }else{
+                ur.community = $("input[name='community_radio']:checked").val();
+                console.log(ur.community);
+            }
+
+            if ($("#text_input1").val() === '') {
+                 $('#warning_action3').css('visibility', 'visible');
+            }else{
+                ur.message = $("#text_input1").val();
+                console.log( ur.message);
+            }
+
+            if($("input:radio[name='national_radio']:checked").val() !== undefined && $("input:radio[name='community_radio']:checked").val() !== undefined && $("#text_input1").val() !== ''){
+                ur.userRating = calculate();
+                console.log(ur);
+                send_user();
+                clear_hide_modals();
+
+            }
+
+            // check the radio buttons
+            // if ($("input:radio[name='national_radio']:checked").val() !== undefined && $("input:radio[name='community_radio']:checked").val() !== undefined) {
+            //     ur.national = $("input[name='national_radio']:checked").val();
+            //     ur.community = $("input[name='community_radio']:checked").val();
+            //
+            //     // check the textbox
+            //     ur.message = $("#text_input1").val();
+            //     if (ur.message === undefined || ur.message === "") {
+            //         $('#warning_action3').css('visibility', 'visible');
+            //     } else {
+            //         ur.userRating = calculate();
+            //         send_user();
+            //         clear_hide_modals();
+            //     }
+            // } else {
+            //     if ($("input:radio[name='national_radio']:checked").val() === undefined) {
+            //         $('#warning_action2').css('visibility', 'visible');
+            //     }
+            //     if ($("input:radio[name='community_radio']:checked").val() === undefined) {
+            //         $('#warning_action1').css('visibility', 'visible');
+            //     }
+            // }
             break;
         }
 
@@ -175,25 +204,46 @@ $("button[name='submit_btn']").on("click", function () {
 
             console.log('resonate')
 
-            // check the radio buttons
-            if ($("input:radio[name='personal_radio']:checked").val() != undefined) {
+            if ($("input:radio[name='personal_radio']:checked").val() === undefined) {
+                $('#warning_resonate1').css('visibility', 'visible');
+            }else{
                 ur.personal = $('input[name="personal_radio"]').val();
-
-                // check the text box
-                ur.message = $("#resonate_text").val();
-                if (ur.message === undefined || ur.message === "") {
-                    $('#warning_resonate2').css('visibility', 'visible');
-                } else {
-                    ur.userRating = calculate();
-                    send_user();
-                    clear_hide_modals();
-                }
-
-            } else {
-                if ($("input:radio[name='personal_radio']:checked").val() == undefined) {
-                    $('#warning_resonate1').css('visibility', 'visible');
-                }
+                console.log(ur.personal);
             }
+
+            if ($("#resonate_text").val() === "") {
+                $('#warning_resonate2').css('visibility', 'visible');
+            }else{
+                ur.message = $("#resonate_text").val();
+                console.log(ur.message);
+            }
+
+            if($("input:radio[name='personal_radio']:checked").val() !== undefined && $("#resonate_text").val() !== ""){
+                ur.userRating = calculate();
+                console.log(ur);
+                send_user();
+                clear_hide_modals();
+            }
+
+            // // check the radio buttons
+            // if ($("input:radio[name='personal_radio']:checked").val() !== undefined) {
+            //     ur.personal = $('input[name="personal_radio"]').val();
+            //
+            //     // check the text box
+            //     ur.message = $("#resonate_text").val();
+            //     if (ur.message === undefined || ur.message === "") {
+            //         $('#warning_resonate2').css('visibility', 'visible');
+            //     } else {
+            //         ur.userRating = calculate();
+            //         send_user();
+            //         clear_hide_modals();
+            //     }
+            //
+            // } else {
+            //     if ($("input:radio[name='personal_radio']:checked").val() === undefined) {
+            //         $('#warning_resonate1').css('visibility', 'visible');
+            //     }
+            // }
             break;
         }
 
@@ -202,28 +252,57 @@ $("button[name='submit_btn']").on("click", function () {
 
             console.log('learn');
 
-            // check the radio buttons
-            if (($("input:radio[name='applied_radio']:checked").val() != undefined) && $("input:radio[name='perspective_radio']:checked").val() != undefined) {
-                ur.applied = $("input[name='applied_radio']:checked").val();
+            if ($("input:radio[name='perspective_radio']:checked").val() === undefined){
+                $('#warning_learn2').css('visibility', 'visible');
+            }else{
                 ur.perspective = $("input[name='perspective_radio']:checked").val();
-
-                // check the textbox
-                ur.message = $("#learn_text").val();
-                if (ur.message === undefined || ur.message === "") {
-                    $('#warning_learn3').css('visibility', 'visible');
-                } else {
-                    ur.userRating = calculate();
-                    send_user();
-                    clear_hide_modals();
-                }
-            } else {
-                if ($("input:radio[name='perspective_radio']:checked").val() == undefined) {
-                    $('#warning_learn2').css('visibility', 'visible');
-                }
-                if ($("input:radio[name='applied_radio']:checked").val() == undefined) {
-                    $('#warning_learn1').css('visibility', 'visible');
-                }
+                console.log(ur.perspective);
             }
+
+            if ($("input:radio[name='applied_radio']:checked").val() === undefined) {
+                $('#warning_learn1').css('visibility', 'visible');
+            }else{
+                ur.applied = $("input[name='applied_radio']:checked").val();
+                console.log(ur.applied);
+            }
+
+            if ($("#learn_text").val() === "") {
+                $('#warning_learn3').css('visibility', 'visible');
+            }else{
+                ur.message = $("#learn_text").val();
+                console.log(ur.message);
+            }
+
+            if($("input:radio[name='perspective_radio']:checked").val() !== undefined && $("input:radio[name='applied_radio']:checked").val() !== undefined && $("#learn_text").val() !== ""){
+                ur.userRating = calculate();
+                console.log(ur);
+                send_user();
+                clear_hide_modals();
+
+            }
+
+            // // check the radio buttons
+            // if (($("input:radio[name='applied_radio']:checked").val() !== undefined) && $("input:radio[name='perspective_radio']:checked").val() !== undefined) {
+            //     ur.applied = $("input[name='applied_radio']:checked").val();
+            //     ur.perspective = $("input[name='perspective_radio']:checked").val();
+            //
+            //     // check the textbox
+            //     ur.message = $("#learn_text").val();
+            //     if (ur.message === undefined || ur.message === "") {
+            //         $('#warning_learn3').css('visibility', 'visible');
+            //     } else {
+            //         ur.userRating = calculate();
+            //         send_user();
+            //         clear_hide_modals();
+            //     }
+            // } else {
+            //     if ($("input:radio[name='perspective_radio']:checked").val() === undefined) {
+            //         $('#warning_learn2').css('visibility', 'visible');
+            //     }
+            //     if ($("input:radio[name='applied_radio']:checked").val() === undefined) {
+            //         $('#warning_learn1').css('visibility', 'visible');
+            //     }
+            // }
             break;
         }
 
@@ -232,15 +311,26 @@ $("button[name='submit_btn']").on("click", function () {
 
             console.log('other')
 
-            ur.message = $("#other_text_input").val();
-            if (ur.message === undefined || ur.message === "") {
+            if ($("#other_text_input").val() === "") {
                 $('#warning_other').css('visibility', 'visible');
-                console.log('not input')
-            } else {
+            }else{
+                ur.message = $("#other_text_input").val();
                 ur.userRating = calculate();
+                console.log(ur);
                 send_user();
                 clear_hide_modals();
+
             }
+
+            // ur.message = $("#other_text_input").val();
+            // if (ur.message === undefined || ur.message === "") {
+            //     $('#warning_other').css('visibility', 'visible');
+            //     console.log('not input')
+            // } else {
+            //     ur.userRating = calculate();
+            //     send_user();
+            //     clear_hide_modals();
+            // }
             break;
         }
 
