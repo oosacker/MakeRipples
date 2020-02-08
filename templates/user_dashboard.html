@@ -380,6 +380,7 @@
         </div>
 
 
+
         {# NEW DIALOG BOX!!!!! #}
         <div class="modal fade" tabindex="-1" role="dialog" id="resonate_form">
             <div class="modal-dialog modal-lg" role="document">
@@ -397,21 +398,19 @@
                         <div class="row">
 
                             <div class="col-9">
-                                <p>Did this resonate with you because you felt a personal connection to your own
-                                    life?</p>
+                                <p>Did this resonate with you because you felt a personal connection to your own life?</p>
                             </div>
 
                             <div class="col-3">
                                 <div class="form-check-inline">
                                     <label class="form-check-label" for="radio_1">Yes</label>
-                                    <input class="form-check-input" type="radio" name="personal_radio" id="radio_1"
-                                           value="yes" required>
+                                    <input class="form-check-input" type="radio" name="personal_radio" id="radio_1" value="yes" required>
                                 </div>
                                 <div class="form-check-inline">
                                     <label class="form-check-label" for="radio_2">No</label>
-                                    <input class="form-check-input" type="radio" name="personal_radio" id="radio_2"
-                                           value="no" required>
+                                    <input class="form-check-input" type="radio" name="personal_radio" id="radio_2" value="no" required>
                                 </div>
+                                <p id="warning_resonate1">Please select Yes or No</p>
                             </div>
 
                         </div>
@@ -423,6 +422,7 @@
                         </p>
                         <textarea class="form-control" id="resonate_text" name="resonate_text" rows="3"
                                   required></textarea>
+                        <p id="warning_resonate2">This is a required field</p>
 
                     </div>
 
