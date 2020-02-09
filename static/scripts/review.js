@@ -71,6 +71,10 @@ function getRippleRow(ripple) {
                     '</div>')
 }
 
+function clearRipples(){
+    $("#ripples-list").empty()
+}
+
 function updateCounts(){
     let moderate = 0;
     let no_moderate = 0;
@@ -89,12 +93,14 @@ function updateCounts(){
 }
 
 function getAllRipples() {
+    clearRipples()
     for(let i = 0; i < ripple_objs.length; i ++){
         getRippleRow(ripple_objs[i])
     }
 }
 
 function getModRipples() {
+    clearRipples()
     for(let i = 0; i < ripple_objs.length; i ++){
         if(ripple_objs[i].moderationflag == "yes") {
             getRippleRow(ripple_objs[i])
@@ -103,12 +109,26 @@ function getModRipples() {
 }
 
 function getNonModRipples() {
+    clearRipples()
     for(let i = 0; i < ripple_objs.length; i ++){
         if(ripple_objs[i].moderationflag != "yes") {
             getRippleRow(ripple_objs[i])
         }
     }
 }
+
+$("#all-btn").on("click", function () {
+    // alert("clicked all")
+    getAllRipples()
+})
+$("#mod-btn").on("click", function () {
+    // alert("clicked require mod")
+    getModRipples()
+})
+$("#non-mod-btn").on("click", function () {
+    // alert("clicked no mod required")
+    getNonModRipples()
+})
 
 getRippleDetails()
 updateCounts()
