@@ -1,0 +1,66 @@
+.ripple-review {
+    background-color: #fff;
+    margin: 0;
+    /*padding: 20px 20px;*/
+    margin: 20px 20px;
+    border-radius: 10px 10px;
+    -webkit-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.ripple-review .title {
+    background: #4d5f96;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0px;
+    margin-bottom: 15px;
+}
+
+.ripple-review h1 {
+    font-size: 25px;
+    color: #fff;
+}
+
+.activity-item {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.activity-tag {
+    text-align: center;
+}
+
+.activity-tag p {
+    /*background-color: grey;*/
+    color: white;
+    width: 100px;
+    border-radius: 10px 10px;
+    margin: 0 auto;
+    padding: 5px 0px;
+}
+
+.review-tag {
+    background-color: #f68f20;
+}
+
+.personal-tag {
+    background-color: #92278f;
+}
+
+.organised-tag {
+    background-color: #63c5c0;
+}
+
+.activity-img img {
+    width: 80px;
+    height: 50px;
+}
+
+.activity-update {
+    font-size: 16px;
+}
