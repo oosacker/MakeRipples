@@ -134,10 +134,14 @@ def get_nlp_rating(message):
     return 0
 
 
-def flag_for_moderation(user_rating, nlp_rating):
+def flag_for_moderation(user_rating, nlp_rating, other):
+    # print("started flag for mod")
+    if other:
+        # print("is other")
+        return 1
     if user_rating > 6 or user_rating < 2:
         return 1
-    if abs(nlp_rating - user_rating) > 3:
+    if nlp_rating > 0 and abs(nlp_rating - user_rating) > 3:
         return 1
     return 0
 
@@ -170,7 +174,7 @@ def add_ripple():
                     other_desc = data_receive["_other_desc"]
 
                 nlp = get_nlp_rating(data_receive["_message"])
-                if flag_for_moderation(data_receive["_userRating"], nlp) == 0:
+                if flag_for_moderation(data_receive["_userRating"], nlp, data_receive["_other"]) == 0:
                     flag = 'no'
                 else:
                     flag = 'yes'
@@ -205,20 +209,22 @@ def add_ripple():
                     },
                 }
 
-            print(ripple_id, data)
+            # print(ripple_id, data)
             db.child("users").child("stream").child(ripple_id).set(data)
             # print('sent to database(hopefully)')
 
-            print(db.child("users").child("stream").child(ripple_id).get().val())
+            # print(db.child("users").child("stream").child(ripple_id).get().val())
 
-            print('rendering index')
+            # print('rendering index')
 
-            return render_template('result.html')
+            # return render_template('result.html')
+            return 'success'
 
         else:
             # print(request.form['myData'])
             print('Did not receive JSON')
-            return render_template('result.html')
+            # return render_template('result.html')
+            return 'failed'
 
 
 def get_all_ripples():
