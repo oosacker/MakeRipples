@@ -527,6 +527,9 @@ body{
     top: 42px;
     right: 58px;
   }
+  .activity-tag p{
+    margin-bottom: 10px;
+  }
 }
 
 
@@ -540,5 +543,8 @@ body{
   }
   .timeline{
       margin-top: 25px;
+  }
+  .achievements .card-mid{
+      border: none;
   }
 }
