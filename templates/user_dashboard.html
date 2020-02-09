@@ -3,7 +3,7 @@
 {% block head %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
           type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboardStyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboardStyle.css') }}">
     <title>Stream Summary</title>
 {% endblock %}
 
@@ -90,6 +90,7 @@
                         <div class="card card-mid col-lg-4 col-md-4 col-sm-11">
                             <div class="card-body">
                                 <p class="card-text">My Ripples and Activities</p>
+
                                 <div class="row content-top">
                                     <div class="col-6">
                                         <p class="content-left">4</p>
@@ -419,7 +420,7 @@
                     <br>
 
                     <p><strong>Share how you helped make a ripple for change by telling your story below.</strong></p>
-                    <textarea class="form-control" id="resonate_text" name="resonate_text" rows="3" required></textarea>
+                    <textarea class="form-control" id="resonate_text" name="resonate_text" rows="3" required placeholder="Share your story here"></textarea>
                         <p id="warning_resonate2">This is a required field</p>
 
                 </div>
@@ -502,7 +503,7 @@
                     <br>
 
                     <p><strong>Share how you helped make a ripple for change by telling your story below.</strong></p>
-                    <textarea class="form-control" id="learn_text" name="learn_text" rows="3" required></textarea>
+                    <textarea class="form-control" id="learn_text" name="learn_text" rows="3" required placeholder="Share your story here"></textarea>
                         <p id="warning_learn3">This is a required field</p>
                 </div>
 
@@ -585,7 +586,7 @@
                     <br>
 
                     <p><strong>Share how you helped make a ripple for change by telling your story below.</strong></p>
-                    <textarea class="form-control" id="text_input1" name="text_input" rows="3" required></textarea>
+                    <textarea class="form-control" id="text_input1" name="text_input" rows="3" required placeholder="Share your story here"></textarea>
                         <p id="warning_action3">This is a required field</p>
                 </div>
 
@@ -620,7 +621,7 @@
                 <div class="modal-body">
                     <p><strong>Share how you helped make a ripple for change by telling your story below.</strong></p>
                     <textarea class="form-control" id="other_text_input" name="other_text_input" rows="10"
-                              required></textarea>
+                              required placeholder="Share your story here"></textarea>
                 <p id="warning_other">This is a required field</p>
                     </div>
 
@@ -643,9 +644,9 @@
     <script>
         let ripples = JSON.parse('{{ ripples | tojson | safe }}');
     </script>
-    <script src={{ url_for('static', filename='rippleobject.js') }}></script>
-    <script src={{ url_for('static', filename='timeline.js') }}></script>
-    <script src={{ url_for('static', filename='formscript.js') }}></script>
+    <script src={{ url_for('static', filename='scripts/rippleobject.js') }}></script>
+    <script src={{ url_for('static', filename='scripts/timeline.js') }}></script>
+    <script src={{ url_for('static', filename='scripts/formscript.js') }}></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 {% endblock %}

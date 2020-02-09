@@ -315,6 +315,11 @@ body{
     border-radius: 0px;
     text-align: center;
 }
+
+.achievements .card-text{
+    min-height: 48px;
+}
+
 .achievements .card-mid{
     border-right: 1px solid #aaaaaa;
     border-left: 1px solid #aaaaaa;
