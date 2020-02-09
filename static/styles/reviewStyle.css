@@ -26,7 +26,7 @@
     background-color: #f2f2f2;
 }
 
-.mid-bar a{
+.mid-bar button{
     color: #63c5c0;
     text-decoration: underline;
 }
@@ -36,6 +36,7 @@
     color: #fff;
     padding: 0px 10px;
     border-radius: 5px 5px;
+    text-decoration: none;
 }
 
 .ripple-review {
