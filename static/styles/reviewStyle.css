@@ -1,5 +1,5 @@
 /* NATSUKI'S CODE */
-/* set the background color of title and rounded corners */
+/* NATSUKI'S EDITS BELOW */
 .ripple-forms .modal-header {
     background-color: #91278e;
     -webkit-border-top-left-radius: 10px;
@@ -52,9 +52,104 @@
 .ripple-forms .modal-footer .btn-primary {
     background-color: #91278e;
     color: white;
-    width: 120px;
+    width: 150px;
     font-weight: bold;
 }
+
+/* datepicker stuff */
+.ripple-forms #datepicker {
+    width: 180px;
+    margin-left: 0px;
+}
+
+.ripple-forms #impact_score {
+    width: 250px;
+}
+
+.ripple-forms #datepicker > span:hover {
+    cursor: pointer;
+}
+
+/* otherwise right up against the left edge!!! */
+.ripple-forms #start_date {
+    padding: 0 16px;
+}
+
+/* otherwise right up against the start_date!!! */
+.ripple-forms #end_date {
+    padding: 0 16px;
+}
+
+.fa-calendar-alt {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: -28px;
+    z-index: 99;
+}
+
+
+@media only screen and (max-width: 832px) {
+    .head-top h1 {
+        font-size: 33px;
+    }
+
+    .head-top button {
+        top: 42px;
+        right: 42px;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+  .head-top .btn-left {
+    top: 10px;
+    left: 20px;
+  }
+  .head-top .btn-right {
+    top: 10px;
+    right: 20px;
+  }
+  .activity-tag p{
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .head-top button {
+    top: 64px;
+    right: 42px;
+  }
+  /*.circle .popupSpan{*/
+  /*  left: -50px;*/
+  /*}*/
+  .timeline{
+      margin-top: 25px;
+  }
+  .head-top{
+      margin-bottom: 45px;
+  }
+  .head-top .btn-left {
+    top: 50px;
+    left: 20px;
+  }
+  .head-top .btn-right {
+    top: 50px;
+    right: 20px;
+  }
+  .organiserDashboard .card-top-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-right{
+    border: none;
+  }
+}
+
+
+
+
+
 .ripple-review {
     background-color: #fff;
     margin: 0;
@@ -122,23 +217,3 @@
     font-size: 16px;
 }
 
-/* datepicker stuff */
-.ripple-forms label {
-    margin-left: 20px;
-}
-
-.ripple-forms #datepicker {
-    width: 180px;
-    margin: 0 20px 20px 20px;
-}
-
-.ripple-forms #datepicker > span:hover {
-    cursor: pointer;
-}
-
-.fa-calendar-alt {
-    position: absolute;
-    margin-top: 11px;
-    margin-left: -28px;
-    z-index: 99;
-}
