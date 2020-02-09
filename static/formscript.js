@@ -198,7 +198,6 @@ $("button[name='submit_btn']").on("click", function () {
             //         $('#warning_action1').css('visibility', 'visible');
             //     }
             // }
-            location.reload();
             break;
         }
 
@@ -247,7 +246,6 @@ $("button[name='submit_btn']").on("click", function () {
             //         $('#warning_resonate1').css('visibility', 'visible');
             //     }
             // }
-            location.reload();
             break;
         }
 
@@ -307,7 +305,6 @@ $("button[name='submit_btn']").on("click", function () {
             //         $('#warning_learn1').css('visibility', 'visible');
             //     }
             // }
-            location.reload();
             break;
         }
 
@@ -336,7 +333,6 @@ $("button[name='submit_btn']").on("click", function () {
             //     send_user();
             //     clear_hide_modals();
             // }
-            location.reload();
             break;
         }
 
@@ -404,6 +400,7 @@ function send_user() {
         }
     }).then(function () {
         console.log('sent')
+        location.reload()
     })
 }
 
