@@ -422,7 +422,7 @@ body {
 .organiserDashboard .notification {
     position: absolute;
     top: -20px;
-    right: 70px;
+    right: 50px;
 }
 
 .community-ripples {
@@ -684,23 +684,48 @@ body {
 }
 
 @media only screen and (max-width: 769px) {
-    .head-top button {
-        top: 42px;
-        right: 58px;
-    }
+  .head-top .btn-left {
+    top: 10px;
+    left: 20px;
+  }
+  .head-top .btn-right {
+    top: 10px;
+    right: 20px;
+  }
+  .activity-tag p{
+    margin-bottom: 10px;
+  }
 }
 
 @media only screen and (max-width: 376px) {
-    .head-top button {
-        top: 64px;
-        right: 42px;
-    }
-
-    .circle .popupSpan {
-        left: -50px;
-    }
-
-    .timeline {
-        margin-top: 25px;
-    }
+  .head-top button {
+    top: 64px;
+    right: 42px;
+  }
+  /*.circle .popupSpan{*/
+  /*  left: -50px;*/
+  /*}*/
+  .timeline{
+      margin-top: 25px;
+  }
+  .head-top{
+      margin-bottom: 45px;
+  }
+  .head-top .btn-left {
+    top: 50px;
+    left: 20px;
+  }
+  .head-top .btn-right {
+    top: 50px;
+    right: 20px;
+  }
+  .organiserDashboard .card-top-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-right{
+    border: none;
+  }
 }
