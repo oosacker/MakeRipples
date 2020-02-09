@@ -28,15 +28,17 @@
 
 .mid-bar button{
     color: #63c5c0;
+}
+
+.require-moderate{
     text-decoration: underline;
 }
 
-.mid-bar span{
+.mid-bar #mod-count{
     background-color: #f68f20;
     color: #fff;
     padding: 0px 10px;
     border-radius: 5px 5px;
-    text-decoration: none;
 }
 
 .details-block button{
