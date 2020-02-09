@@ -139,8 +139,6 @@ $("#next_btn").on("click", function () {
 // click handler for the submit buttons for all forms
 $("button[name='submit_btn']").on("click", function () {
 
-    //ur = new user_response();
-
     switch (current_form) {
 
         case('action'): {
@@ -176,29 +174,6 @@ $("button[name='submit_btn']").on("click", function () {
 
             }
 
-            // check the radio buttons
-            // if ($("input:radio[name='national_radio']:checked").val() !== undefined && $("input:radio[name='community_radio']:checked").val() !== undefined) {
-            //     ur.national = $("input[name='national_radio']:checked").val();
-            //     ur.community = $("input[name='community_radio']:checked").val();
-            //
-            //     // check the textbox
-            //     ur.message = $("#text_input1").val();
-            //     if (ur.message === undefined || ur.message === "") {
-            //         $('#warning_action3').css('visibility', 'visible');
-            //     } else {
-            //         ur.userRating = calculate();
-            //         send_user();
-            //         clear_hide_modals();
-            //     }
-            // } else {
-            //     if ($("input:radio[name='national_radio']:checked").val() === undefined) {
-            //         $('#warning_action2').css('visibility', 'visible');
-            //     }
-            //     if ($("input:radio[name='community_radio']:checked").val() === undefined) {
-            //         $('#warning_action1').css('visibility', 'visible');
-            //     }
-            // }
-            location.reload();
             break;
         }
 
@@ -228,26 +203,6 @@ $("button[name='submit_btn']").on("click", function () {
                 clear_hide_modals();
             }
 
-            // // check the radio buttons
-            // if ($("input:radio[name='personal_radio']:checked").val() !== undefined) {
-            //     ur.personal = $('input[name="personal_radio"]').val();
-            //
-            //     // check the text box
-            //     ur.message = $("#resonate_text").val();
-            //     if (ur.message === undefined || ur.message === "") {
-            //         $('#warning_resonate2').css('visibility', 'visible');
-            //     } else {
-            //         ur.userRating = calculate();
-            //         send_user();
-            //         clear_hide_modals();
-            //     }
-            //
-            // } else {
-            //     if ($("input:radio[name='personal_radio']:checked").val() === undefined) {
-            //         $('#warning_resonate1').css('visibility', 'visible');
-            //     }
-            // }
-            location.reload();
             break;
         }
 
@@ -285,29 +240,6 @@ $("button[name='submit_btn']").on("click", function () {
 
             }
 
-            // // check the radio buttons
-            // if (($("input:radio[name='applied_radio']:checked").val() !== undefined) && $("input:radio[name='perspective_radio']:checked").val() !== undefined) {
-            //     ur.applied = $("input[name='applied_radio']:checked").val();
-            //     ur.perspective = $("input[name='perspective_radio']:checked").val();
-            //
-            //     // check the textbox
-            //     ur.message = $("#learn_text").val();
-            //     if (ur.message === undefined || ur.message === "") {
-            //         $('#warning_learn3').css('visibility', 'visible');
-            //     } else {
-            //         ur.userRating = calculate();
-            //         send_user();
-            //         clear_hide_modals();
-            //     }
-            // } else {
-            //     if ($("input:radio[name='perspective_radio']:checked").val() === undefined) {
-            //         $('#warning_learn2').css('visibility', 'visible');
-            //     }
-            //     if ($("input:radio[name='applied_radio']:checked").val() === undefined) {
-            //         $('#warning_learn1').css('visibility', 'visible');
-            //     }
-            // }
-            location.reload();
             break;
         }
 
@@ -327,16 +259,6 @@ $("button[name='submit_btn']").on("click", function () {
 
             }
 
-            // ur.message = $("#other_text_input").val();
-            // if (ur.message === undefined || ur.message === "") {
-            //     $('#warning_other').css('visibility', 'visible');
-            //     console.log('not input')
-            // } else {
-            //     ur.userRating = calculate();
-            //     send_user();
-            //     clear_hide_modals();
-            // }
-            location.reload();
             break;
         }
 
@@ -397,13 +319,14 @@ function send_user() {
         contentType: 'application/json',
         data: JSON.stringify(ur),
         success: function (data, status, xhr) {
-            console.log(status)
+            console.log(status);
         },
         error: function (jqXhr, textStatus, errorMessage) {
             console.log(textStatus);
         }
     }).then(function () {
-        console.log('sent')
+        console.log('sent');
+        location.reload();
     })
 }
 
