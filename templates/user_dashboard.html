@@ -644,9 +644,9 @@
     <script>
         let ripples = JSON.parse('{{ ripples | tojson | safe }}');
     </script>
-    <script src={{ url_for('static', filename='rippleobject.js') }}></script>
-    <script src={{ url_for('static', filename='timeline.js') }}></script>
-    <script src={{ url_for('static', filename='formscript.js') }}></script>
+    <script src={{ url_for('static', filename='scripts/rippleobject.js') }}></script>
+    <script src={{ url_for('static', filename='scripts/timeline.js') }}></script>
+    <script src={{ url_for('static', filename='scripts/formscript.js') }}></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 {% endblock %}
