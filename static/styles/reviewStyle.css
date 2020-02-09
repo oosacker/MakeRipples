@@ -1,3 +1,50 @@
+.goBack-btn a{
+    background-color: #92278f;
+    color: #fff;
+    -webkit-box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
+    margin: 30px 0px 20px 50px;
+}
+.details-bar{
+    border-bottom: 1px solid #aaaaaa;
+    margin: 20px 20px;
+}
+
+.details-bar span{
+    margin-left: 5px;
+}
+.mid-bar{
+    border-right: 1px solid #aaaaaa;
+    border-left: 1px solid #aaaaaa;
+}
+
+.span-border{
+    padding: 0px 10px;
+    border-radius: 5px 5px;
+    border: 1px solid #aaaaaa;
+    background-color: #f2f2f2;
+}
+
+.mid-bar button{
+    color: #63c5c0;
+    text-decoration: underline;
+}
+
+.mid-bar span{
+    background-color: #f68f20;
+    color: #fff;
+    padding: 0px 10px;
+    border-radius: 5px 5px;
+    text-decoration: none;
+}
+
+.details-block button{
+    background: none;
+    border: none;
+    margin-bottom: 10px;
+}
+
 /* NATSUKI'S CODE */
 /* NATSUKI'S EDITS BELOW */
 .ripple-forms .modal-header {
@@ -216,4 +263,23 @@
 .activity-update {
     font-size: 16px;
 }
+
+@media only screen and (max-width: 769px) {
+    .details-block{
+        padding: 0px;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .goBack-btn a{
+        margin-left: 10px;
+    }
+    .ripple-review{
+        margin: 20px 10px;
+    }
+    .details-bar{
+        font-size: 14px;
+    }
+}
+
 

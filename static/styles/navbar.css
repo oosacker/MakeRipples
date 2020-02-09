@@ -1,5 +1,8 @@
 .navbar {
   background-color: #ffffff;
+  -webkit-box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 17px -15px rgba(0, 0, 0, 0.75);
 }
 .navbar .navbar-brand {
   color: #92278f;
