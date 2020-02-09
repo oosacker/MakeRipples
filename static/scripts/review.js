@@ -88,10 +88,29 @@ function updateCounts(){
     document.getElementById("no-mod-count").innerText = no_moderate;
 }
 
-getRippleDetails()
-
-for(let i = 0; i < ripple_objs.length; i ++){
-    getRippleRow(ripple_objs[i])
+function getAllRipples() {
+    for(let i = 0; i < ripple_objs.length; i ++){
+        getRippleRow(ripple_objs[i])
+    }
 }
 
+function getModRipples() {
+    for(let i = 0; i < ripple_objs.length; i ++){
+        if(ripple_objs[i].moderationflag == "yes") {
+            getRippleRow(ripple_objs[i])
+        }
+    }
+}
+
+function getNonModRipples() {
+    for(let i = 0; i < ripple_objs.length; i ++){
+        if(ripple_objs[i].moderationflag != "yes") {
+            getRippleRow(ripple_objs[i])
+        }
+    }
+}
+
+getRippleDetails()
 updateCounts()
+getModRipples()
+
