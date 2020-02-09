@@ -325,7 +325,7 @@
 
     {# EDITS BY NATSUKI BELOW!!!!! #}
     <div class="ripple-forms">
-        <div class="modal fade" tabindex="-1" role="dialog" id="first_form">
+        <div class="modal fade" tabindex="-1" role="dialog" id="ripple_form">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
 
@@ -350,17 +350,18 @@
                         <div class="form-group" id="my_desc">
                             <p><strong>Ripple description</strong></p>
                             <textarea class="form-control" id="org_ripple_text" name="org_ripple_text" rows="3" placeholder="Enter ripple details here" required></textarea>
-                            <p id="warning_org1">This is a required field</p>
+                            <p id="warning_ripple">This is a required field</p>
                         </div>
 
                         <div class="form-group" id="my_impact">
                             <p><strong>Select social impact level</strong></p>
                             <select id="impact_score" name="impact_score" class="form-control">
+                                <option value="" disabled selected hidden>Select level</option>
                                 <option value="9">Level 9</option>
                                 <option value="8">Level 8</option>
                                 <option value="7">Level 7</option>
                                 <option value="6">Level 6</option>
-                                <option value="5" selected>Level 5</option>
+                                <option value="5">Level 5</option>
                                 <option value="4">Level 4</option>
                                 <option value="3">Level 3</option>
                                 <option value="2">Level 2</option>
@@ -381,7 +382,7 @@
 
 
     <div class="ripple-forms">
-        <div class="modal fade" tabindex="-1" role="dialog" id="second_form">
+        <div class="modal fade" tabindex="-1" role="dialog" id="stream_form">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
 
@@ -425,7 +426,7 @@
                         <div class="form-group" id="my_desc">
                             <p><strong>Stream description</strong></p>
                             <textarea class="form-control" id="org_stream_text" name="org_stream_text" rows="3" placeholder="Enter stream details here" required></textarea>
-                            <p id="warning_org2">This is a required field</p>
+                            <p id="warning_stream">This is a required field</p>
                         </div>
 
                     </div>
