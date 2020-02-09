@@ -1,8 +1,31 @@
-jQuery(function () {
+// array of the keys to use to get the ripple data from the database
+let ripple_objs = new Array();
 
-})
+function getRippleDetails() {
+ if (ripples == undefined){
+    alert("ripples didn't work")
+  }
+  else {
+      let message = "received source and mod tagged:\n";
+      // let i = 0;
+      Object.keys(ripples).forEach(function (key) {
+          let ripple = new user_response();
+          ripple.source = ripples[key].source;
+          ripple.message = ripples[key].message;
+          ripple.date = new Date(ripples[key].date);
+          ripple.id = ripples[key].ripple_id;
+          ripple_objs.push(ripple);
+          message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].source + "\n";
+          // i++;
+      })
+
+      // alert(message + " saved " + ripple_objs.length + " objects");
+  }
+}
+
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
+
 //For the purpose of stringifying MM/DD/YYYY date format
 var monthSpan = [
     "January",
@@ -28,6 +51,18 @@ function dateSpan(date) {
         day = day.charAt(1);
     }
     var year = date.split("/")[2];
+
+    //Spit it out!
+    return month + " " + day + ", " + year;
+}
+
+//Format YYYY-MM-DD into string
+function rippleDateSpan(date) {
+    let month = date.getMonth();
+    month = monthSpan[month];
+    let day = date.getDate();
+
+    let year = date.getFullYear();
 
     //Spit it out!
     return month + " " + day + ", " + year;
@@ -126,7 +161,108 @@ function makeCircles() {
     $(".circle:first").addClass("active");
 }
 
-makeCircles();
+//Changed circles to pull dates from db
+function makeRippleCircles() {
+    //Forget the timeline if there's only one date. Who needs it!?
+    getRippleDetails();
+    if (ripple_objs.length < 2) {
+        $("#line").hide();
+        $("#span")
+            .show()
+            .text(rippleDateSpan(ripple_objs[0].date));
+        //This is what you really want.
+    } else {
+        //Set day, month and year variables for the math
+        let first = ripple_objs[0].date;
+        let last = ripple_objs[0].date;
+        let firstInt = 0;
+        let lastInt = 0;
+
+        for(let r = 0; r < ripple_objs.length; r++){
+            if(ripple_objs[r].date<first){
+                first = ripple_objs[r].date;
+                firstInt = r;
+            }
+            if(ripple_objs[r].date>last){
+                last = ripple_objs[r].date;
+                lastInt = r;
+            }
+        }
+
+        //Integer representation of the last day. The first day is represnted as 0
+        const oneDay = 24 * 60 * 60 * 1000;
+        let lengthInt = Math.round(Math.abs((last - first) / oneDay));
+
+        //Draw first date circle
+        $("#line").append(
+            '<div class="circle" id="circle0" style="left: ' +
+            0 +
+            '%;"><div class="popupSpan">' +
+            rippleDateSpan(ripple_objs[firstInt].date) +
+            "</div></div>"
+        );
+
+        $("#mainCont").append(
+            '<span id="span' + firstInt +'" class="center">' + rippleDateSpan(ripple_objs[firstInt].date) + "</span>"
+        );
+
+        //Loop through middle dates
+        for (i = 1; i < ripple_objs.length; i++) {
+            if (i != lastInt && i != firstInt) {
+                //Integer representation of the date
+                let thisInt = Math.round(Math.abs((ripple_objs[i].date - first) / oneDay));
+
+                //Integer relative to the first and last dates
+                let relativeInt = thisInt / lengthInt;
+
+                //Draw the date circle
+                $("#line").append(
+                    '<div class="circle" id="circle' +
+                    i +
+                    '" style="left: ' +
+                    relativeInt * 100 +
+                    '%;"><div class="popupSpan">' +
+                    rippleDateSpan(ripple_objs[i].date) +
+                    "</div></div>"
+
+                    //   '<div class="word" id="word' +
+                    // i +
+                    // '" style="left: ' +
+                    // relativeInt * 100 +
+                    // '%;">' +
+                    // "</div>"
+                );
+
+                $("#mainCont").append(
+                    '<span id="span' +
+                    i +
+                    '" class="right">' +
+                    rippleDateSpan(ripple_objs[i].date) +
+                    "</span>"
+                );
+            }
+        }
+        //Draw the last date circle
+        $("#line").append(
+            '<div class="circle" id="circle' +
+            lastInt +
+            '" style="left: ' +
+            99 +
+            '%;"><div class="popupSpan">' +
+            rippleDateSpan(ripple_objs[lastInt].date) +
+            "</div></div>"
+        );
+
+        $("#mainCont").append(
+            '<span id="span' + i + '" class="right">' + rippleDateSpan(ripple_objs[lastInt].date) + "</span>"
+        );
+    }
+
+    $(".circle:first").addClass("active");
+}
+
+// makeCircles();
+makeRippleCircles();
 
 $(".circle").mouseenter(function () {
     $(this).addClass("hover");
@@ -139,6 +275,8 @@ $(".circle").mouseleave(function () {
 $(".circle").click(function () {
     var spanNum = $(this).attr("id");
     selectDate(spanNum);
+    let arrayIndex = parseInt(spanNum.substring(6))
+    let text = ripple_objs[arrayIndex].message
 
     // console.log(document.getElementById(spanNum).style.left);
     // var locate = document.getElementById(spanNum).style.left;
@@ -150,8 +288,9 @@ $(".circle").click(function () {
     // var textnode = document.createTextNode(document.getElementById(spanNum).childNodes[0].textContent);
     // node.appendChild(textnode);
     // document.getElementsByClassName("content-wrap")[0].appendChild(node);
+
     document.getElementsByClassName("selected-date")[0].textContent = document.getElementById(spanNum).childNodes[0].textContent;
-    // document.getElementsByClassName("selected-content")[0].textContent = document.getElementById(spanNum).childNodes[0].textContent;
+    document.getElementsByClassName("selected-content")[0].textContent = text;
 });
 
 
@@ -282,9 +421,9 @@ window.onclick = function (event) {
 //   console.log("Click modal!!")
 // }
 
-console.log();
 
 
+console.log()
 
 
 

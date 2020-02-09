@@ -1,4 +1,20 @@
 class user_response{
+    get moderationflag() {
+        return this._moderationflag;
+    }
+
+    set moderationflag(value) {
+        this._moderationflag = value;
+    }
+    _id;
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
+    }
+
     _message;
     _other_desc;
     _date;
@@ -14,6 +30,16 @@ class user_response{
     _community;
     _resonate;
     _other;
+    _source;
+    _moderationflag;
+    get source() {
+        return this._source;
+    }
+
+    set source(value) {
+        this._source = value;
+    }
+
     get other_desc() {
         return this._other_desc;
     }
@@ -142,7 +168,7 @@ class user_response{
     constructor(action=false, learning=false, resonate=false, other=false, other_desc = 'unknown',
                 message='unknown', date = Date.now(),
                 national='unknown', community='unknown', applied = 'unknown', perspective = 'unknown', personal = 'unknown',
-                userRating = 0, nlpRating =  0, orgRating = 0){
+                userRating = 0, nlpRating =  0, orgRating = 0, source = 'unknown'){
         this._action = action;
         this._learning = learning;
         this._resonate = resonate;
@@ -158,6 +184,7 @@ class user_response{
         this._orgRating = orgRating;
         this._date = date;
         this._other_desc = other_desc;
+        this._source = source;
     }
 
 }

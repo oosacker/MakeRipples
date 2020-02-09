@@ -1,17 +1,14 @@
-body {
+body{
     background: #f2f2f2;
 }
-
-.head-top {
+.head-top{
     position: relative;
     margin-top: 10px;
 }
-
-.head-top h1 {
+.head-top h1{
     font-size: 35px;
 }
-
-.head-top button {
+.head-top button{
     position: absolute;
     top: 10px;
     right: 90px;
@@ -21,29 +18,25 @@ body {
     background-color: #92278f;
     color: #fff;
 }
-
-.timeline {
+.timeline{
     /*background-color: cadetblue;*/
     height: 150px;
     margin: 0 auto;
     /*z-index: -2;*/
 }
-
-.timeline h4 {
+.timeline h4{
     margin-left: 25px;
 }
-
-.timeline-bar {
+.timeline-bar{
     margin: 0px 25px 0px 25px;
     padding-top: 40px;
     height: 100px;
     background: #fff;
     border-radius: 10px 10px;
-    -webkit-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
 }
-
 /*.timeline-bar .container{*/
 /*    width: 100%*/
 /*}*/
@@ -94,10 +87,12 @@ body {
 /*}*/
 
 
-#lineCont {
-    width: 100%;
-    height: 20%;
-}
+
+
+      #lineCont {
+        width: 100%;
+        height: 20%;
+      }
 
 #line {
     height: 6px;
@@ -206,8 +201,8 @@ body {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -222,58 +217,56 @@ body {
     /*margin-left: 260px;*/
 }
 
-.timeline-content .modal-content:before {
-    content: "";
-    position: absolute;
-    width: 0px;
-    height: 0px;
+.timeline-content .modal-content:before{
+    content:"";
+    position:absolute;
+    width:0px;
+    height:0px;
     border: 10px solid;
     border-color: transparent transparent #92278f transparent;
     left: 20px;
     top: -20px;
 }
 
-.timeline-content .modal-body {
+.timeline-content .modal-body{
     font-size: 14px;
 }
-
-.timeline-content .modal-footer {
+.timeline-content .modal-footer{
     border: none;
     margin-top: 0px;
 }
-
-.timeline-content .modal-content .modal-title {
+.timeline-content .modal-content .modal-title{
     background-color: #92278f;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     text-align: center;
 }
 
-.timeline-content .modal-content .modal-title p {
-    color: #fff;
+.timeline-content .modal-content .modal-title p{
+    color:#fff;
     margin: 5px 0px;
 }
 
-.timeline-content .modal-content .close-btn {
+.timeline-content .modal-content .close-btn{
     color: #fff;
     background-color: #92278f;
     font-size: 14px;
     padding: 5px 15px;
 }
 
-.timeline-content .modal-content .close-btn:hover {
+.timeline-content .modal-content .close-btn:hover{
     color: #fff;
     background-color: #b530b1;
     font-size: 14px;
     padding: 5px 15px;
 }
 
-.selected-date {
+.selected-date{
     text-align: right;
     /*margin: 0px;*/
 }
 
-.selected-content {
+.selected-content{
     margin: 0px;
 }
 
@@ -293,17 +286,17 @@ body {
 /*}*/
 
 
-.achievements {
+
+.achievements{
     background-color: #fff;
     margin: 20px 20px;
     /*padding: 20px 20px;*/
     border-radius: 10px 10px;
-    -webkit-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
 }
-
-.achievements .title {
+.achievements .title{
     background: #4d5f96;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -311,60 +304,53 @@ body {
     text-align: center;
     padding: 5px 0px;
 }
-
-.achievements h1 {
+.achievements h1{
     font-size: 25px;
     color: #fff;
 }
-
-.achievements .card {
+.achievements .card{
     padding: 0;
     margin: 10px auto;
     border: none;
     border-radius: 0px;
     text-align: center;
 }
-
-.achievements .card-mid {
+.achievements .card-mid{
     border-right: 1px solid #aaaaaa;
     border-left: 1px solid #aaaaaa;
 }
-
-.achievements .card img {
+.achievements .card img{
     height: 200px;
     padding: 30px;
 }
-
-.achievements .card .content-top {
+.achievements .card .content-top{
     margin-top: 60px;
 }
-
-.achievements .card .content-top p {
+.achievements .card .content-top p{
     font-size: 45px;
 }
 
-.achievements .card .content-top .content-left {
+.achievements .card .content-top .content-left{
     border-right: 1px solid #aaaaaa;
 }
 
-.achievements .card .content-top .col-6 {
+.achievements .card .content-top .col-6{
     padding: 0px;
     margin: 0 auto;
 }
 
-.community-ripples {
+.community-ripples{
     background-color: #fff;
     margin: 0;
     /*padding: 20px 20px;*/
     margin: 20px 20px;
     border-radius: 10px 10px;
-    -webkit-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
     padding-bottom: 10px;
 }
-
-.community-ripples .title {
+.community-ripples .title{
     background: #4d5f96;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -373,22 +359,18 @@ body {
     padding: 5px 0px;
     margin-bottom: 15px;
 }
-
-.community-ripples h1 {
+.community-ripples h1{
     font-size: 25px;
     color: #fff;
 }
-
-.activity-item {
+.activity-item{
     text-align: center;
     margin: 20px 0px;
 }
-
-.activity-tag {
+.activity-tag{
     text-align: center;
 }
-
-.activity-tag p {
+.activity-tag p{
     /*background-color: grey;*/
     color: white;
     width: 100px;
@@ -396,20 +378,18 @@ body {
     margin: 0 auto;
     padding: 5px 0px;
 }
-
-.community-tag {
+.community-tag{
     background-color: #f68f20;
 }
-
-.personal-tag {
+.personal-tag{
     background-color: #92278f;
 }
 
-.organised-tag {
+.organised-tag{
     background-color: #63c5c0;
 }
 
-.activity-img img {
+.activity-img img{
     width: 80px;
     height: 50px;
 }
@@ -418,17 +398,16 @@ body {
     font-size: 16px;
 }
 
-.myRipples {
+.myRipples{
     background-color: #fff;
     margin: 20px 20px;
     /*padding: 20px 20px;*/
     border-radius: 10px 10px;
-    -webkit-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
 }
-
-.myRipples .title {
+.myRipples .title{
     background: #4d5f96;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -437,12 +416,10 @@ body {
     padding: 5px 0px;
     margin-bottom: 10px;
 }
-
-.myRipples h1 {
+.myRipples h1{
     font-size: 25px;
     color: #fff;
 }
-
 /*.media .card{*/
 /*    width: 460px;*/
 /*    height: 400px;*/
@@ -459,17 +436,16 @@ body {
 /*    left: 0;*/
 /*    object-fit: cover;*/
 /*}*/
-.myRipples .card {
+.myRipples .card{
     padding: 20px;
     margin: 10px auto;
     border: none;
 }
-
-.myRipples .card img {
+.myRipples .card img{
     height: 150px;
 }
 
-.myRipples .card-body {
+.myRipples .card-body{
     padding: 0px;
     margin-top: 15px;
 }
@@ -598,15 +574,15 @@ body {
     right: 42px;
   }
 }
-​
+
 @media only screen and (max-width: 769px) {
   .head-top button {
     top: 42px;
     right: 58px;
   }
 }
-​
-​
+
+
 @media only screen and (max-width: 376px) {
   .head-top button {
     top: 64px;
@@ -619,7 +595,3 @@ body {
       margin-top: 25px;
   }
 }
-
-
-
-
