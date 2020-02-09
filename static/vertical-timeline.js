@@ -1,3 +1,49 @@
+// array of the keys to use to get the ripple data from the database
+let ripple_objs = [];
+
+function getRippleDetails() {
+ if (ripples == undefined){
+    alert("ripples didn't work")
+  }
+  else {
+      // let message = "received source and mod tagged:\n";
+      // let i = 0;
+      Object.keys(ripples).forEach(function (key) {
+          let ripple = new user_response();
+          ripple.source = ripples[key].source;
+          ripple.message = ripples[key].message;
+          ripple.date = new Date(ripples[key].date);
+          ripple.id = ripples[key].ripple_id;
+          ripple.moderationflag = ripples[key].moderate
+          ripple_objs.push(ripple);
+          // message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
+          // i++;
+      })
+
+      // alert(message + " saved " + ripple_objs.length + " objects");
+  }
+}
+
+
+function getModerationCount() {
+    getRippleDetails();
+    let count_yes = 0;
+    let count_no = 0;
+
+    for(let i = 0; i < ripple_objs.length; i ++){
+        if(ripple_objs[i].moderationflag == 'yes'){
+            count_yes++
+        }
+        if(ripple_objs[i].moderationflag == 'no'){
+            count_no++
+        }
+    }
+    // alert("Moderate: " + count_yes +"\nDon't Moderate: " + count_no + "\n Total: " + ripple_objs.length);
+    document.getElementById("moderation_count").innerText = count_yes;
+    document.getElementById("moderation_complete").innerText = count_no;
+}
+
+getModerationCount();
 
 //Sample dates
 var dates = ["6/12/2015", "9/12/2015", "8/15/2015", "10/22/2015", "11/2/2015", "12/22/2015"];
@@ -54,14 +100,14 @@ function makeCircles() {
         //Integer representation of the last day. The first day is represnted as 0
         var lastInt = (lastMonth - firstMonth) * 30 + (lastDay - firstDay);
 
-        //Draw first date circle
-        $("#line").append(
-            '<div class="circle" id="circle0" style="top: ' +
-            0 +
-            '%;"><div class="popupSpan">' +
-            dateSpan(dates[0]) +
-            "</div></div>"
-        );
+    //Draw first date circle
+    $("#line").append(
+      '<div class="circle" id="circle0" style="top: ' +
+        0 +
+        '%;"><i class="fas fa-star"></i><div class="popupSpan">' +
+        dateSpan(dates[0]) +
+        "</div></div>"
+    );
 
         $("#mainCont").append(
             '<span id="span0" class="center">' + dateSpan(dates[0]) + "</span>"
@@ -78,15 +124,15 @@ function makeCircles() {
             //Integer relative to the first and last dates
             var relativeInt = thisInt / lastInt;
 
-            //Draw the date circle
-            $("#line").append(
-                '<div class="circle" id="circle' +
-                i +
-                '" style="top: ' +
-                relativeInt * 100 +
-                '%;"><div class="popupSpan">' +
-                dateSpan(dates[i]) +
-                "</div></div>"
+      //Draw the date circle
+      $("#line").append(
+        '<div class="circle" id="circle' +
+          i +
+          '" style="top: ' +
+          relativeInt * 100 +
+          '%;"><i class="fas fa-check"></i><div class="popupSpan">' +
+          dateSpan(dates[i]) +
+          "</div></div>"
 
                 //   '<div class="word" id="word' +
                 // i +
