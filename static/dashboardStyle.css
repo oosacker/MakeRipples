@@ -540,6 +540,16 @@ body{
   margin-left: 5px;
 }
 
+/*.ripple-forms .form-check-inline {*/
+/*  margin-right: 0;*/
+/*    margin-left: 0;*/
+/*}*/
+
+/*.ripple-forms .form-check-label {*/
+/*    margin-left: 0;*/
+/*}*/
+
+
 /* otherwise will not line up vertically with the checkbox + horizontally with calendar */
 .ripple-forms #what_ripple{
     margin-bottom: 0px;
