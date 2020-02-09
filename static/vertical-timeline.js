@@ -303,6 +303,13 @@ jQuery(function () {
         autoclose: true,
         todayHighlight: true
     }).datepicker('update', new Date());
+
+
+    $('#warning_org1').css('color', 'red');
+    $('#warning_org1').css('visibility', 'hidden');
+
+    $('#warning_org2').css('color', 'red');
+    $('#warning_org2').css('visibility', 'hidden');
 })
 
 let stream_btn = $('#stream_btn');
@@ -315,4 +322,22 @@ ripple_brn.on('click', function(){
   $('#first_form').modal();
 })
 
+let create_ripple_brn = $('#create_ripple_btn');
+create_ripple_brn.on('click', function(){
+  if($('#org_ripple_text').val() === ''){
+      $('#warning_org1').css('visibility', 'visible');
+  }
+  else{
+      $('#first_form').modal('hide');
+  }
+})
 
+let create_stream_brn = $('#create_stream_btn');
+create_stream_brn.on('click', function(){
+  if($('#org_stream_text').val() === ''){
+      $('#warning_org2').css('visibility', 'visible');
+  }
+  else{
+      $('#second_form').modal('hide');
+  }
+})
