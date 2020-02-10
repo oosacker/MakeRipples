@@ -71,7 +71,7 @@ function getRippleRow(ripple) {
                     '</div>')
     let tag = "#" + ripple.id
     $(tag).on("click", function () {
-        alert("clicked a box for " + ripple.id)
+        // alert("clicked a box for " + ripple.id)
         reviewRipple(ripple)
     })
 }
@@ -124,6 +124,13 @@ function getNonModRipples() {
 
 function reviewRipple(ripple){
     $("#review_form").modal();
+    $("#datepicker").datepicker('update', ripple.date);
+    $("#org_ripple_text").val(ripple.message);
+    let impact;
+    if(ripple.userRating>0){
+        $("#impact_score").val(ripple.userRating);
+    }
+
 }
 
 $("#all-btn").on("click", function () {
