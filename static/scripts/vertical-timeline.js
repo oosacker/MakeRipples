@@ -352,6 +352,23 @@ jQuery(function () {
     }).datepicker('update', new Date());
 })
 
+function send_ripple(ripple){
+    // alert("started send user")
+    $.ajax('/add_ripple', {
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(ripple),
+        success: function (data, status, xhr) {
+            console.log(status)
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(textStatus);
+        }
+    }).then(function(){
+        console.log('sent')
+    })
+}
+
 
 
 $('#stream_btn').on('click', function () {
@@ -363,6 +380,18 @@ $('#create_ripple_btn').on('click', function () {
         $('#warning_ripple').css('visibility', 'visible');
     }
     else{
+        let ripple = new user_response();
+        ripple.source = "organiser";
+        ripple.moderationflag = "N/A";
+        ripple.date = $("#datepicker").datepicker("getDate");
+        ripple.message = $("#org_ripple_text").val();
+        // alert("message:" + ripple.message)
+        ripple.orgRating = $("#impact_score").val();
+
+        send_ripple(ripple);
+        $("#text_input1").val("");
+        $("#impact_score").val("");
+
         $('#ripple_form').modal('hide');
     }
 })
