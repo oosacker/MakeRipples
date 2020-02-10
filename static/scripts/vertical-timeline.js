@@ -30,11 +30,13 @@ function getModerationCount() {
     let count_no = 0;
 
     for (let i = 0; i < ripple_objs.length; i++) {
-        if (ripple_objs[i].moderationflag == 'yes') {
-            count_yes++
-        }
-        if (ripple_objs[i].moderationflag == 'no') {
-            count_no++
+        if(ripple_objs[i].source == 'user') {
+            if (ripple_objs[i].moderationflag == 'yes') {
+                count_yes++
+            }
+            if (ripple_objs[i].moderationflag == 'no') {
+                count_no++
+            }
         }
     }
     // alert("Moderate: " + count_yes +"\nDon't Moderate: " + count_no + "\n Total: " + ripple_objs.length);
