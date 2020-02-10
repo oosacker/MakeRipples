@@ -49,7 +49,7 @@ function getRippleRow(ripple) {
     }
 
     $("#ripples-list").append(
-        '<div class="activity-item d-flex justify-content-center row">' +
+        '<div class="activity-item d-flex justify-content-center row" id="'+ ripple.id +'">' +
                         '<div class="activity-tag col-lg-2 my-auto col-sm-4 col-4">' +
                             '<p class="review-tag">' + review + '</p>' +
                         '</div>' +
@@ -69,6 +69,11 @@ function getRippleRow(ripple) {
                             '<p class="my-auto">Level '+ ripple.userRating +' impact</p>' +
                         '</div>' +
                     '</div>')
+    let tag = "#" + ripple.id
+    $(tag).on("click", function () {
+        alert("clicked a box for " + ripple.id)
+        reviewRipple(ripple)
+    })
 }
 
 function clearRipples(){
@@ -117,6 +122,10 @@ function getNonModRipples() {
     }
 }
 
+function reviewRipple(ripple){
+    $("#review_form").modal();
+}
+
 $("#all-btn").on("click", function () {
     // alert("clicked all")
     getAllRipples()
@@ -141,6 +150,6 @@ jQuery(function () {
         todayHighlight: true
     }).datepicker('update', new Date());
 
-    $("#review_form").modal();
+
 
 })
