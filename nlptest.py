@@ -17,41 +17,41 @@ library8 = []
 library10 = []
 
 
-def synonymTests():
-    syns = wordnet.synsets("learn")
-
-    print(syns[0].name())
-
-    print(syns[0].lemmas()[0].name())
-
-    print(syns[0].definition())
-
-    print(syns[0].examples())
-
-    synonyms = []
-    for syn in syns:
-        for l in syn.lemmas():
-            synonyms.append(l.name())
-
-    print(set(synonyms))
-
-    actSyns = wordnet.synsets("act")
-
-    actSynonyms = []
-    for aSyn in actSyns:
-        for l in aSyn.lemmas():
-            actSynonyms.append(l.name())
-
-    print(set(actSynonyms))
-
-    both = []
-    for word in synonyms:
-        if actSynonyms.__contains__(word):
-            both.append(word.name())
-
-    print("Learn synonyms = ", len(synonyms))
-    print("Act synonyms = ", len(synonyms))
-    print("Overlapping = ", len(both))
+# def synonymTests():
+#     syns = wordnet.synsets("learn")
+#
+#     print(syns[0].name())
+#
+#     print(syns[0].lemmas()[0].name())
+#
+#     print(syns[0].definition())
+#
+#     print(syns[0].examples())
+#
+#     synonyms = []
+#     for syn in syns:
+#         for l in syn.lemmas():
+#             synonyms.append(l.name())
+#
+#     print(set(synonyms))
+#
+#     actSyns = wordnet.synsets("act")
+#
+#     actSynonyms = []
+#     for aSyn in actSyns:
+#         for l in aSyn.lemmas():
+#             actSynonyms.append(l.name())
+#
+#     print(set(actSynonyms))
+#
+#     both = []
+#     for word in synonyms:
+#         if actSynonyms.__contains__(word):
+#             both.append(word.name())
+#
+#     print("Learn synonyms = ", len(synonyms))
+#     print("Act synonyms = ", len(synonyms))
+#     print("Overlapping = ", len(both))
 
 
 #tagged = nltk.pos_tag(word_tokenize(sentence))
@@ -80,12 +80,12 @@ def makeLibraryOnetoThree():
     for keyword in keywords:
         library1.append(keyword)
 
-    syns = wordnet.synsets(keyword)
-    for syn in syns:
-        for lem in syn.lemmas():
-            library1.append(lem.name())
-            print(lem.name)
-    # May end up with duplicates, so would need to get rid of those.
+    # syns = wordnet.synsets(keyword)
+    # for syn in syns:
+    #     for lem in syn.lemmas():
+    #         library1.append(lem.name())
+    #         print(lem.name)
+    # # May end up with duplicates, so would need to get rid of those.
 
     print("Made library of ", len(library1), "words for level one")
 
@@ -103,12 +103,12 @@ def makeLibraryFourtoSeven():
 
     # make library of synonyms for these words
 
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library4.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
+    # for keyword in keywords:
+    #     syns = wordnet.synsets(keyword)
+    #     for syn in syns:
+    #         for lem in syn.lemmas():
+    #             library4.append(lem.name())
+    # # May end up with duplicates, so would need to get rid of those.
 
     print("Made library of ", len(library4), "words for level four")
 
@@ -124,12 +124,12 @@ def makeLibraryEighttoNine():
 
     # make library of synonyms for these words
 
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library8.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
+    # for keyword in keywords:
+    #     syns = wordnet.synsets(keyword)
+    #     for syn in syns:
+    #         for lem in syn.lemmas():
+    #             library8.append(lem.name())
+    # # May end up with duplicates, so would need to get rid of those.
 
     print("Made library of ", len(library8), "words for level one")
 
@@ -144,12 +144,12 @@ def makeLibrary10():
 
     # make library of synonyms for these words
 
-    for keyword in keywords:
-        syns = wordnet.synsets(keyword)
-        for syn in syns:
-            for lem in syn.lemmas():
-                library10.append(lem.name())
-    # May end up with duplicates, so would need to get rid of those.
+    # for keyword in keywords:
+    #     syns = wordnet.synsets(keyword)
+    #     for syn in syns:
+    #         for lem in syn.lemmas():
+    #             library10.append(lem.name())
+    # # May end up with duplicates, so would need to get rid of those.
 
     print("Made library of ", len(library10), "words for level one")
 
