@@ -1,5 +1,6 @@
 from flask import *
 import pyrebase
+import nlptest
 import time
 from datetime import datetime
 
@@ -79,11 +80,13 @@ def organiser_dash():
     print(ripples)
     return render_template('organiser_dashboard.html', ripples=ripples)
 
+
 @app.route('/ripple_review', methods=['POST', 'GET'])
 def ripple_review():
     ripples = get_all_ripples()
     print(ripples)
     return render_template('ripple_review.html', ripples=ripples)
+
 
 @app.route('/nat_test', methods=['POST', 'GET'])
 def nat_test():
@@ -130,8 +133,10 @@ def nat_test():
 # return render_template('form2.html')
 
 def get_nlp_rating(message):
-    # TODO link to Sam's code here
-    return 0
+    nlprating = nlptest.returnnlprating(message)
+    print(message)
+    print(nlprating)
+    return nlprating
 
 
 def flag_for_moderation(user_rating, nlp_rating, other):
@@ -141,7 +146,7 @@ def flag_for_moderation(user_rating, nlp_rating, other):
         return 1
     if user_rating > 6 or user_rating < 2:
         return 1
-    if nlp_rating > 0 and abs(nlp_rating - user_rating) > 3:
+    if int(nlp_rating) > 0 and abs(int(nlp_rating) - user_rating) > 3:
         return 1
     return 0
 
@@ -232,7 +237,8 @@ def get_all_ripples():
     ripples = {}
     counter = 0
     for key in stream_keys.each():
-        if key.key().__contains__("Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val():
+        if key.key().__contains__(
+                "Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val():
             label = "r" + str(counter)
             # source = 'untagged'
             moderate = 'untagged'
@@ -248,10 +254,38 @@ def get_all_ripples():
                 "source": key.val()["source"],
                 "moderate": moderate,
                 "user_rating": key.val()["rating"]["userRating"],
+                "org_rating": key.val()["rating"]["orgRating"],
             }
             ripples.update({label: tldata})
             counter += 1
     return ripples
+
+
+def get_ripple(ripple_id):
+    ripple_data = db.child("users").child("stream").child(ripple_id).get()
+    return ripple_data
+
+
+def update_ripple_mod(ripple_id, orgRating, orgComment):
+    db.child("users").child("stream").child(ripple_id).update({"moderate":"completed"})
+    db.child("users").child("stream").child(ripple_id).update({"orgComment": orgComment})
+    db.child("users").child("stream").child(ripple_id).child("rating").update({"orgRating": orgRating})
+
+    print("updated (maybe)")
+
+
+@app.route('/moderate_ripple', methods=['POST', 'GET'])
+def moderate_ripple():
+    if request.method == 'POST':
+        if request.is_json:
+            data_receive = json.loads(request.get_data())
+            print('Received JSON data_receive from user object')
+            print(data_receive)
+            update_ripple_mod(data_receive["_id"],data_receive["_orgRating"],data_receive["_orgComment"])
+            return 'succeeded'
+        else:
+            print('Did not receive JSON')
+            return 'failed'
 
 
 # get_all_ripples()

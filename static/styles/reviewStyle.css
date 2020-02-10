@@ -14,6 +14,20 @@
 .details-bar span{
     margin-left: 5px;
 }
+
+.mid-bar #mod-count{
+    background-color: #f68f20;
+    color: #fff;
+    padding: 0px 10px;
+    border-radius: 5px 5px;
+}
+
+.details-block button{
+    background: none;
+    border: none;
+    margin-bottom: 10px;
+}
+
 .mid-bar{
     border-right: 1px solid #aaaaaa;
     border-left: 1px solid #aaaaaa;
@@ -33,32 +47,169 @@
 .require-moderate{
     text-decoration: underline;
 }
+/* NATSUKI'S CODE */
+/* NATSUKI'S EDITS BELOW */
+.ripple-forms .modal-header {
+    background-color: #91278e;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
-.mid-bar #mod-count{
-    background-color: #f68f20;
+    /* nats - setting the modal title bar smaller */
+    padding: 5px 16px 5px 16px;
+
+}
+
+/* needs to be larger than header or get white space!!!!! */
+.ripple-forms .modal-content {
+    border-radius: 15px 15px !important;
+}
+
+/*font color of modal title text*/
+.ripple-forms .modal-title {
+    color: white;
+
+    /* nats - resetting the padding of title - to make title bar smaller */
+    padding: 0;
+}
+
+/* close button of modal -- make it white and bigger */
+.ripple-forms .modal-header .close {
     color: #fff;
-    padding: 0px 10px;
-    border-radius: 5px 5px;
+    opacity: 1;
+    font-size: 30px;
+    margin-top: 0;
+
+    /* nats - resetting the padding of x button */
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+
 }
 
-.details-block button{
-    background: none;
-    border: none;
-    margin-bottom: 10px;
+.ripple-forms .modal-footer .btn-secondary {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    width: 120px;
+    font-weight: bold;
 }
+
+.ripple-forms .modal-footer .btn-primary {
+    background-color: #91278e;
+    color: white;
+    width: 150px;
+    font-weight: bold;
+}
+
+/* datepicker stuff */
+.ripple-forms #datepicker {
+    width: 180px;
+    margin-left: 0px;
+}
+
+.ripple-forms #impact_score {
+    width: 250px;
+}
+
+.ripple-forms #datepicker > span:hover {
+    cursor: pointer;
+}
+
+/* otherwise right up against the left edge!!! */
+.ripple-forms #start_date {
+    padding: 0 16px;
+}
+
+/* otherwise right up against the start_date!!! */
+.ripple-forms #end_date {
+    padding: 0 16px;
+}
+
+.fa-calendar-alt {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: -28px;
+    z-index: 99;
+}
+
+
+@media only screen and (max-width: 832px) {
+    .head-top h1 {
+        font-size: 33px;
+    }
+
+    .head-top button {
+        top: 42px;
+        right: 42px;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+  .head-top .btn-left {
+    top: 10px;
+    left: 20px;
+  }
+  .head-top .btn-right {
+    top: 10px;
+    right: 20px;
+  }
+  .activity-tag p{
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .head-top button {
+    top: 64px;
+    right: 42px;
+  }
+  /*.circle .popupSpan{*/
+  /*  left: -50px;*/
+  /*}*/
+  .timeline{
+      margin-top: 25px;
+  }
+  .head-top{
+      margin-bottom: 45px;
+  }
+  .head-top .btn-left {
+    top: 50px;
+    left: 20px;
+  }
+  .head-top .btn-right {
+    top: 50px;
+    right: 20px;
+  }
+  .organiserDashboard .card-top-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-right{
+    border: none;
+  }
+}
+
+
+
+
 
 .ripple-review {
     background-color: #fff;
     margin: 0;
     /*padding: 20px 20px;*/
-    margin: 20px 50px;
+    margin: 20px 20px;
     border-radius: 10px 10px;
     -webkit-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     padding-bottom: 10px;
     text-align: center;
-    border: 1px solid #f2f2f2;
 }
 
 .ripple-review .title {
@@ -98,6 +249,14 @@
     background-color: #f68f20;
 }
 
+.personal-tag {
+    background-color: #92278f;
+}
+
+.organised-tag {
+    background-color: #63c5c0;
+}
+
 .activity-img img {
     width: 80px;
     height: 50px;
@@ -124,3 +283,5 @@
         font-size: 14px;
     }
 }
+
+

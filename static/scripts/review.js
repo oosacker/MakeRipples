@@ -16,6 +16,7 @@ function getRippleDetails() {
           ripple.id = ripples[key].ripple_id;
           ripple.moderationflag = ripples[key].moderate;
           ripple.userRating = ripples[key].user_rating;
+          ripple.orgRating = ripples[key].org_rating;
           ripple_objs.push(ripple);
           // message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
           // i++;
@@ -48,8 +49,15 @@ function getRippleRow(ripple) {
         endSentence = " days"
     }
 
+    if (ripple.orgRating != undefined && ripple.orgRating > 0){
+        rating = ripple.orgRating
+    }
+    else {
+        rating = ripple.userRating
+    }
+
     $("#ripples-list").append(
-        '<div class="activity-item d-flex justify-content-center row">' +
+        '<div class="activity-item d-flex justify-content-center row" id="'+ ripple.id +'">' +
                         '<div class="activity-tag col-lg-2 my-auto col-sm-4 col-4">' +
                             '<p class="review-tag">' + review + '</p>' +
                         '</div>' +
@@ -66,9 +74,14 @@ function getRippleRow(ripple) {
                         '</div>' +
 
                         '<div class="activity-impact col-lg-2 my-auto col-sm-3 col-3">' +
-                            '<p class="my-auto">Level '+ ripple.userRating +' impact</p>' +
+                            '<p class="my-auto">Level '+ rating +' impact</p>' +
                         '</div>' +
                     '</div>')
+    let tag = "#" + ripple.id
+    $(tag).on("click", function () {
+        // alert("clicked a box for " + ripple.id)
+        reviewRipple(ripple)
+    })
 }
 
 function clearRipples(){
@@ -139,20 +152,83 @@ function checkReviewColor(){
 
 }
 
+function reviewRipple(ripple){
+    $("#review_form").modal();
+    $("#datepicker").datepicker('update', ripple.date);
+    $("#org_ripple_text").val(ripple.message);
+    $("#org_ripple_text").prop("readonly",true);
+    $("#rippleId").prop("value",ripple.id);
+    if(ripple.userRating>0){
+        $("#impact_score").val(ripple.userRating);
+    }
+
+}
+
+function findRipple(id){
+    for(let i = 0; i < ripple_objs.length; i++){
+        if(ripple_objs[i].id == id){
+            return ripple_objs[i];
+        }
+    }
+}
+
 $("#all-btn").on("click", function () {
     // alert("clicked all")
-    getAllRipples()
+    getAllRipples();
 })
 $("#mod-btn").on("click", function () {
     // alert("clicked require mod")
-    getModRipples()
+    getModRipples();
 })
 $("#non-mod-btn").on("click", function () {
     // alert("clicked no mod required")
-    getNonModRipples()
+    getNonModRipples();
 })
 
-getRippleDetails()
-updateCounts()
-getModRipples()
+function updateRipple(ripple){
+    $.ajax('/moderate_ripple', {
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(ripple),
+        success: function (data, status, xhr) {
+            console.log(status);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(textStatus);
+        }
+    }).then(function () {
+        console.log('sent');
+    })
+}
 
+
+// NATSUKI'S CODE
+$("#update_ripple_btn").on("click", function () {
+    let id = $("#rippleId").val();
+    let ripple = findRipple(id);
+    let comments = "none";
+    if ($("#org_comments").val() != undefined){
+        comments = $("#org_comments").val()
+    }
+    ripple.orgRating = $("#impact_score").val();
+    ripple.orgComment = comments;
+    // alert(ripple.orgComment)
+    ripple.moderationflag = "completed";
+    $("#review_form").modal('hide');
+    updateRipple(ripple);
+    $("#org_comments").val("");
+    updateCounts();
+    getAllRipples();
+})
+
+jQuery(function () {
+    $("#datepicker").datepicker({
+        autoclose: true,
+        todayHighlight: true
+    }).datepicker('update', new Date());
+
+    getRippleDetails();
+    updateCounts();
+    getModRipples();
+
+})

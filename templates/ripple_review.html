@@ -213,9 +213,75 @@
 {#                        <div class="activity-impact col-lg-2 my-auto col-sm-3 col-3">#}
 {#                            <p class="my-auto">Level 9 impact</p>#}
 {#                        </div>#}
+                </div>
+            </div>
+    </div>
+
+    {# EDITS BY NATSUKI BELOW!!!!! #}
+    <div class="ripple-forms">
+        <div class="modal fade" tabindex="-1" role="dialog" id="review_form">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title my-auto">Review User's Ripple</h4>
+                        <button type="button" class="close my-auto" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="form-group" id="my_date">
+                            <p><strong>Event date</strong></p>
+                            <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+                                <input class="form-control" type="text"/>
+                                <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="my_desc">
+                            <p><strong>Ripple description</strong></p>
+                            <textarea class="form-control" id="org_ripple_text" name="org_ripple_text" rows="3"
+                                      placeholder="I did stuff that was cool." required></textarea>
+                            {#                            <p id="warning_desc">This is a required field</p>#}
+                        </div>
+
+                        <div class="form-group" id="my_impact">
+                            <p><strong>Impact score</strong></p>
+                            <select id="impact_score" name="impact_score" class="form-control"
+                                    aria-label="Select an Activity type">
+                                <option value="" disabled selected hidden>Select an Activity type</option>
+                                <option value="1">Level 1: Caught Attention</option>
+                                <option value="2">Level 2: Emotional Reaction</option>
+                                <option value="3">Level 3: Personal Connection</option>
+                                <option value="4">Level 4: Learning</option>
+                                <option value="5">Level 5: Applied Learning</option>
+                                <option value="6">Level 6: Empathy</option>
+                                <option value="7">Level 7: Personal Action</option>
+                                <option value="8">Level 8: Community Action</option>
+                                <option value="9">Level 9: National Impact</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="my_desc">
+                            <p><strong>Organiser comments</strong></p>
+                            <textarea class="form-control" id="org_comments" name="org_comments" rows="3"
+                                      placeholder="Enter your comments here" required></textarea>
+                            {#                          <p id="warning_desc">This is a required field</p>#}
+                        </div>
+
+                    </div>
+                    <input type="hidden" id="rippleId" name="rippleId">
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="update_ripple_btn">Update Ripple</button>
                     </div>
 
                 </div>
+            </div>
+        </div>
     </div>
 
 
