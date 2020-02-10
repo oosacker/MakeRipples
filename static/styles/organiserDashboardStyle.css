@@ -492,7 +492,7 @@
 }
 
 .community-tag {
-    background-color: #f68f20;
+    background-color: #7889ba;
 }
 
 .personal-tag {
@@ -501,6 +501,10 @@
 
 .organised-tag {
     background-color: #63c5c0;
+}
+
+.activity-desc {
+    text-align: left;
 }
 
 .activity-img img {
