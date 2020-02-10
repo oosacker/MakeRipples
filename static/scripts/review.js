@@ -102,6 +102,7 @@ function getAllRipples() {
     for(let i = 0; i < ripple_objs.length; i ++){
         getRippleRow(ripple_objs[i])
     }
+    checkReviewColor()
 }
 
 function getModRipples() {
@@ -111,6 +112,7 @@ function getModRipples() {
             getRippleRow(ripple_objs[i])
         }
     }
+    checkReviewColor()
 }
 
 function getNonModRipples() {
@@ -120,6 +122,26 @@ function getNonModRipples() {
             getRippleRow(ripple_objs[i])
         }
     }
+    checkReviewColor()
+}
+
+function checkReviewColor(){
+    var reviewTag = document.getElementsByClassName("review-tag");
+    var i;
+    for (i = 0; i < reviewTag.length; i++) {
+      if(document.getElementsByClassName("review-tag")[i].textContent == "Review Me!"){
+        document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#f68f20";
+        console.log("orange");
+      }
+      else if(document.getElementsByClassName("review-tag")[i].textContent == "Not Reviewed"){
+        document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#63c5c0";
+      }
+      else if(document.getElementsByClassName("review-tag")[i].textContent == "completed"){
+        document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#4d5f96";
+      }
+
+    }
+
 }
 
 function reviewRipple(ripple){
