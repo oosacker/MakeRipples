@@ -53,7 +53,6 @@ library10 = []
 #     print("Act synonyms = ", len(synonyms))
 #     print("Overlapping = ", len(both))
 
-
 #tagged = nltk.pos_tag(word_tokenize(sentence))
 #print(tagged)
 
@@ -64,12 +63,10 @@ library10 = []
 # this will only get base forms, not past tense etc.
 #includedwords = list(sentence)
 
-
 # print("Nouns Singular: ", set(nouns))
 # print("Nouns Plural: "), set(nounsplural)
 # print("Verbs: ", set(verbs))
 # print("Verbs (past): ", set(verbs_past))
-
 
 def makeLibraryOnetoThree():
     # make a list of keywords to identify something at level one to three
@@ -111,7 +108,6 @@ def makeLibraryFourtoSeven():
     # # May end up with duplicates, so would need to get rid of those.
 
     print("Made library of ", len(library4), "words for level four")
-
 
 def makeLibraryEighttoNine():
     # make a list of keywords to identify something at eight and nine
