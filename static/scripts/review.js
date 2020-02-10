@@ -133,10 +133,10 @@ function checkReviewColor(){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#f68f20";
         console.log("orange");
       }
-      else if(document.getElementsByClassName("review-tag")[i].textContent == "Not Reviewed"){
+      else if(document.getElementsByClassName("review-tag")[i].textContent == "Reviewed"){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#63c5c0";
       }
-      else if(document.getElementsByClassName("review-tag")[i].textContent == "completed"){
+      else if(document.getElementsByClassName("review-tag")[i].textContent == "Not Reviewed"){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#4d5f96";
       }
 
