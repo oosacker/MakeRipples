@@ -135,28 +135,31 @@ function reviewRipple(ripple){
 
 $("#all-btn").on("click", function () {
     // alert("clicked all")
-    getAllRipples()
+    getAllRipples();
 })
 $("#mod-btn").on("click", function () {
     // alert("clicked require mod")
-    getModRipples()
+    getModRipples();
 })
 $("#non-mod-btn").on("click", function () {
     // alert("clicked no mod required")
-    getNonModRipples()
+    getNonModRipples();
 })
 
-getRippleDetails()
-updateCounts()
-getModRipples()
 
 // NATSUKI'S CODE
+$("#update_ripple_btn").on("click", function () {
+    $("#review_form").modal('hide');
+})
+
 jQuery(function () {
     $("#datepicker").datepicker({
         autoclose: true,
         todayHighlight: true
     }).datepicker('update', new Date());
 
-    // $("#review_form").modal();
+    getRippleDetails();
+    updateCounts();
+    getModRipples();
 
 })
