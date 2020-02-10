@@ -8,8 +8,6 @@ app = Flask(__name__)
 
 count = 0
 message = 'Begin!!!!'
-stream = "stream"
-# stream = "demo_stream"
 
 config = {
     "apiKey": "AIzaSyBFWvJWUtv_AM8NhBXG231jxint9IbXKio",
@@ -155,7 +153,7 @@ def add_ripple():
                 }
 
             # print(ripple_id, data)
-            db.child("users").child(stream).child(ripple_id).set(data)
+            db.child("users").child("stream").child(ripple_id).set(data)
             # print('sent to database(hopefully)')
 
             # print(db.child("users").child("stream").child(ripple_id).get().val())
@@ -173,7 +171,7 @@ def add_ripple():
 
 
 def get_all_ripples():
-    stream_keys = db.child("users").child(stream).get()
+    stream_keys = db.child("users").child("stream").get()
     ripples = {}
     counter = 0
     for key in stream_keys.each():
@@ -194,38 +192,10 @@ def get_all_ripples():
                 "source": key.val()["source"],
                 "moderate": moderate,
                 "user_rating": key.val()["rating"]["userRating"],
-                "org_rating": key.val()["rating"]["orgRating"],
             }
             ripples.update({label: tldata})
             counter += 1
     return ripples
-
-
-def get_ripple(ripple_id):
-    ripple_data = db.child("users").child(stream).child(ripple_id).get()
-    return ripple_data
-
-
-def update_ripple_mod(ripple_id, orgRating, orgComment):
-    db.child("users").child(stream).child(ripple_id).update({"moderate":"completed"})
-    db.child("users").child(stream).child(ripple_id).update({"orgComment": orgComment})
-    db.child("users").child(stream).child(ripple_id).child("rating").update({"orgRating": orgRating})
-
-    print("updated (maybe)")
-
-
-@app.route('/moderate_ripple', methods=['POST', 'GET'])
-def moderate_ripple():
-    if request.method == 'POST':
-        if request.is_json:
-            data_receive = json.loads(request.get_data())
-            print('Received JSON data_receive from user object')
-            print(data_receive)
-            update_ripple_mod(data_receive["_id"],data_receive["_orgRating"],data_receive["_orgComment"])
-            return 'succeeded'
-        else:
-            print('Did not receive JSON')
-            return 'failed'
 
 
 # get_all_ripples()
