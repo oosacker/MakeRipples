@@ -34,7 +34,7 @@ function getModerationCount() {
             if (ripple_objs[i].moderationflag == 'yes') {
                 count_yes++
             }
-            if (ripple_objs[i].moderationflag == 'no') {
+            if (ripple_objs[i].moderationflag == 'completed') {
                 count_no++
             }
         }

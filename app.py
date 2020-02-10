@@ -8,6 +8,8 @@ app = Flask(__name__)
 
 count = 0
 message = 'Begin!!!!'
+stream = "stream"
+# stream = "demo_stream"
 
 config = {
     "apiKey": "AIzaSyBFWvJWUtv_AM8NhBXG231jxint9IbXKio",
@@ -153,7 +155,7 @@ def add_ripple():
                 }
 
             # print(ripple_id, data)
-            db.child("users").child("stream").child(ripple_id).set(data)
+            db.child("users").child(stream).child(ripple_id).set(data)
             # print('sent to database(hopefully)')
 
             # print(db.child("users").child("stream").child(ripple_id).get().val())
@@ -171,7 +173,7 @@ def add_ripple():
 
 
 def get_all_ripples():
-    stream_keys = db.child("users").child("stream").get()
+    stream_keys = db.child("users").child(stream).get()
     ripples = {}
     counter = 0
     for key in stream_keys.each():
@@ -200,14 +202,14 @@ def get_all_ripples():
 
 
 def get_ripple(ripple_id):
-    ripple_data = db.child("users").child("stream").child(ripple_id).get()
+    ripple_data = db.child("users").child(stream).child(ripple_id).get()
     return ripple_data
 
 
 def update_ripple_mod(ripple_id, orgRating, orgComment):
-    db.child("users").child("stream").child(ripple_id).update({"moderate":"completed"})
-    db.child("users").child("stream").child(ripple_id).update({"orgComment": orgComment})
-    db.child("users").child("stream").child(ripple_id).child("rating").update({"orgRating": orgRating})
+    db.child("users").child(stream).child(ripple_id).update({"moderate":"completed"})
+    db.child("users").child(stream).child(ripple_id).update({"orgComment": orgComment})
+    db.child("users").child(stream).child(ripple_id).child("rating").update({"orgRating": orgRating})
 
     print("updated (maybe)")
 
