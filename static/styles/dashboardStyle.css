@@ -1,9 +1,9 @@
-body{
-    background: #f2f2f2;
-}
+/*body{*/
+/*    background: #f2f2f2;*/
+/*}*/
 .head-top{
     position: relative;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 .head-top h1{
     font-size: 35px;
@@ -213,7 +213,7 @@ body{
     border: 1px solid #888;
     width: 20%;
     position: relative;
-    top: 140px;
+    top: 170px;
     /*margin-left: 260px;*/
 }
 
@@ -295,6 +295,7 @@ body{
     -webkit-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    border: 1px solid #f2f2f2;
 }
 .achievements .title{
     background: #4d5f96;
@@ -354,6 +355,7 @@ body{
     -moz-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
     padding-bottom: 10px;
+    border: 1px solid #f2f2f2;
 }
 .community-ripples .title{
     background: #4d5f96;
@@ -384,7 +386,7 @@ body{
     padding: 5px 0px;
 }
 .community-tag{
-    background-color: #f68f20;
+    background-color: #7889ba;
 }
 .personal-tag{
     background-color: #92278f;
@@ -393,7 +395,9 @@ body{
 .organised-tag{
     background-color: #63c5c0;
 }
-
+.activity-desc {
+    text-align: left;
+}
 .activity-img img{
     width: 80px;
     height: 50px;
@@ -411,6 +415,7 @@ body{
     -webkit-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 17px -11px rgba(0,0,0,0.75);
+    border: 1px solid #f2f2f2;
 }
 .myRipples .title{
     background: #4d5f96;

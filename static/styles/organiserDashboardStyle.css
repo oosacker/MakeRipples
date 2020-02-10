@@ -1,5 +1,24 @@
-body {
-    background: #f2f2f2;
+/*body {*/
+/*    background: #f2f2f2;*/
+/*}*/
+
+.moderation-check{
+    width: 88%;
+    background-color: #f2f2f2;
+    color: #f68f20;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 5px 5px;
+    font-size: 18px;
+}
+
+.moderation-check p{
+   margin: 0px;
+}
+
+.moderation-check a{
+   color: #f68f20;
+    text-decoration: underline;
 }
 
 .head-top {
@@ -335,6 +354,7 @@ body {
     -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     margin-bottom: 30px;
+    border: 1px solid #f2f2f2;
 }
 
 .organiserDashboard .title {
@@ -435,6 +455,7 @@ body {
     -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     padding-bottom: 10px;
+    border: 1px solid #f2f2f2;
 }
 
 .community-ripples .title {
@@ -471,7 +492,7 @@ body {
 }
 
 .community-tag {
-    background-color: #f68f20;
+    background-color: #7889ba;
 }
 
 .personal-tag {
@@ -480,6 +501,10 @@ body {
 
 .organised-tag {
     background-color: #63c5c0;
+}
+
+.activity-desc {
+    text-align: left;
 }
 
 .activity-img img {
@@ -499,6 +524,7 @@ body {
     -webkit-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
+    border: 1px solid #f2f2f2;
 }
 
 .organiserTimeline .title {
@@ -647,7 +673,7 @@ body {
 }
 
 .ripple-forms #impact_score {
-    width: 180px;
+    width: 250px;
 }
 
 .ripple-forms #datepicker > span:hover {
@@ -681,9 +707,15 @@ body {
         top: 42px;
         right: 42px;
     }
+    .organiserDashboard .notification{
+        right: 25px;
+      }
 }
 
 @media only screen and (max-width: 769px) {
+  .moderation-check {
+    width: 95%;
+  }
   .head-top .btn-left {
     top: 10px;
     left: 20px;
@@ -727,5 +759,8 @@ body {
   }
   .organiserDashboard .card-bottom-right{
     border: none;
+  }
+  .organiserDashboard .notification{
+    right: 5px;
   }
 }
