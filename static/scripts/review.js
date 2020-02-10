@@ -149,16 +149,16 @@ function reviewRipple(ripple){
     $("#datepicker").datepicker('update', ripple.date);
     $("#org_ripple_text").val(ripple.message);
     $("#org_ripple_text").prop("readonly",true);
-    let impact;
+    $("#rippleId").prop("value",ripple.id);
     if(ripple.userRating>0){
         $("#impact_score").val(ripple.userRating);
     }
 
 }
 
-function findRipple(message){
+function findRipple(id){
     for(let i = 0; i < ripple_objs.length; i++){
-        if(ripple_objs[i].message == message){
+        if(ripple_objs[i].id == id){
             return ripple_objs[i];
         }
     }
@@ -190,21 +190,25 @@ function updateRipple(ripple){
         }
     }).then(function () {
         console.log('sent');
-        location.reload();
     })
 }
 
 
 // NATSUKI'S CODE
 $("#update_ripple_btn").on("click", function () {
-    let message = $("#org_ripple_text").val();
-    let ripple = findRipple(message);
+    let id = $("#rippleId").val();
+    let ripple = findRipple(id);
+    let comments = "none";
+    if ($("#org_comments").val() != undefined){
+        comments = $("#org_comments").val()
+    }
     ripple.orgRating = $("#impact_score").val();
-    ripple.orgComment = $("#org_comments").val();
+    ripple.orgComment = comments;
     // alert(ripple.orgComment)
     ripple.moderationFlag = "completed";
     $("#review_form").modal('hide');
     updateRipple(ripple);
+    $("#org_comments").val("");
     getAllRipples();
 })
 
