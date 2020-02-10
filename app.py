@@ -80,6 +80,11 @@ def organiser_dash():
     print(ripples)
     return render_template('organiser_dashboard.html', ripples=ripples)
 
+@app.route('/ripple_review', methods=['POST', 'GET'])
+def ripple_review():
+    ripples = get_all_ripples()
+    print(ripples)
+    return render_template('ripple_review.html', ripples=ripples)
 
 @app.route('/nat_test', methods=['POST', 'GET'])
 def nat_test():
