@@ -34,37 +34,38 @@ def database_update(root, child, data):
     db.child(root).child(child).update(data)
 
 
+def get_nlp_rating(message):
+    nlprating = nlptest.returnnlprating(message)
+    print(message)
+    print(nlprating)
+    return nlprating
+
+
+def flag_for_moderation(user_rating, nlp_rating, other):
+    # print("started flag for mod")
+    if other:
+        # print("is other")
+        return 1
+    if user_rating > 6 or user_rating < 2:
+        return 1
+    if nlp_rating > 0 and abs(nlp_rating - user_rating) > 3:
+        return 1
+    return 0
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     return render_template('index.html')
 
 
-# @app.route('/check_in', methods=['POST', 'GET'])
-# def check_in():
-#     # global count
-#     global message
-#
-#     print(message)
-#
-#     if request.method == 'POST':
-#         # submit = request.form['text-input']
-#         # database_update("mydata", "texts", {count: submit})
-#         # count += 1
-#         message = 'Got message!!!'
-#         return render_template('form.html', message=message)
+# # This is for the javascript app to fetch the high score.
+# @app.route("/fetch_data", methods=['GET'])
+# def fetch_data():
+#     if request.method == 'GET':
+#         data = {'data': '1234567890'}
+#         return jsonify(data)  # serialize and use JSON headers
 #     else:
-#         message = 'None!!!'
-#         return render_template('form.html', message=message)
-
-
-# This is for the javascript app to fetch the high score.
-@app.route("/fetch_data", methods=['GET'])
-def fetch_data():
-    if request.method == 'GET':
-        data = {'data': '1234567890'}
-        return jsonify(data)  # serialize and use JSON headers
-    else:
-        print('Invalid request')
+#         print('Invalid request')
 
 
 @app.route('/user_dashboard', methods=['POST', 'GET'])
@@ -86,69 +87,6 @@ def ripple_review():
     ripples = get_all_ripples()
     print(ripples)
     return render_template('ripple_review.html', ripples=ripples)
-
-
-@app.route('/nat_test', methods=['POST', 'GET'])
-def nat_test():
-    return render_template('org_form.html')
-
-
-# @app.route('/my_test', methods=['POST', 'GET'])
-# def my_test():
-#     if request.method == 'POST':
-#         if request.is_json:
-#             data_receive = json.loads(request.get_data())
-#             print('Received JSON data_receive from web app')
-#             print(data_receive)
-#             return 'ok'
-#         else:
-#             print(request.form['myData'])
-#             print('Did not receive JSON')
-#             return 'fail'
-
-
-# @app.route('/form', methods=['POST', 'GET'])
-# def form():
-#     if request.method == 'POST':
-#
-#         return render_template('form.html',
-#                                text=request.form['text_input'],
-#                                option_1=request.form['radio_set1'],
-#                                option_2=request.form['radio_set2'])
-#
-#     else:
-#         return render_template('form.html')
-
-
-# @app.route('/form2', methods=['POST', 'GET'])
-# def form2():
-# if request.method == 'POST':
-#
-#     return render_template('form2.html',
-#                            text=request.form['text_input'],
-#                            option_1=request.form['radio_set1'],
-#                            option_2=request.form['radio_set2'])
-#
-# else:
-# return render_template('form2.html')
-
-def get_nlp_rating(message):
-    nlprating = nlptest.returnnlprating(message)
-    print(message)
-    print(nlprating)
-    return nlprating
-
-
-def flag_for_moderation(user_rating, nlp_rating, other):
-    # print("started flag for mod")
-    if other:
-        # print("is other")
-        return 1
-    if user_rating > 6 or user_rating < 2:
-        return 1
-    if int(nlp_rating) > 0 and abs(int(nlp_rating) - user_rating) > 3:
-        return 1
-    return 0
 
 
 @app.route('/add_ripple', methods=['POST', 'GET'])
