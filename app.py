@@ -257,6 +257,13 @@ def get_all_ripples():
     return ripples
 
 
+def get_ripple(ripple_id):
+    ripple_data = db.child("users").child("stream").child(ripple_id).get()
+    return ripple_data
+
+
+
+
 # get_all_ripples()
 
 if __name__ == '__main__':
