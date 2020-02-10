@@ -217,6 +217,7 @@ $("#update_ripple_btn").on("click", function () {
     $("#review_form").modal('hide');
     updateRipple(ripple);
     $("#org_comments").val("");
+    updateCounts();
     getAllRipples();
 })
 
