@@ -213,7 +213,7 @@
     border: 1px solid #888;
     width: 20%;
     position: relative;
-    top: 140px;
+    top: 170px;
     /*margin-left: 260px;*/
 }
 
@@ -386,7 +386,7 @@
     padding: 5px 0px;
 }
 .community-tag{
-    background-color: #f68f20;
+    background-color: #7889ba;
 }
 .personal-tag{
     background-color: #92278f;
