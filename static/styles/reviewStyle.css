@@ -210,6 +210,7 @@
     box-shadow: 10px 10px 17px -11px rgba(0, 0, 0, 0.75);
     padding-bottom: 10px;
     text-align: center;
+    border: 1px solid #f2f2f2;
 }
 
 .ripple-review .title {
@@ -229,7 +230,13 @@
 
 .activity-item {
     text-align: center;
-    margin: 20px 0px;
+    padding: 20px 0px;
+}
+
+.activity-item:hover {
+    background-color: #dde1ee;
+    margin: 0px 5px;
+    cursor: pointer;
 }
 
 .activity-tag {
