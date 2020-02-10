@@ -1,4 +1,4 @@
-let ripple_objs = [];
+let ripple_objs = new Array();
 
 
 function getRippleDetails() {
@@ -175,14 +175,23 @@ function findRipple(id){
 $("#all-btn").on("click", function () {
     // alert("clicked all")
     getAllRipples();
+    $(".require-moderate").css({"color": "#000000", "text-decoration": "none"});
+    $(".no-moderate").css({"color": "#000000", "text-decoration": "none"});
+    $(".all-moderate").css({"color": "#63c5c0", "text-decoration": "underline"});
 })
 $("#mod-btn").on("click", function () {
     // alert("clicked require mod")
     getModRipples();
+    $(".require-moderate").css({"color": "#63c5c0", "text-decoration": "underline"});
+    $(".no-moderate").css({"color": "#000000", "text-decoration": "none"});
+    $(".all-moderate").css({"color": "#000000", "text-decoration": "none"});
 })
 $("#non-mod-btn").on("click", function () {
     // alert("clicked no mod required")
     getNonModRipples();
+    $(".require-moderate").css({"color": "#000000", "text-decoration": "none"});
+    $(".no-moderate").css({"color": "#63c5c0", "text-decoration": "underline"});
+    $(".all-moderate").css({"color": "#000000", "text-decoration": "none"});
 })
 
 function updateRipple(ripple){
