@@ -399,19 +399,28 @@ function categoryTimeline() {
         }
     }
 }
+
+function randomGenerateEvent(){
+    document.getElementsByClassName("circle")[0].classList.add("checked");
+    document.getElementsByClassName("circle")[3].classList.add ("main");
+    document.getElementsByClassName("circle")[4].classList.add ("checked");
+}
+
 function categoryIcon() {
     var rippleCircle = document.getElementsByClassName("circle");
     var rippleIcon = document.getElementsByClassName("icon");
     var i;
     for (i = 0; i < rippleCircle.length; i++) {
-        if (rippleCircle[i].classList[1] == "user") {
+        if (rippleCircle[i].classList.contains("checked")) {
             rippleIcon[i].classList.add("fas");
             rippleIcon[i].classList.add("fa-check");
-        } else if (rippleCircle[i].classList[1] == "organiser") {
+        } else if (rippleCircle[i].classList.contains("main")) {
             rippleIcon[i].classList.add("fas");
             rippleIcon[i].classList.add("fa-star");
         }
     }
 }
+
 categoryTimeline()
+randomGenerateEvent()
 categoryIcon()
