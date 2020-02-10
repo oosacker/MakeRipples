@@ -179,10 +179,12 @@ def returnnlprating(message):
             print("Enter Word - 10:", noun)
 
     if count10 > 0:
-        return 10
+        return 9
     elif count8 > 0:
         return 8
     elif count4 > 0:
         return 4
     elif count1 > 0:
         return 1
+    else:
+        return 0
