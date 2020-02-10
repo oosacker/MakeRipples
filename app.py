@@ -53,6 +53,34 @@ def flag_for_moderation(user_rating, nlp_rating, other):
     return 0
 
 
+def get_all_ripples():
+    stream_keys = db.child("users").child("stream").get()
+    ripples = {}
+    counter = 0
+    for key in stream_keys.each():
+        if key.key().__contains__(
+                "Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val():
+            label = "r" + str(counter)
+            # source = 'untagged'
+            moderate = 'untagged'
+            # if 'source' in key.val():
+            #     source = key.val()["source"]
+            if 'moderate' in key.val():
+                moderate = key.val()["moderate"]
+            # date = str(key.val()["date"])[0:10]
+            tldata = {
+                "ripple_id": key.key(),
+                "date": key.val()["date"],
+                "message": key.val()["message"],
+                "source": key.val()["source"],
+                "moderate": moderate,
+                "user_rating": key.val()["rating"]["userRating"],
+            }
+            ripples.update({label: tldata})
+            counter += 1
+    return ripples
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     return render_template('index.html')
@@ -168,34 +196,6 @@ def add_ripple():
             print('Did not receive JSON')
             # return render_template('result.html')
             return 'failed'
-
-
-def get_all_ripples():
-    stream_keys = db.child("users").child("stream").get()
-    ripples = {}
-    counter = 0
-    for key in stream_keys.each():
-        if key.key().__contains__(
-                "Ripple") and 'date' in key.val() and 'message' in key.val() and 'source' in key.val():
-            label = "r" + str(counter)
-            # source = 'untagged'
-            moderate = 'untagged'
-            # if 'source' in key.val():
-            #     source = key.val()["source"]
-            if 'moderate' in key.val():
-                moderate = key.val()["moderate"]
-            # date = str(key.val()["date"])[0:10]
-            tldata = {
-                "ripple_id": key.key(),
-                "date": key.val()["date"],
-                "message": key.val()["message"],
-                "source": key.val()["source"],
-                "moderate": moderate,
-                "user_rating": key.val()["rating"]["userRating"],
-            }
-            ripples.update({label: tldata})
-            counter += 1
-    return ripples
 
 
 if __name__ == '__main__':
