@@ -1,4 +1,11 @@
 class user_response{
+    get orgComment() {
+        return this._orgComment;
+    }
+
+    set orgComment(value) {
+        this._orgComment = value;
+    }
     get moderationflag() {
         return this._moderationflag;
     }
@@ -32,6 +39,8 @@ class user_response{
     _other;
     _source;
     _moderationflag;
+    _orgComment;
+
     get source() {
         return this._source;
     }

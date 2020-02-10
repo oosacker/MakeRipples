@@ -126,11 +126,20 @@ function reviewRipple(ripple){
     $("#review_form").modal();
     $("#datepicker").datepicker('update', ripple.date);
     $("#org_ripple_text").val(ripple.message);
+    $("#org_ripple_text").prop("readonly",true);
     let impact;
     if(ripple.userRating>0){
         $("#impact_score").val(ripple.userRating);
     }
 
+}
+
+function findRipple(message){
+    for(let i = 0; i < ripple_objs.length; i++){
+        if(ripple_objs[i].message == message){
+            return ripple_objs[i];
+        }
+    }
 }
 
 $("#all-btn").on("click", function () {
@@ -146,10 +155,35 @@ $("#non-mod-btn").on("click", function () {
     getNonModRipples();
 })
 
+function updateRipple(ripple){
+    $.ajax('/moderate_ripple', {
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(ripple),
+        success: function (data, status, xhr) {
+            console.log(status);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(textStatus);
+        }
+    }).then(function () {
+        console.log('sent');
+        location.reload();
+    })
+}
+
 
 // NATSUKI'S CODE
 $("#update_ripple_btn").on("click", function () {
+    let message = $("#org_ripple_text").val();
+    let ripple = findRipple(message);
+    ripple.orgRating = $("#impact_score").val();
+    ripple.orgComment = $("#org_comments").val();
+    // alert(ripple.orgComment)
+    ripple.moderationFlag = "completed";
     $("#review_form").modal('hide');
+    updateRipple(ripple);
+    getAllRipples();
 })
 
 jQuery(function () {

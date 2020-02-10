@@ -146,7 +146,7 @@ def flag_for_moderation(user_rating, nlp_rating, other):
         return 1
     if user_rating > 6 or user_rating < 2:
         return 1
-    if nlp_rating > 0 and abs(nlp_rating - user_rating) > 3:
+    if int(nlp_rating) > 0 and abs(int(nlp_rating) - user_rating) > 3:
         return 1
     return 0
 
@@ -265,6 +265,26 @@ def get_ripple(ripple_id):
     return ripple_data
 
 
+def update_ripple_mod(ripple_id, orgRating, orgComment):
+    db.child("users").child("stream").child(ripple_id).update({"moderate":"completed"})
+    db.child("users").child("stream").child(ripple_id).update({"orgComment": orgComment})
+    db.child("users").child("stream").child(ripple_id).child("rating").update({"orgRating": orgRating})
+
+    print("updated (maybe)")
+
+
+@app.route('/moderate_ripple', methods=['POST', 'GET'])
+def moderate_ripple():
+    if request.method == 'POST':
+        if request.is_json:
+            data_receive = json.loads(request.get_data())
+            print('Received JSON data_receive from user object')
+            print(data_receive)
+            update_ripple_mod(data_receive["_id"],data_receive["_orgRating"],data_receive["_orgComment"])
+            return 'succeeded'
+        else:
+            print('Did not receive JSON')
+            return 'failed'
 
 
 # get_all_ripples()
