@@ -19,18 +19,18 @@
                         <h1>Ripples Review</h1>
                     </div>
                     <div class="details-bar row">
-                        <div class="col-lg-4 col-sm-3 col-3 my-auto">
-                            <button type="button" class=" btn" id="all-btn">All <span class="span-border" id="total-count">50</span></button>
+                        <div class="details-block col-lg-4 col-sm-2 col-3 my-auto">
+                            <button type="button" id="all-btn">All <span class="span-border" id="total-count">50</span></button>
                         </div>
-                        <div class="mid-bar col-lg-4 col-sm-3 col-4">
-                             <button type="button" class="btn" id="mod-btn">
-                                Require Moderation <span id="mod-count">15</span>
+                        <div class="details-block mid-bar col-lg-4 col-sm-5 col-5 my-auto">
+                             <button type="button" id="mod-btn">
+                                <span class="require-moderate">Require Moderation</span> <span id="mod-count">15</span>
                             </button>
 {#                            <a href="#">Require Moderation</a>#}
 {#                            <span>15</span>#}
                         </div>
-                        <div class="col-lg-4 col-sm-5 col-4 my-auto">
-                            <button type="button" class="btn" id="non-mod-btn">No Moderation Required <span id="no-mod-count" class="span-border">35</span></button>
+                        <div class="details-block col-lg-4 col-sm-5 col-4 my-auto">
+                            <button type="button" id="non-mod-btn">No Moderation Required <span id="no-mod-count" class="span-border">35</span></button>
                         </div>
                     </div>
 {#                    <div class="activity-item d-flex justify-content-center row">#}
@@ -189,8 +189,33 @@
 {#                        </div>#}
 {#                    </div>#}
 
+                        <div class="activity-impact col-lg-2 my-auto col-sm-3 col-3">
+                            <p class="my-auto">Level 9 impact</p>
+                        </div>
+                    </div>
+
+                     <div class="activity-item d-flex justify-content-center row">
+                        <div class="activity-tag col-lg-2 my-auto col-sm-4 col-4">
+                            <p class="review-tag">Review me!</p>
+                        </div>
+                        <div class="activity-desc col-lg-4 my-auto col-sm-8 col-8">
+                            <p class="my-auto">Activity Description...Lorem ipsum dolor sit amet, consectetur.</p>
+                        </div>
+
+                        <div class="activity-img col-lg-2 my-auto col-sm-4 col-4">
+                            <img src=" {{ url_for('static', filename='images/image1.jpg') }}" alt="image"/>
+                        </div>
+
+                        <div class="activity-update col-lg-2 my-auto col-sm-5 col-5">
+                            <p class="my-auto">Make a ripple 2 days ago</p>
+                        </div>
+
+                        <div class="activity-impact col-lg-2 my-auto col-sm-3 col-3">
+                            <p class="my-auto">Level 9 impact</p>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
     </div>
 
 

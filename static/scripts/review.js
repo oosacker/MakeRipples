@@ -61,11 +61,11 @@ function getRippleRow(ripple) {
                         //    add image here
                         '</div>' +
 
-                        '<div class="activity-update col-lg-2 my-auto col-sm-8 col-8">' +
+                        '<div class="activity-update col-lg-2 my-auto col-sm-5 col-5">' +
                             '<p class="my-auto">' + tense + Math.abs(days) + endSentence + '</p>' +
                         '</div>' +
 
-                        '<div class="activity-impact col-lg-2 my-auto col-sm-8 col-8">' +
+                        '<div class="activity-impact col-lg-2 my-auto col-sm-3 col-3">' +
                             '<p class="my-auto">Level '+ ripple.userRating +' impact</p>' +
                         '</div>' +
                     '</div>')
