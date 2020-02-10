@@ -101,9 +101,9 @@ function makeCircles() {
 
         //Draw first date circle
         $("#line").append(
-            '<div class="circle" id="circle0" style="top: ' +
+            '<div class="circle '+ ripple_objs[0].source+'\"  id="circle0" style="top: ' +
             0 +
-            '%;"><i class="fas fa-star"></i><div class="popupSpan">' +
+            '%;"><i class="icon"></i><div class="popupSpan">' +
             dateSpan(dates[0]) +
             "</div></div>"
         );
@@ -125,11 +125,11 @@ function makeCircles() {
 
             //Draw the date circle
             $("#line").append(
-                '<div class="circle" id="circle' +
+                '<div class="circle '+ ripple_objs[i].source+'\"  id="circle' +
                 i +
                 '" style="top: ' +
                 relativeInt * 100 +
-                '%;"><i class="fas fa-check"></i><div class="popupSpan">' +
+                '%;"><i class="icon"></i><div class="popupSpan">' +
                 dateSpan(dates[i]) +
                 "</div></div>"
 
@@ -152,11 +152,11 @@ function makeCircles() {
 
         //Draw the last date circle
         $("#line").append(
-            '<div class="circle" id="circle' +
+            '<div class="circle '+ ripple_objs[dates.length - 1].source+'\"  id="circle' +
             i +
             '" style="top: ' +
             99 +
-            '%;"><div class="popupSpan">' +
+            '%;"><i class="icon"></i><div class="popupSpan">' +
             dateSpan(dates[dates.length - 1]) +
             "</div></div>"
         );
@@ -410,3 +410,46 @@ $('#create_stream_btn').on('click', function () {
         $('#stream_form').modal('hide');
     }
 })
+
+function addRule(sheet, selector, styles) {
+    if (sheet.insertRule) return sheet.insertRule(selector + " {" + styles + "}", sheet.cssRules.length);
+    if (sheet.addRule) return sheet.addRule(selector, styles);
+};
+
+function categoryTimeline() {
+    var rippleCircle = document.getElementsByClassName("circle");
+    var i;
+    for (i = 0; i < rippleCircle.length; i++) {
+        if (rippleCircle[i].classList[1] == "user") {
+            document.getElementsByClassName("circle")[i].style.border = "3px solid #63c5c0";
+        } else if (rippleCircle[i].classList[1] == "organiser") {
+            document.getElementsByClassName("circle")[i].style.border = "3px solid #92278f";
+            addRule(document.styleSheets[0], "#"+rippleCircle[i].attributes[1].value+"::before", "background: rgb(146, 39, 143)");
+        }
+    }
+}
+
+function randomGenerateEvent(){
+    document.getElementsByClassName("circle")[0].classList.add("checked");
+    document.getElementsByClassName("circle")[3].classList.add ("main");
+    document.getElementsByClassName("circle")[4].classList.add ("checked");
+}
+
+function categoryIcon() {
+    var rippleCircle = document.getElementsByClassName("circle");
+    var rippleIcon = document.getElementsByClassName("icon");
+    var i;
+    for (i = 0; i < rippleCircle.length; i++) {
+        if (rippleCircle[i].classList.contains("checked")) {
+            rippleIcon[i].classList.add("fas");
+            rippleIcon[i].classList.add("fa-check");
+        } else if (rippleCircle[i].classList.contains("main")) {
+            rippleIcon[i].classList.add("fas");
+            rippleIcon[i].classList.add("fa-star");
+        }
+    }
+}
+
+categoryTimeline()
+randomGenerateEvent()
+categoryIcon()

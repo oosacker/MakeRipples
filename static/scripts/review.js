@@ -68,7 +68,7 @@ function getRippleRow(ripple) {
                         '</div>' +
 
                         '<div class="activity-img col-lg-2 my-auto col-sm-4 col-4">' +
-                        //    add image here
+                             '<img class="img-item" src=\"static/images/relay-for-life.jpg\" alt=\"image\"/>'+
                         '</div>' +
 
                         '<div class="activity-update col-lg-2 my-auto col-sm-5 col-5">' +
@@ -113,6 +113,7 @@ function getAllRipples() {
         getRippleRow(ripple_objs[i])
     }
     checkReviewColor()
+    randomImage()
 }
 
 function getModRipples() {
@@ -123,6 +124,7 @@ function getModRipples() {
         }
     }
     checkReviewColor()
+    randomImage()
 }
 
 function getNonModRipples() {
@@ -133,15 +135,16 @@ function getNonModRipples() {
         }
     }
     checkReviewColor()
+    randomImage()
 }
 
 function checkReviewColor(){
     var reviewTag = document.getElementsByClassName("review-tag");
     var i;
+    // var impactRate = document.getElementsByClassName("activity-impact");
     for (i = 0; i < reviewTag.length; i++) {
       if(document.getElementsByClassName("review-tag")[i].textContent == "Review Me!"){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#f68f20";
-        console.log("orange");
       }
       else if(document.getElementsByClassName("review-tag")[i].textContent == "Reviewed"){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#63c5c0";
@@ -150,8 +153,35 @@ function checkReviewColor(){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#4d5f96";
       }
 
+      // if(impactRate[i].textContent == "Level 4 impact" || impactRate[i].textContent == "Level 5 impact" || impactRate[i].textContent == "Level 6 impact"){
+      //   document.getElementsByClassName("img-item")[i].src = "static/images/tree Planting.jpg";
+      // }
+      // else if(impactRate[i].textContent == "Level 1 impact" || impactRate[i].textContent == "Level 2 impact" || impactRate[i].textContent == "Level 3 impact"){
+      //   document.getElementsByClassName("img-item")[i].src = "static/images/cleaning day.jpg";
+      // }
+      // else if(impactRate[i].textContent == "Level 7 impact" || impactRate[i].textContent == "Level 8 impact" || impactRate[i].textContent == "Level 9 impact"){
+      //   document.getElementsByClassName("img-item")[i].src = "static/images/climate board.jpg";
+      // }
+
     }
 
+}
+
+function randomImage(){
+    var i;
+    var impactRate = document.getElementsByClassName("activity-impact");
+    for (i = 0; i < impactRate.length; i++) {
+      if(impactRate[i].textContent == "Level 4 impact" || impactRate[i].textContent == "Level 5 impact" || impactRate[i].textContent == "Level 6 impact"){
+        document.getElementsByClassName("img-item")[i].src = "static/images/tree Planting.jpg";
+      }
+      else if(impactRate[i].textContent == "Level 1 impact" || impactRate[i].textContent == "Level 2 impact" || impactRate[i].textContent == "Level 3 impact"){
+        document.getElementsByClassName("img-item")[i].src = "static/images/cleaning day.jpg";
+      }
+      else if(impactRate[i].textContent == "Level 7 impact" || impactRate[i].textContent == "Level 8 impact" || impactRate[i].textContent == "Level 9 impact"){
+        document.getElementsByClassName("img-item")[i].src = "static/images/climate board.jpg";
+      }
+
+    }
 }
 
 function reviewRipple(ripple){
