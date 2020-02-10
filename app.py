@@ -1,5 +1,6 @@
 from flask import *
 import pyrebase
+import nlptest
 import time
 from datetime import datetime
 
@@ -125,8 +126,10 @@ def nat_test():
 # return render_template('form2.html')
 
 def get_nlp_rating(message):
-    # TODO link to Sam's code here
-    return 0
+    nlprating = nlptest.returnnlprating(message)
+    print(message)
+    print(nlprating)
+    return nlprating
 
 
 def flag_for_moderation(user_rating, nlp_rating):
