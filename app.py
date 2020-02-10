@@ -254,6 +254,7 @@ def get_all_ripples():
                 "source": key.val()["source"],
                 "moderate": moderate,
                 "user_rating": key.val()["rating"]["userRating"],
+                "org_rating": key.val()["rating"]["orgRating"],
             }
             ripples.update({label: tldata})
             counter += 1
