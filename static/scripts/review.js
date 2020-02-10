@@ -150,6 +150,6 @@ jQuery(function () {
         todayHighlight: true
     }).datepicker('update', new Date());
 
-    $("#review_form").modal();
+    // $("#review_form").modal();
 
 })
