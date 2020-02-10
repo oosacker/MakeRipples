@@ -217,7 +217,7 @@ function makeRippleCircles() {
 
                 //Draw the date circle
                 $("#line").append(
-                    '<div class="circle" id="circle' +
+                    '<div class="circle '+ ripple_objs[i].source+'\" id="circle' +
                     i +
                     '" style="left: ' +
                     relativeInt * 100 +
@@ -244,7 +244,7 @@ function makeRippleCircles() {
         }
         //Draw the last date circle
         $("#line").append(
-            '<div class="circle" id="circle' +
+            '<div class="circle '+ ripple_objs[lastInt].source+'\" id="circle' +
             lastInt +
             '" style="left: ' +
             99 +
@@ -420,10 +420,37 @@ window.onclick = function (event) {
 //   document.removeEventListener("click", printMousePos);
 //   console.log("Click modal!!")
 // }
+document.getElementsByClassName("circle")[0].classList[1];
+document.getElementsByClassName("user")[0].style.color = "pink";
 
+function addRule(sheet, selector, styles) {
+    if (sheet.insertRule) return sheet.insertRule(selector + " {" + styles + "}", sheet.cssRules.length);
+    if (sheet.addRule) return sheet.addRule(selector, styles);
+};
 
-
+function categoryTimeline(){
+    var rippleCircle = document.getElementsByClassName("circle");
+    var i;
+    for(i = 0; i < rippleCircle.length; i++){
+        if(rippleCircle[i].classList[1] == "user"){
+           document.getElementsByClassName("circle")[i].style.border = "3px solid #63c5c0";
+        }
+        else if(rippleCircle[i].classList[1] == "organiser"){
+            document.getElementsByClassName("circle")[i].style.border = "3px solid #92278f";
+            addRule(document.styleSheets[0], "#"+rippleCircle[i].attributes[1].value+"::before", "background: rgb(146, 39, 143)");
+        }
+    }
+}
+categoryTimeline()
 console.log()
 
+// var addRule = function(sheet, selector, styles) {
+//     if (sheet.insertRule) return sheet.insertRule(selector + " {" + styles + "}", sheet.cssRules.length);
+//     if (sheet.addRule) return sheet.addRule(selector, styles);
+// };
 
+// addRule(document.styleSheets[0], "#circle47::before", "content: ''");
 
+// addRule(document.styleSheets[0], "#circle47::before", "background: rgb(146, 39, 143)");
+
+// getComputedStyle(document.querySelector('#circle47'), ':before').backgroundColor;
