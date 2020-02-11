@@ -1,7 +1,7 @@
 // array of the keys to use to get the ripple data from the database
 let ripple_objs = new Array();
-let first;
-let last;
+let first = new Date();
+let last = new Date();
 
 
 function getRippleDetails() {
@@ -71,98 +71,98 @@ function rippleDateSpan(date) {
     return month + " " + day + ", " + year;
 }
 
-//Main function. Draw your circles.
-function makeCircles() {
-    //Forget the timeline if there's only one date. Who needs it!?
-    if (dates.length < 2) {
-        $("#line").hide();
-        $("#span")
-            .show()
-            .text(dateSpan(dates[0]));
-        //This is what you really want.
-    } else if (dates.length >= 2) {
-        //Set day, month and year variables for the math
-        var first = dates[0];
-        var last = dates[dates.length - 1];
-
-        var firstMonth = parseInt(first.split("/")[0]);
-        var firstDay = parseInt(first.split("/")[1]);
-
-        var lastMonth = parseInt(last.split("/")[0]);
-        var lastDay = parseInt(last.split("/")[1]);
-
-        //Integer representation of the last day. The first day is represnted as 0
-        var lastInt = (lastMonth - firstMonth) * 30 + (lastDay - firstDay);
-
-        //Draw first date circle
-        $("#line").append(
-            '<div class="circle" id="circle0" style="left: ' +
-            0 +
-            '%;"><div class="popupSpan">' +
-            dateSpan(dates[0]) +
-            "</div></div>"
-        );
-
-        $("#mainCont").append(
-            '<span id="span0" class="center">' + dateSpan(dates[0]) + "</span>"
-        );
-
-        //Loop through middle dates
-        for (i = 1; i < dates.length - 1; i++) {
-            var thisMonth = parseInt(dates[i].split("/")[0]);
-            var thisDay = parseInt(dates[i].split("/")[1]);
-
-            //Integer representation of the date
-            var thisInt = (thisMonth - firstMonth) * 30 + (thisDay - firstDay);
-
-            //Integer relative to the first and last dates
-            var relativeInt = thisInt / lastInt;
-
-            //Draw the date circle
-            $("#line").append(
-                '<div class="circle" id="circle' +
-                i +
-                '" style="left: ' +
-                relativeInt * 100 +
-                '%;"><div class="popupSpan">' +
-                dateSpan(dates[i]) +
-                "</div></div>"
-
-                //   '<div class="word" id="word' +
-                // i +
-                // '" style="left: ' +
-                // relativeInt * 100 +
-                // '%;">' +
-                // "</div>"
-            );
-
-            $("#mainCont").append(
-                '<span id="span' +
-                i +
-                '" class="right">' +
-                dateSpan(dates[i]) +
-                "</span>"
-            );
-        }
-
-        //Draw the last date circle
-        $("#line").append(
-            '<div class="circle" id="circle' +
-            i +
-            '" style="left: ' +
-            99 +
-            '%;"><div class="popupSpan">' +
-            dateSpan(dates[dates.length - 1]) +
-            "</div></div>"
-        );
-
-        $("#mainCont").append(
-            '<span id="span' + i + '" class="right">' + dateSpan(dates[i]) + "</span>"
-        );
-    }
-
-    $(".circle:first").addClass("active");
-}
+// //Main function. Draw your circles.
+// function makeCircles() {
+//     //Forget the timeline if there's only one date. Who needs it!?
+//     if (dates.length < 2) {
+//         $("#line").hide();
+//         $("#span")
+//             .show()
+//             .text(dateSpan(dates[0]));
+//         //This is what you really want.
+//     } else if (dates.length >= 2) {
+//         //Set day, month and year variables for the math
+//         var first = dates[0];
+//         var last = dates[dates.length - 1];
+//
+//         var firstMonth = parseInt(first.split("/")[0]);
+//         var firstDay = parseInt(first.split("/")[1]);
+//
+//         var lastMonth = parseInt(last.split("/")[0]);
+//         var lastDay = parseInt(last.split("/")[1]);
+//
+//         //Integer representation of the last day. The first day is represnted as 0
+//         var lastInt = (lastMonth - firstMonth) * 30 + (lastDay - firstDay);
+//
+//         //Draw first date circle
+//         $("#line").append(
+//             '<div class="circle" id="circle0" style="left: ' +
+//             0 +
+//             '%;"><div class="popupSpan">' +
+//             dateSpan(dates[0]) +
+//             "</div></div>"
+//         );
+//
+//         $("#mainCont").append(
+//             '<span id="span0" class="center">' + dateSpan(dates[0]) + "</span>"
+//         );
+//
+//         //Loop through middle dates
+//         for (i = 1; i < dates.length - 1; i++) {
+//             var thisMonth = parseInt(dates[i].split("/")[0]);
+//             var thisDay = parseInt(dates[i].split("/")[1]);
+//
+//             //Integer representation of the date
+//             var thisInt = (thisMonth - firstMonth) * 30 + (thisDay - firstDay);
+//
+//             //Integer relative to the first and last dates
+//             var relativeInt = thisInt / lastInt;
+//
+//             //Draw the date circle
+//             $("#line").append(
+//                 '<div class="circle" id="circle' +
+//                 i +
+//                 '" style="left: ' +
+//                 relativeInt * 100 +
+//                 '%;"><div class="popupSpan">' +
+//                 dateSpan(dates[i]) +
+//                 "</div></div>"
+//
+//                 //   '<div class="word" id="word' +
+//                 // i +
+//                 // '" style="left: ' +
+//                 // relativeInt * 100 +
+//                 // '%;">' +
+//                 // "</div>"
+//             );
+//
+//             $("#mainCont").append(
+//                 '<span id="span' +
+//                 i +
+//                 '" class="right">' +
+//                 dateSpan(dates[i]) +
+//                 "</span>"
+//             );
+//         }
+//
+//         //Draw the last date circle
+//         $("#line").append(
+//             '<div class="circle" id="circle' +
+//             i +
+//             '" style="left: ' +
+//             99 +
+//             '%;"><div class="popupSpan">' +
+//             dateSpan(dates[dates.length - 1]) +
+//             "</div></div>"
+//         );
+//
+//         $("#mainCont").append(
+//             '<span id="span' + i + '" class="right">' + dateSpan(dates[i]) + "</span>"
+//         );
+//     }
+//
+//     $(".circle:first").addClass("active");
+// }
 
 //Changed circles to pull dates from db
 function makeRippleCircles() {
@@ -198,7 +198,7 @@ function makeRippleCircles() {
 
         //Draw first date circle
         $("#line").append(
-            '<div class="circle" id="circle0" style="left: ' +
+            '<div class="circle" id="circle'+ firstInt +'" style="left: ' +
             0 +
             '%;"><div class="popupSpan">' +
             rippleDateSpan(ripple_objs[firstInt].date) +
@@ -243,6 +243,9 @@ function makeRippleCircles() {
                     rippleDateSpan(ripple_objs[i].date) +
                     "</span>"
                 );
+            }
+            else{
+                console.log("end is at " + i);
             }
         }
         //Draw the last date circle
