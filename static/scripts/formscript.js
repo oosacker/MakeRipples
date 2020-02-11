@@ -347,7 +347,10 @@ function fetch_data() {
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
     $("#datepicker").datepicker({
+        startDate: first,
+        endDate: last,
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
+
     }).datepicker('update', new Date());
 })

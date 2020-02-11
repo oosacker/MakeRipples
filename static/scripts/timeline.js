@@ -1,5 +1,8 @@
 // array of the keys to use to get the ripple data from the database
 let ripple_objs = new Array();
+let first;
+let last;
+
 
 function getRippleDetails() {
  if (ripples == undefined){
@@ -173,8 +176,8 @@ function makeRippleCircles() {
         //This is what you really want.
     } else {
         //Set day, month and year variables for the math
-        let first = ripple_objs[0].date;
-        let last = ripple_objs[0].date;
+        first = ripple_objs[0].date;
+        last = ripple_objs[0].date;
         let firstInt = 0;
         let lastInt = 0;
 
