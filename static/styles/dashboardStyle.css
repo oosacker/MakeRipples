@@ -576,12 +576,18 @@
 /*}*/
 
 @media only screen and (max-width: 832px) {
-    .head-top h1{
-        font-size: 33px;
-    }
+  .head-top h1{
+    font-size: 33px;
+  }
   .head-top button {
     top: 42px;
     right: 42px;
+  }
+  .activity-tag p{
+    margin-bottom: 10px;
+  }
+  .activity-desc{
+      text-align: center;
   }
 }
 
@@ -593,8 +599,27 @@
   .activity-tag p{
     margin-bottom: 10px;
   }
+  .achievements .card img{
+      height: 300px;
+      width: 75%;
+      margin: 0 auto;
+  }
+  .achievements .card-mid{
+      border: none;
+  }
+  .timeline-content .modal-content{
+        width: 55%;
+    }
 }
 
+@media only screen and (max-width: 416px) {
+    .achievements .card img{
+          height: 200px;
+          width: 100%;
+          margin: 0 auto;
+      }
+
+}
 
 @media only screen and (max-width: 376px) {
   .head-top button {
@@ -609,5 +634,25 @@
   }
   .achievements .card-mid{
       border: none;
+  }
+  .activity-desc{
+      padding-left: 35px;
+  }
+  .achievements .card img{
+      height: 180px;
+      width: 100%;
+      margin: 0 auto;
+  }
+  .timeline-content .modal-content{
+        top: 190px;
+    }
+}
+
+
+@media only screen and (max-width: 361px) {
+  .achievements .card img{
+      height: 180px;
+      width: 100%;
+      margin: 0 auto;
   }
 }
