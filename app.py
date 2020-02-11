@@ -198,6 +198,49 @@ def get_all_ripples():
     return ripples
 
 
+def get_ripple(ripple_id):
+    ripple_data = db.child("users").child(stream).child(ripple_id).get()
+    return ripple_data
+
+
+def update_ripple_mod(ripple_id, orgRating, orgComment):
+    db.child("users").child("stream").child(ripple_id).update({"moderate":"completed"})
+    db.child("users").child("stream").child(ripple_id).update({"orgComment": orgComment})
+    db.child("users").child("stream").child(ripple_id).child("rating").update({"orgRating": orgRating})
+
+    print("updated (maybe)")
+
+
+@app.route('/moderate_ripple', methods=['POST', 'GET'])
+def moderate_ripple():
+    if request.method == 'POST':
+        if request.is_json:
+            data_receive = json.loads(request.get_data())
+            print('Received JSON data_receive from user object')
+            print(data_receive)
+            update_ripple_mod(data_receive["_id"],data_receive["_orgRating"],data_receive["_orgComment"])
+            return 'succeeded'
+        else:
+            print('Did not receive JSON')
+            return 'failed'
+
+
+@app.route('/remove_ripple', methods=['POST', 'GET'])
+def remove_ripple():
+    if request.method == 'POST':
+        if request.is_json:
+            data_receive = json.loads(request.get_data())
+            print('Received JSON data_receive from user object')
+            print(data_receive)
+            ripple_id = data_receive["_id"]
+            db.child("users").child("stream").child(ripple_id).remove()
+            print("removed?")
+            return 'success'
+        else:
+            print('Did not receive JSON')
+            return 'failed'
+
+
 # get_all_ripples()
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 let ripple_objs = new Array();
-
+let view = "mod";
 
 function getRippleDetails() {
  if (ripples == undefined){
@@ -206,6 +206,7 @@ function findRipple(id){
 
 $("#all-btn").on("click", function () {
     // alert("clicked all")
+    view = "all";
     getAllRipples();
     $(".require-moderate").css({"color": "#000000", "text-decoration": "none"});
     $(".no-moderate").css({"color": "#000000", "text-decoration": "none"});
@@ -213,6 +214,7 @@ $("#all-btn").on("click", function () {
 })
 $("#mod-btn").on("click", function () {
     // alert("clicked require mod")
+    view = "mod";
     getModRipples();
     $(".require-moderate").css({"color": "#63c5c0", "text-decoration": "underline"});
     $(".no-moderate").css({"color": "#000000", "text-decoration": "none"});
@@ -220,11 +222,24 @@ $("#mod-btn").on("click", function () {
 })
 $("#non-mod-btn").on("click", function () {
     // alert("clicked no mod required")
+    view = "non-mod";
     getNonModRipples();
     $(".require-moderate").css({"color": "#000000", "text-decoration": "none"});
     $(".no-moderate").css({"color": "#63c5c0", "text-decoration": "underline"});
     $(".all-moderate").css({"color": "#000000", "text-decoration": "none"});
 })
+
+function getCurrentView() {
+    if(view == "mod"){
+        getModRipples();
+    }
+    else if (view == "non-mod"){
+        getNonModRipples();
+    }
+    else if (view == "all"){
+        getAllRipples();
+    }
+}
 
 function updateRipple(ripple){
     $.ajax('/moderate_ripple', {
@@ -242,6 +257,19 @@ function updateRipple(ripple){
     })
 }
 
+function deleteRipple(ripple){
+    return $.ajax('/remove_ripple', {
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(ripple),
+            // success: function (data, status, xhr) {
+            //     console.log(status);
+            // },
+            error: function (jqXhr, textStatus, errorMessage) {
+                console.log(textStatus);
+            }
+    })
+}
 
 // NATSUKI'S CODE
 $("#update_ripple_btn").on("click", function () {
@@ -259,7 +287,23 @@ $("#update_ripple_btn").on("click", function () {
     updateRipple(ripple);
     $("#org_comments").val("");
     updateCounts();
-    getAllRipples();
+    getCurrentView();
+})
+
+//Peggy's code to delete ripple
+$("#delete_ripple_btn").on("click", function () {
+    let id = $("#rippleId").val();
+    let ripple = findRipple(id);
+    let conf = confirm("Are you sure you want to delete?")
+    if (conf) {
+        deleteRipple(ripple).then( response =>
+            location.reload()
+        );
+        $("#review_form").modal('hide');
+        $("#org_comments").val("");
+
+
+    }
 })
 
 jQuery(function () {
@@ -270,6 +314,6 @@ jQuery(function () {
 
     getRippleDetails();
     updateCounts();
-    getModRipples();
+    getCurrentView();
 
 })
