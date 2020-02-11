@@ -1,5 +1,5 @@
 let ripple_objs = new Array();
-
+let view = "mod";
 
 function getRippleDetails() {
  if (ripples == undefined){
@@ -9,15 +9,17 @@ function getRippleDetails() {
       // let message = "received source and mod tagged:\n";
       // let i = 0;
       Object.keys(ripples).forEach(function (key) {
-          let ripple = new user_response();
-          ripple.source = ripples[key].source;
-          ripple.message = ripples[key].message;
-          ripple.date = new Date(ripples[key].date);
-          ripple.id = ripples[key].ripple_id;
-          ripple.moderationflag = ripples[key].moderate;
-          ripple.userRating = ripples[key].user_rating;
-          ripple.orgRating = ripples[key].org_rating;
-          ripple_objs.push(ripple);
+          if(ripples[key].source == "user") {
+              let ripple = new user_response();
+              ripple.source = ripples[key].source;
+              ripple.message = ripples[key].message;
+              ripple.date = new Date(ripples[key].date);
+              ripple.id = ripples[key].ripple_id;
+              ripple.moderationflag = ripples[key].moderate;
+              ripple.userRating = ripples[key].user_rating;
+              ripple.orgRating = ripples[key].org_rating;
+              ripple_objs.push(ripple);
+          }
           // message = message + rippleDateSpan(ripple.date) + ", " + ripples[key].message + "\n" + ripples[key].moderate + "\n";
           // i++;
       })
@@ -66,7 +68,7 @@ function getRippleRow(ripple) {
                         '</div>' +
 
                         '<div class="activity-img col-lg-2 my-auto col-sm-4 col-4">' +
-                        //    add image here
+                             '<img class="img-item" src=\"static/images/relay-for-life.jpg\" alt=\"image\"/>'+
                         '</div>' +
 
                         '<div class="activity-update col-lg-2 my-auto col-sm-5 col-5">' +
@@ -111,6 +113,7 @@ function getAllRipples() {
         getRippleRow(ripple_objs[i])
     }
     checkReviewColor()
+    randomImage()
 }
 
 function getModRipples() {
@@ -121,6 +124,7 @@ function getModRipples() {
         }
     }
     checkReviewColor()
+    randomImage()
 }
 
 function getNonModRipples() {
@@ -131,15 +135,16 @@ function getNonModRipples() {
         }
     }
     checkReviewColor()
+    randomImage()
 }
 
 function checkReviewColor(){
     var reviewTag = document.getElementsByClassName("review-tag");
     var i;
+    // var impactRate = document.getElementsByClassName("activity-impact");
     for (i = 0; i < reviewTag.length; i++) {
       if(document.getElementsByClassName("review-tag")[i].textContent == "Review Me!"){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#f68f20";
-        console.log("orange");
       }
       else if(document.getElementsByClassName("review-tag")[i].textContent == "Reviewed"){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#63c5c0";
@@ -148,8 +153,35 @@ function checkReviewColor(){
         document.getElementsByClassName("review-tag")[i].style.backgroundColor ="#4d5f96";
       }
 
+      // if(impactRate[i].textContent == "Level 4 impact" || impactRate[i].textContent == "Level 5 impact" || impactRate[i].textContent == "Level 6 impact"){
+      //   document.getElementsByClassName("img-item")[i].src = "static/images/tree Planting.jpg";
+      // }
+      // else if(impactRate[i].textContent == "Level 1 impact" || impactRate[i].textContent == "Level 2 impact" || impactRate[i].textContent == "Level 3 impact"){
+      //   document.getElementsByClassName("img-item")[i].src = "static/images/cleaning day.jpg";
+      // }
+      // else if(impactRate[i].textContent == "Level 7 impact" || impactRate[i].textContent == "Level 8 impact" || impactRate[i].textContent == "Level 9 impact"){
+      //   document.getElementsByClassName("img-item")[i].src = "static/images/climate board.jpg";
+      // }
+
     }
 
+}
+
+function randomImage(){
+    var i;
+    var impactRate = document.getElementsByClassName("activity-impact");
+    for (i = 0; i < impactRate.length; i++) {
+      if(impactRate[i].textContent == "Level 4 impact" || impactRate[i].textContent == "Level 5 impact" || impactRate[i].textContent == "Level 6 impact"){
+        document.getElementsByClassName("img-item")[i].src = "static/images/tree Planting.jpg";
+      }
+      else if(impactRate[i].textContent == "Level 1 impact" || impactRate[i].textContent == "Level 2 impact" || impactRate[i].textContent == "Level 3 impact"){
+        document.getElementsByClassName("img-item")[i].src = "static/images/cleaning day.jpg";
+      }
+      else if(impactRate[i].textContent == "Level 7 impact" || impactRate[i].textContent == "Level 8 impact" || impactRate[i].textContent == "Level 9 impact"){
+        document.getElementsByClassName("img-item")[i].src = "static/images/climate board.jpg";
+      }
+
+    }
 }
 
 function reviewRipple(ripple){
@@ -174,6 +206,7 @@ function findRipple(id){
 
 $("#all-btn").on("click", function () {
     // alert("clicked all")
+    view = "all";
     getAllRipples();
     $(".require-moderate").css({"color": "#000000", "text-decoration": "none"});
     $(".no-moderate").css({"color": "#000000", "text-decoration": "none"});
@@ -181,6 +214,7 @@ $("#all-btn").on("click", function () {
 })
 $("#mod-btn").on("click", function () {
     // alert("clicked require mod")
+    view = "mod";
     getModRipples();
     $(".require-moderate").css({"color": "#63c5c0", "text-decoration": "underline"});
     $(".no-moderate").css({"color": "#000000", "text-decoration": "none"});
@@ -188,11 +222,24 @@ $("#mod-btn").on("click", function () {
 })
 $("#non-mod-btn").on("click", function () {
     // alert("clicked no mod required")
+    view = "non-mod";
     getNonModRipples();
     $(".require-moderate").css({"color": "#000000", "text-decoration": "none"});
     $(".no-moderate").css({"color": "#63c5c0", "text-decoration": "underline"});
     $(".all-moderate").css({"color": "#000000", "text-decoration": "none"});
 })
+
+function getCurrentView() {
+    if(view == "mod"){
+        getModRipples();
+    }
+    else if (view == "non-mod"){
+        getNonModRipples();
+    }
+    else if (view == "all"){
+        getAllRipples();
+    }
+}
 
 function updateRipple(ripple){
     $.ajax('/moderate_ripple', {
@@ -210,6 +257,19 @@ function updateRipple(ripple){
     })
 }
 
+function deleteRipple(ripple){
+    return $.ajax('/remove_ripple', {
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(ripple),
+            // success: function (data, status, xhr) {
+            //     console.log(status);
+            // },
+            error: function (jqXhr, textStatus, errorMessage) {
+                console.log(textStatus);
+            }
+    })
+}
 
 // NATSUKI'S CODE
 $("#update_ripple_btn").on("click", function () {
@@ -227,7 +287,23 @@ $("#update_ripple_btn").on("click", function () {
     updateRipple(ripple);
     $("#org_comments").val("");
     updateCounts();
-    getAllRipples();
+    getCurrentView();
+})
+
+//Peggy's code to delete ripple
+$("#delete_ripple_btn").on("click", function () {
+    let id = $("#rippleId").val();
+    let ripple = findRipple(id);
+    let conf = confirm("Are you sure you want to delete?")
+    if (conf) {
+        deleteRipple(ripple).then( response =>
+            location.reload()
+        );
+        $("#review_form").modal('hide');
+        $("#org_comments").val("");
+
+
+    }
 })
 
 jQuery(function () {
@@ -238,6 +314,6 @@ jQuery(function () {
 
     getRippleDetails();
     updateCounts();
-    getModRipples();
+    getCurrentView();
 
 })

@@ -192,7 +192,6 @@ def get_all_ripples():
                 "source": key.val()["source"],
                 "moderate": moderate,
                 "user_rating": key.val()["rating"]["userRating"],
-                "org_rating": key.val()["rating"]["orgRating"],
             }
             ripples.update({label: tldata})
             counter += 1
@@ -200,7 +199,7 @@ def get_all_ripples():
 
 
 def get_ripple(ripple_id):
-    ripple_data = db.child("users").child("stream").child(ripple_id).get()
+    ripple_data = db.child("users").child(stream).child(ripple_id).get()
     return ripple_data
 
 
@@ -221,6 +220,22 @@ def moderate_ripple():
             print(data_receive)
             update_ripple_mod(data_receive["_id"],data_receive["_orgRating"],data_receive["_orgComment"])
             return 'succeeded'
+        else:
+            print('Did not receive JSON')
+            return 'failed'
+
+
+@app.route('/remove_ripple', methods=['POST', 'GET'])
+def remove_ripple():
+    if request.method == 'POST':
+        if request.is_json:
+            data_receive = json.loads(request.get_data())
+            print('Received JSON data_receive from user object')
+            print(data_receive)
+            ripple_id = data_receive["_id"]
+            db.child("users").child("stream").child(ripple_id).remove()
+            print("removed?")
+            return 'success'
         else:
             print('Did not receive JSON')
             return 'failed'

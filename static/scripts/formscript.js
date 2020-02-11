@@ -162,7 +162,7 @@ $("button[name='submit_btn']").on("click", function () {
             if ($("#text_input1").val() === '') {
                 $('#warning_action3').css('visibility', 'visible');
             } else {
-                ur.message = $("#text_input1").val();
+                ur.message = $("#text_input1").val().substring(0,500);
                 console.log(ur.message);
             }
 
@@ -192,7 +192,7 @@ $("button[name='submit_btn']").on("click", function () {
             if ($("#resonate_text").val() === "") {
                 $('#warning_resonate2').css('visibility', 'visible');
             } else {
-                ur.message = $("#resonate_text").val();
+                ur.message = $("#resonate_text").val().substring(0,500);
                 console.log(ur.message);
             }
 
@@ -228,7 +228,7 @@ $("button[name='submit_btn']").on("click", function () {
             if ($("#learn_text").val() === "") {
                 $('#warning_learn3').css('visibility', 'visible');
             } else {
-                ur.message = $("#learn_text").val();
+                ur.message = $("#learn_text").val().substring(0,500);
                 console.log(ur.message);
             }
 
@@ -251,7 +251,7 @@ $("button[name='submit_btn']").on("click", function () {
             if ($("#other_text_input").val() === "") {
                 $('#warning_other').css('visibility', 'visible');
             } else {
-                ur.message = $("#other_text_input").val();
+                ur.message = $("#other_text_input").val().substring(0,500);
                 ur.userRating = calculate();
                 console.log(ur);
                 send_user();
@@ -347,7 +347,10 @@ function fetch_data() {
 // The code will only run if the webpage is loaded fully!!!
 jQuery(function () {
     $("#datepicker").datepicker({
+        startDate: first,
+        endDate: last,
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
+
     }).datepicker('update', new Date());
 })
