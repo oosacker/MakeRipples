@@ -221,8 +221,9 @@
     border-left: 1px solid #aaaaaa;
 }
 .achievements .card img{
-    height: 200px;
+    height: 300px;
     padding: 30px;
+    margin-top: -50px;
 }
 .achievements .card .content-top{
     margin-top: 60px;
@@ -447,6 +448,11 @@
   }
   .activity-desc{
       text-align: center;
+  }
+  .achievements .card img{
+    height: 200px;
+    padding: 30px;
+    margin-top: -50px;
   }
 }
 
