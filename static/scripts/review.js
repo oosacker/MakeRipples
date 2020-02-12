@@ -1,5 +1,5 @@
 let ripple_objs = new Array();
-let view = "mod";
+let view = "all";
 
 function getRippleDetails() {
  if (ripples == undefined){

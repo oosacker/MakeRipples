@@ -162,6 +162,7 @@
   }
 }
 
+
 @media only screen and (max-width: 376px) {
   .head-top button {
     top: 64px;
@@ -241,6 +242,7 @@
 
 .activity-tag {
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .activity-tag p {
@@ -250,6 +252,10 @@
     border-radius: 10px 10px;
     margin: 0 auto;
     padding: 5px 0px;
+}
+
+.activity-desc{
+    padding-bottom: 10px;
 }
 
 .review-tag {

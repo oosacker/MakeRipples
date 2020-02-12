@@ -709,7 +709,16 @@
     }
     .organiserDashboard .notification{
         right: 25px;
-      }
+    }
+    .activity-tag p{
+        margin-bottom: 10px;
+    }
+    .activity-desc{
+        text-align: center;
+    }
+    .timeline-content .modal-content{
+        width: 50%;
+    }
 }
 
 @media only screen and (max-width: 769px) {
@@ -726,6 +735,38 @@
   }
   .activity-tag p{
     margin-bottom: 10px;
+  }
+  .organiserDashboard .card-top-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-left{
+    border: none;
+  }
+  .organiserDashboard .card-bottom-right{
+    border: none;
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  .moderation-check {
+    width: 95%;
+  }
+  .head-top{
+      margin-bottom: 50px;
+  }
+  .head-top .btn-left {
+    top: 50px;
+    left: 20px;
+  }
+  .head-top .btn-right {
+    top: 50px;
+    right: 20px;
+  }
+  .activity-tag p{
+    margin-bottom: 10px;
+  }
+  .organiserDashboard-wrap .content-bottom .col-4{
+      padding: 0px;
   }
 }
 
@@ -762,5 +803,8 @@
   }
   .organiserDashboard .notification{
     right: 5px;
+  }
+  .activity-desc{
+      padding-left: 35px;
   }
 }

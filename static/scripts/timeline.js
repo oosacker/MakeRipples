@@ -198,7 +198,7 @@ function makeRippleCircles() {
 
         //Draw first date circle
         $("#line").append(
-            '<div class="circle" id="circle'+ firstInt +'" style="left: ' +
+            '<div class="circle '+ ripple_objs[firstInt].source+'\" id="circle'+ firstInt +'" style="left: ' +
             0 +
             '%;"><div class="popupSpan">' +
             rippleDateSpan(ripple_objs[firstInt].date) +

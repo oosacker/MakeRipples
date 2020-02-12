@@ -81,7 +81,7 @@ function dateSpan(date) {
 //Main function. Draw your circles.
 function makeCircles() {
     //Forget the timeline if there's only one date. Who needs it!?
-    if (dates.length < 2) {
+    if (dates.length < 2 || ripple_objs.length < dates.length) {
         $("#line").hide();
         $("#span")
             .show()
@@ -391,7 +391,7 @@ $('#create_ripple_btn').on('click', function () {
         ripple.orgRating = $("#impact_score").val();
 
         send_ripple(ripple);
-        $("#text_input1").val("");
+        $("#org_ripple_text").val("");
         $("#impact_score").val("");
 
         $('#ripple_form').modal('hide');
