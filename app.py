@@ -10,7 +10,7 @@ count = 0
 message = 'Begin!!!!'
 
 config = {
-    "apiKey": "AIzaSyBFWvJWUtv_AM8NhBXG231jxint9IbXKio",
+    "apiKey": "",
     "authDomain": "makeripple.firebaseapp.com",
     "databaseURL": "https://makeripple.firebaseio.com",
     "storageBucket": "makeripple.appspot.com"
